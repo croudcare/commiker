@@ -1,0 +1,15 @@
+<form action="/me" method="post">
+  <input type="hidden" name="_method" value="put" />
+  <div class="form-group">
+    <label>Name:</label>
+    <p><%= current_session_user.slack_handler %></p>
+    <label>Email:</label>
+    <input
+      name="user[email]"
+      type="email"
+      class="form-control"
+      placeholder="Enter email">
+
+    <button type="submit">Submit</button>
+  </div>
+</form>

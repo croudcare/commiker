@@ -1,0 +1,32 @@
+<script type="text/javascript" src="/js/lib/lodash.min.js"></script>
+<script type="text/javascript" src="/js/lib/moment.min.js"></script>
+<script type="text/javascript" src="/js/lib/rails_ajax_handler.js"></script>
+
+<script type="text/javascript" src="/js/angular_lib/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="/js/angular_lib/ui-bootstrap-custom-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+  $.api_client = {
+    authenticated: <%= !current_session_user.try(:id).blank? %>,
+    endpoint: '<%= Configs["API_ENDPOINT"] %>',
+    authToken: '<%= "Bearer #{Rack::Jwt::Auth::AuthToken.issue_token({ user_id: current_session_user.try(:id) }, Configs["AUTHENTICATION_SECRET"])}" %>'
+  }
+</script>
+
+<script type="text/javascript" src="/js/angular/app.js"></script>
+<script type="text/javascript" src="/js/angular/usecases/me/login_usecase.js"></script>
+<script type="text/javascript" src="/js/angular/interceptors/auth_injector.js"></script>
+<script type="text/javascript" src="/js/angular/routes.js"></script>
+<script type="text/javascript" src="/js/angular/run.js"></script>
+
+<script type="text/javascript" src="/js/angular/directives/loading_directive.js"></script>
+<script type="text/javascript" src="/js/angular/filters/date_format.js"></script>
+<script type="text/javascript" src="/js/angular/models/story_model.js"></script>
+<script type="text/javascript" src="/js/angular/services/ref_data.js"></script>
+<script type="text/javascript" src="/js/angular/services/smooth_operator.js"></script>
+<script type="text/javascript" src="/js/angular/resources/story_smooth.js"></script>
+<script type="text/javascript" src="/js/angular/controllers/home_controller.js"></script>
+<script type="text/javascript" src="/js/angular/controllers/stories/show_controller.js"></script>
+<script type="text/javascript" src="/js/angular/controllers/stories/new_controller.js"></script>
+<script type="text/javascript" src="/js/angular/controllers/me/index_controller.js"></script>
+<script type="text/javascript" src="/js/angular/controllers/me/login_controller.js"></script>

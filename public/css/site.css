@@ -1,0 +1,24 @@
+.rah_general_spinner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+  /*background: url('/assets/spinner_24x24.gif') no-repeat center center rgba(255, 255, 255, 0.5);*/
+  background: url('/img/spin_blue_50.gif') no-repeat center center rgba(255, 255, 255, 1);
+  z-index: 100;
+}
+.rah_general_spinner_container {
+  position: relative;
+}
+#rah_body_spinner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+  background: url('/img/spin_blue_50.gif') no-repeat center center rgba(255, 255, 255, 0.8);
+  z-index: 9999999;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="commikerApp">
+  <head>
+    <title>Pearl Gems</title>
+
+    <meta name="viewport" content="width=device-width">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+    <link href="/css/site.css" rel="stylesheet" type="text/css" >
+    <%= partial :'/shared/head_scripts' %>
+    <%= partial :'/shared/angular_manifest' %>
+  </head>
+  <body>
+    <base href="/">
+    <br />
+    <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="home">Project name</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <% if current_session_user.blank? %>
+                <a href='/login' target="_self">log in with slack</a>
+              <% end %>
+              <% if !current_session_user.blank? %>
+                <a href='/logout' target="_self">logout <%= current_session_user.slack_handler %></a>
+              <% end %>
+            </li>
+            <li>
+              <a ui-sref="stories-new">new story</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <%= yield %>
+    </div>
+    <%= partial :'/shared/footer_scripts' %>
+  </body>
+</html>
+
