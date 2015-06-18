@@ -12,9 +12,9 @@
   function HomeController($state, SprintSmooth, MeLoginUsecase) {
     var self = this;
 
-    self.sprint = { id: 1};
+    self.sprint = null;
 
-    // findCurrentSprint(1);
+    findCurrentSprint(8);
 
     function findCurrentSprint(id) {
       SprintSmooth.find(id)

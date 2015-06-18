@@ -17,8 +17,8 @@ module Commiker
     end
 
     get '/api/v0/sprints/:id', auth: :user do
+      binding.pry
       ctx = UseCases::Sprints::Show::Base.perform(declared_params)
-
       json Serializers::Sprints::Show.new(ctx.sprint)
     end
 
