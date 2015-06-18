@@ -1,0 +1,59 @@
+
+@font-face {
+	font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr1uKlGE8-OjkUKWan_M3D6s.woff) format('woff');
+}
+
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-family: 'Titillium Web';
+}
+
+/*.col:not(:first-child),.col:not(:last-child) {
+  padding-right:7px;
+  padding-left:7px;
+}
+
+.col{
+  background: #ccc;
+  border: 1px solid;
+  margin: 0 10px 10px 0;
+}
+.col:last-child{
+  background: yellow;
+  margin: 0 0 10px 0;
+}*/
+
+.col-xs-5{
+}
+
+.col-sm-3 {
+}
+
+.col{
+	margin-bottom: 1%;
+	height: 250px; 
+}
+.center{
+	text-align: center;
+}
+
+.circle{
+  	border-radius: 50%;
+  	border: 5px solid blue;
+}
+
+.card{
+	background-color: #F2F2F2;
+	border: 0px grey dashed;
+	margin: 2%;
+	padding: 2%; 
+}
+
+.jumbotron {
+	background-color: #F2F2F2;
+	}
