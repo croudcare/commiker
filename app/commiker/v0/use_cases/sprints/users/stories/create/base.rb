@@ -32,9 +32,11 @@ module Commiker
                   end
 
                   tmp_pivotal_story = nil
+                  create_ctx = nil
                   ctx.stories = []
 
                   Story.transaction do
+
                     story_attributes[:pivotal_ids].each do |story_id|
                       tmp_pivotal_story = grab_story_from_pivotal(story_id)
 
@@ -51,7 +53,11 @@ module Commiker
                           description: tmp_pivotal_story['name']
                         }
 
-                      ctx.stories << create_ctx.story
+                      if create_ctx.ok?
+                        ctx.stories << create_ctx.story
+                      else
+                        raise ActiveRecord::Rollback
+                      end
                     end
 
                     ctx.status.created!
