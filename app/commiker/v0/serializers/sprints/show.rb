@@ -7,7 +7,12 @@ module Commiker
 
           root false
 
-          attributes :id, :obs, :started_at, :ended_at
+          attributes :id,
+                     :obs,
+                     :started_at,
+                     :ended_at
+
+          has_many :users, serializer: Users::Show
 
         end
 

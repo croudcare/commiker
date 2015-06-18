@@ -1,8 +1,12 @@
-
-<div ng-repeat="users in sprint.users">
-  {{user.id}}
+<div data-user-id="{{user.id}}" ng-repeat="user in sprint.users">
+  <img class="circle" src="{{user.avatar_url}}">
+  <br/>
+  <label>name: {{user.name}}</label>
+  <br/>
+  <label>username: {{user.slack_handler}}</label>
+  <br/>
+  <label>email: {{user.email}}</label>
 </div>
-
 
     <div class="container">
       <!-- Example row of columns -->
