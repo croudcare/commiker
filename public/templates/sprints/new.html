@@ -3,15 +3,7 @@
 
     <form ng-submit="sprintsNewCtrl.createSprint()">
       <div class="form-group">
-        <label>Participants</label>
-        <div
-          ng-include="'/templates/users/show/avatar.html'"
-          ng-repeat="user in sprintsNewCtrl.users">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Range</label>
+        <label>Range</label><br />
         <div class="btn-group" dropdown is-open="status.isopen">
           <button
             type="button"
@@ -35,8 +27,23 @@
       </div>
 
       <div class="form-group">
+        <label>Participants</label>
+        <div
+          ng-include="'/templates/users/show/avatar.html'"
+          ng-repeat="user in sprintsNewCtrl.users">
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>Observations</label>
         <textarea type="obs" ng-model="sprintsNewCtrl.sprintAttributes.obs" class="form-control"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" ng-model="sprintsNewCtrl.sprintAttributes.start_bot">
+          Start BOT
+        </label>
       </div>
 
       <button type="submit" class="btn btn-default">Submit</button>

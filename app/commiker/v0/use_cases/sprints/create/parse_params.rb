@@ -36,6 +36,10 @@ module Commiker
                 end
               end
 
+              # start_bot ?
+              ctx.start_bot = "#{sprint_attributes[:start_bot]}" == 'true'
+              sprint_attributes.delete('start_bot')
+
               # inits
               started_at = sprint_attributes[:started_at].to_time.beginning_of_day.utc
               ended_at = sprint_attributes[:ended_at].to_time.end_of_day.utc
