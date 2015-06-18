@@ -17,7 +17,7 @@
       started_at: moment(),
       ended_at: moment().add(7, 'days'),
       obs: '',
-      sprints_users: [],
+      users: [],
       start_bot: true
     };
 
@@ -29,12 +29,12 @@
 
     function createSprint() {
       // complete params
-      var sprints_users = _.map(self.users, function(user) {
+      var users = _.map(self.users, function(user) {
         if(user.isChecked == true)
           return user.less();
       });
 
-      self.sprintAttributes.sprints_users = sprints_users;
+      self.sprintAttributes.users = users;
 
       SprintSmooth.create('', self.sprintAttributes)
         .success(onSuccess)

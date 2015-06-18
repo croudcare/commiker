@@ -13,6 +13,8 @@ module Commiker
               sprint_attributes.merge!(starter_id: current_user.id)
 
               ctx.sprint = Sprint.create(sprint_attributes)
+
+              ctx.status.created!
             end
 
           end

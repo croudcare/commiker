@@ -55,7 +55,7 @@ module Commiker
           declared_params.keys.each do |k|
             if mappings[k]
               attributes = declared_params.delete(k).to_hash
-              declared_params[mappings[k]] = Hashie::Mash.new(attributes)
+              declared_params[mappings[k]] = attributes
             end
           end
 

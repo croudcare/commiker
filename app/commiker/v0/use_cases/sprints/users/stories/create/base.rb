@@ -13,21 +13,22 @@ module Commiker
 
                 context_reader :sprint,
                                :user,
-                               :story_attributes
+                               :pivotal_ids
 
                 def perform
-                  if !story_attributes.has_key?(:pivotal_ids)
-                    failure(:bad_request, 'missing required param pivotal_ids')
+                  if !pivotal_ids
+                    failure!(:bad_request, 'missing required param array of pivotal_ids')
+
                     return
                   end
 
                   if !sprint
-                    failure(:bad_request, 'missing required param sprint_id')
+                    failure!(:bad_request, 'missing required param sprint_id')
                     return
                   end
 
                   if !user
-                    failure(:bad_request, 'missing required param user_id')
+                    failure!(:bad_request, 'missing required param user_id')
                     return
                   end
 
@@ -37,11 +38,11 @@ module Commiker
 
                   Story.transaction do
 
-                    story_attributes[:pivotal_ids].each do |story_id|
+                    pivotal_ids.each do |story_id|
                       tmp_pivotal_story = grab_story_from_pivotal(story_id)
 
                       if tmp_pivotal_story['kind'] == 'error'
-                        failure(:bad_request, "unable to find story with id #{story_id}, stories not created")
+                        failure!(:unprocessable_entity, "unable to find story with id #{story_id}, stories not created")
                         raise ActiveRecord::Rollback
                       end
 
@@ -53,7 +54,7 @@ module Commiker
                           description: tmp_pivotal_story['name']
                         }
 
-                      if create_ctx.ok?
+                      if create_ctx.success?
                         ctx.stories << create_ctx.story
                       else
                         raise ActiveRecord::Rollback

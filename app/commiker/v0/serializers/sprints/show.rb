@@ -9,6 +9,7 @@ module Commiker
 
           attributes :id,
                      :obs,
+                     :starter_id,
                      :started_at,
                      :ended_at
 
