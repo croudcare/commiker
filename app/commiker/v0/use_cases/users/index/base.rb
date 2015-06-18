@@ -1,7 +1,7 @@
 module Commiker
   module V0
     module UseCases
-      module Sprints
+      module Users
         module Index
 
           class Base < UseCaseBase
@@ -9,7 +9,7 @@ module Commiker
             depends UseCases::Index
 
             def perform
-              context.sprints = Sprint.order('started_at DESC').all
+              ctx.users = User.order('name ASC').all
             end
 
           end
