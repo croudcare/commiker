@@ -1,11 +1,10 @@
 module Commiker
   module V0
 
-    class Story < Base
+    class SprintsUser < Base
 
       belongs_to :user
       belongs_to :sprint
-      has_many :story_interactions
 
     end
 
