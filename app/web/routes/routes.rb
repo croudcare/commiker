@@ -65,7 +65,11 @@ module Commiker
     end
 
     get '/*' do
-      erb :home
+      if request.path.split('/')[1] == 'api'
+        halt 404
+      else
+        erb :home
+      end
     end
 
   end

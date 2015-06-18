@@ -5,7 +5,11 @@ module Commiker
 
         class Show < Base
 
-          attributes :id
+          attributes :id,
+                     :sprint_id,
+                     :user_id,
+                     :pivotal_id,
+                     :description
 
         end
 
