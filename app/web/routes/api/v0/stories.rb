@@ -6,12 +6,14 @@ module Commiker
       authorize
     end
 
-    get '/api/v0/stories/' do
-      json message: 'ping'
-    end
+    post '/api/v0/stories/bulk_create', auth: :user do
+      ctx = UseCases::Stories::BulkCreate::Base.perform(declared_params)
 
-    patch '/api/v0/stories/:id/bump', auth: :user do
-      json message: 'ping'
+      status 422 if ctx.status.unprocessable_entity?
+      status 400 if ctx.status.bad_request?
+      status 201 if ctx.status.created?
+
+      json ctx.success? ? Serializers::Stories::Index.new(ctx) : ctx.errors
     end
 
   end
