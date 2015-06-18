@@ -3,6 +3,14 @@
 
     <form ng-submit="sprintsNewCtrl.createSprint()">
       <div class="form-group">
+        <label>Participants</label>
+        <div
+          ng-include="'/templates/users/show/avatar.html'"
+          ng-repeat="user in sprintsNewCtrl.users">
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>Range</label>
         <div class="btn-group" dropdown is-open="status.isopen">
           <button

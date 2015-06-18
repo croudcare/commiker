@@ -2,78 +2,33 @@
 
   commikerApp.controller('HomeController', [
     '$state',
-    'StorySmooth',
+    'SprintSmooth',
     'MeLoginUsecase',
     HomeController
   ]);
 
   /****************** PROTECTED ******************/
 
-  function HomeController($state, StorySmooth, MeLoginUsecase) {
+  function HomeController($state, SprintSmooth, MeLoginUsecase) {
     var self = this;
 
-    // self.today = moment();
-    // self.todayStr = todayStr;
+    self.sprint = { id: 1};
 
-    // self.currentDay = self.today;
-    // self.nextStr = nextStr;
+    // findCurrentSprint(1);
 
-    // self.gems = {};
-    // self.bumpGem = bumpGem;
-    // self.sortedKeys = sortedKeys;
+    function findCurrentSprint(id) {
+      SprintSmooth.find(id)
+        .success(onSuccess)
+        .error(onError)
 
-    // getGemsByDay(self.todayStr());
-    // getGemsByDay(nextStr());
+      function onSuccess(sprint) {
+        self.sprint = sprint;
+      }
 
-    // function sortedKeys() {
-    //   return _.keys(self.gems)
-    //     .sort(function(a, b){ return parseInt(b)-parseInt(a) });
-    // }
-
-    // function getGemsByDay(date) {
-    //   StorySmooth.find('by_day', { date: date })
-    //     .success(onSuccess);
-
-    //   function onSuccess(response) {
-    //     self.gems[+moment(date).toDate()] = response.gem_posts;
-    //   }
-    // }
-
-    // function bumpGem(gemId) {
-    //   StorySmooth.patch('bump', { id: gemId })
-    //     .success(onSuccess)
-    //     .error(onError);
-
-    //   function onSuccess(response) {
-    //     _.forEach(self.gems, function(gems, day){
-    //       _.each(gems, function(gem){
-    //         if(gem.id == response.gem_post.id) {
-    //           gem.bumped = true;
-    //           gem.up_count += 1;
-    //         }
-    //       });
-    //     });
-    //   }
-
-    //   function onError(response, status) {
-    //     if(status == 401) {
-    //       MeLoginUsecase.perform({ gemId: gemId, from: '/' });
-    //     }
-    //   }
-    // }
-
-    // function todayStr() {
-    //   return self.today.format('YYYY-MM-DD');
-    // }
-
-    // function currentDayStr() {
-    //   return self.currentDay.format('YYYY-MM-DD');
-    // }
-
-    // function nextStr() {
-    //   return self.currentDay.subtract(1, 'day').format('YYYY-MM-DD');
-    // }
-
+      function onError(response) {
+        debugger
+      }
+    }
   }
 
 })(angular.module('commikerApp'));

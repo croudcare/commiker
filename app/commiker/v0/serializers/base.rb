@@ -4,6 +4,8 @@ module Commiker
 
       class Base < ActiveModel::Serializer
 
+        root false
+
         def initialize(object, options = {})
           if options[:current_user] && options[:current_user].is_a?(User)
             @current_user = options[:current_user]

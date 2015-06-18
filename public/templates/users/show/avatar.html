@@ -1,0 +1,10 @@
+<label
+  ng-class="{ checked: user.is_participant }"
+  style="cursor: pointer; border: 1px solid #ccc; padding: 4px; border-radius: 3px; {{user.is_participant ? 'border-color: blue;' : ''}}">
+  <img
+    src="{{user.avatar_32_url}}"
+    title="{{user.slack_handler}}"
+    class="img-circle">
+  <small>{{user.slack_handler}}</small>
+  <input type="checkbox" ng-model="user.isChecked">
+</label>

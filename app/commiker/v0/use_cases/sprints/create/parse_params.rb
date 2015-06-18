@@ -25,6 +25,17 @@ module Commiker
                 failure!(:bad_request)
               end
 
+              if sprint_attributes[:sprints_users].length == 0
+                ctx.errors.push(:sprint, 'missing users')
+                failure!(:bad_request)
+              else
+                users_attrs = sprint_attributes.delete('sprints_users')
+
+                sprint_attributes[:users] = users_attrs.map do |user|
+                  Users::FindOne.perform(id: user[:id]).user
+                end
+              end
+
               # inits
               started_at = sprint_attributes[:started_at].to_time.beginning_of_day.utc
               ended_at = sprint_attributes[:ended_at].to_time.end_of_day.utc
