@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+
+    <form ng-submit="sprintsNewCtrl.createSprint()">
+      <div class="form-group">
+        <label>Range</label>
+        <div class="btn-group" dropdown is-open="status.isopen">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            dropdown-toggle
+            ng-disabled="disabled">
+            <span>from {{sprintsNewCtrl.sprintAttributes.started_at | dateformat: 'DD-MM-YYYY' }}</span> to <span>{{sprintsNewCtrl.sprintAttributes.ended_at | dateformat: 'DD-MM-YYYY'}}</span> <span class="caret"></span>
+          </button>
+          <div
+            class="dropdown-menu"
+            role="menu"
+            ng-click="$event.preventDefault();$event.stopPropagation()">
+              <div
+                date-range
+                start="sprintsNewCtrl.sprintAttributes.started_at"
+                end="sprintsNewCtrl.sprintAttributes.ended_at"
+                style="position: relative; z-index:0">
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Observations</label>
+        <textarea type="obs" ng-model="sprintsNewCtrl.sprintAttributes.obs" class="form-control"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+
+</div>

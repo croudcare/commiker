@@ -32,6 +32,19 @@
         controllerAs: 'storiesNewCtrl',
         resolve: { authenticate: authenticate }
       })
+      .state('sprints-new', {
+        url: '/sprints/new',
+        templateUrl: '/templates/sprints/new.html',
+        controller: 'SprintsNewController',
+        controllerAs: 'sprintsNewCtrl',
+        resolve: { authenticate: authenticate }
+      })
+      .state('sprints-show', {
+        url: '/sprints/:id',
+        templateUrl: '/templates/sprints/show.html',
+        controller: 'SprintsShowController',
+        controllerAs: 'sprintsShowCtrl'
+      })
       .state('stories-show', {
         url: '/stories/:name',
         templateUrl: '/templates/stories/show.html',

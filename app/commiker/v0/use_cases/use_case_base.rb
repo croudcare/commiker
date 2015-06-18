@@ -8,6 +8,10 @@ module Commiker
           context.current_user
         end
 
+        def ctx
+          context
+        end
+
       end
 
     end

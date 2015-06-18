@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="commikerApp">
   <head>
-    <title>Pearl Gems</title>
+    <title>Commiker</title>
 
     <meta name="viewport" content="width=device-width">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
     <link href="/css/site.css" rel="stylesheet" type="text/css" >
+    <link href="/css/angular-datepicker.css" rel="stylesheet" type="text/css" >
     <%= partial :'/shared/head_scripts' %>
     <%= partial :'/shared/angular_manifest' %>
   </head>
@@ -28,7 +29,7 @@
               <% end %>
             </li>
             <li>
-              <a ui-sref="stories-new">new story</a>
+              <a ui-sref="sprints-new">start sprint</a>
             </li>
           </ul>
         </div>

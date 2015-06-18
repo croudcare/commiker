@@ -14,6 +14,7 @@ module Commiker
 end
 
 require_relative './api/v0/me'
+require_relative './api/v0/sprints'
 require_relative './api/v0/stories'
 require_relative './me'
 
