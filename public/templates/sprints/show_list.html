@@ -2,19 +2,21 @@
 <div class="container side_space" style="text-align: center">
 	<div class="row">
 	    <div class="col-lg-12">
-			<div class="media" style="background-color:  ">
+
+			<div class="media" style="background-color:  " ng-repeat="user in sprint.users">
+	    {{user}}
 				<div href="#" class="pull-left" style="padding-right: 20px;">        
 	          		<img alt="64x64" data-src="holder.js/64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="http://api.randomuser.me/portraits/thumb/men/22.jpg">      
 	        	</div>
 	        	<div class="media-body">
-	          		<div class="media-heading" style="text-align: left"><h3><span class="username_txt" href="#">Raoul Boulard <!--{{user.slack_handler}}--></span></h3></div>
+	          		<div class="media-heading" style="text-align: left"><h3><span class="username_txt" href="#"> {{user.slack_handler}}</span></h3></div>
 	          		<span style="text-align: left"><p class="small sub_title">{{user.completedStories}}/{{user.totalStories}} completed stories</p></span>
 	          	</div>
 				
 
 	          	<div style="text-align:left; width: 80%; border-top: 1px solid #F2F2F2; margin-left: -10px; margin-top: 20px">
 
-		          	<ul class="list-group .default_text">
+		          	<ul class="list-group default_text">
 					  	<li class="list-group-item st_working">
 					    	<!-- <span class="story_check"><img src="/img/check_ok.svg"></span> -->
 					    	<span>[mockups] (template 01) when I signup in to prolinkedcare I want to receive a "Welcome email"  so I know how I can get more value of software.</span>
@@ -26,27 +28,6 @@
 	          	</div>
 	        </div>
 
-	        <div class="media" style="background-color: ">
-				<div href="#" class="pull-left" style="padding-right: 20px;">        
-	          		<img alt="64x64" data-src="holder.js/64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="http://api.randomuser.me/portraits/thumb/men/22.jpg">      
-	        	</div>
-	        	<div class="media-body" style="padding-bottom: 10px;">
-	          		<div class="media-heading" style="text-align: left"><h3><a href="#">Raoul Boulard <!--{{user.slack_handler}}--></a></h3></div>
-	          		<p class="small">{{user.completedStories}}/{{user.totalStories}} completed stories</p>
-				</div>
-
-	          	<div style="text-align: left;  border-top: 1px solid #F2F2F2; width: 80%">
-		          	<ul class="list-group">
-					  	<li class="list-group-item">
-					    	<span class="story_id">ID: 91021222</span>
-					    	<span>[mockups] (template 01) when I signup in to prolinkedcare I want to receive a "Welcome email"  so I know how I can get more value of software</span>
-			    		</li>
-			    		<li class="list-group-item">
-					    	<span>Cras justo odio</span>
-			    		</li>
-					</ul>
-	          	</div>
-	        </div>
 
 		</div>
 	</div>

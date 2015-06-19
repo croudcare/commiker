@@ -47,7 +47,7 @@ a{
 }
 .default_text{
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 14px;
 	color: #464B57;
 }
 .sub_title{
@@ -260,6 +260,17 @@ a:hover {
 	padding-bottom: 20px;
 }
 
+.thumbnail:hover{
+	background-color: #E2E2E2;
+	cursor: pointer;
+}
 
+.close{
+	opacity: 0.5;
+	font-size: 25px;
+}
 
-
+.close:hover{
+	opacity: 1;
+	font-size: 25px;
+}
