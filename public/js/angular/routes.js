@@ -17,13 +17,8 @@
         url: '/',
         templateUrl: '/templates/home.html',
         controller: 'HomeController',
-        controllerAs: 'homeCtrl'
-      })
-      .state('me', {
-        url: '/me',
-        templateUrl: '/templates/me/index.html',
-        controller: 'MeIndexController',
-        controllerAs: 'meIndexCtrl'
+        controllerAs: 'homeCtrl',
+        resolve: { authenticate: authenticate }
       })
       .state('stories-new', {
         url: '/stories/new',
@@ -43,13 +38,15 @@
         url: '/sprints/:id',
         templateUrl: '/templates/sprints/show.html',
         controller: 'SprintsShowController',
-        controllerAs: 'sprintsShowCtrl'
+        controllerAs: 'sprintsShowCtrl',
+        resolve: { authenticate: authenticate }
       })
       .state('stories-show', {
         url: '/stories/:name',
         templateUrl: '/templates/stories/show.html',
         controller: 'StoriesShowController',
-        controllerAs: 'storiesShowCtrl'
+        controllerAs: 'storiesShowCtrl',
+        resolve: { authenticate: authenticate }
       })
       .state('not_found', {
         url: '/404',

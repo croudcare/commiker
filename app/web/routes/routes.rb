@@ -13,11 +13,9 @@ module Commiker
 
 end
 
-require_relative './api/v0/me'
 require_relative './api/v0/users'
 require_relative './api/v0/stories'
 require_relative './api/v0/sprints'
-require_relative './me'
 
 module Commiker
 
@@ -54,11 +52,7 @@ module Commiker
 
         session[:user_id] = ctx.user.id
 
-        if ctx.user.registration_complete
-          redirect to(origin)
-        else
-          redirect to('/me/signup')
-        end
+        redirect to(origin)
   		end
 
       redirect to('/')

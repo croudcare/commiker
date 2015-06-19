@@ -22,7 +22,7 @@
     findCurrentSprint();
 
     function findCurrentSprint() {
-      SprintSmooth.find('/active')
+      SprintSmooth.find('active')
         .success(onSuccess)
         .error(onError)
 
@@ -31,7 +31,7 @@
       }
 
       function onError(response) {
-        debugger
+        // debugger
       }
     }
 
