@@ -9,7 +9,11 @@ module Commiker
             depends UseCases::Index
 
             def perform
-              context.sprints = Sprint.order('started_at DESC').all
+              context.sprints = \
+                Sprint
+                  .order('started_at DESC')
+                  .page(ctx.page)
+                  .per(ctx.per_page)
             end
 
           end

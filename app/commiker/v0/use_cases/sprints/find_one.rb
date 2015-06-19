@@ -5,8 +5,11 @@ module Commiker
 
         class FindOne < UseCaseBase
 
+          context_reader :sprint_id,
+                         :id
+
           def perform
-            context.sprint = Sprint.find(context.id)
+            context.sprint = Sprint.find(sprint_id || id)
           end
 
         end

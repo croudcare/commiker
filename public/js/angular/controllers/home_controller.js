@@ -12,17 +12,17 @@
   function HomeController($state, SprintSmooth, MeLoginUsecase) {
     var self = this;
 
-    self.sprint = { id: 1};
+    self.currentSprint = null;
 
-    // findCurrentSprint(1);
+    findCurrentSprint();
 
-    function findCurrentSprint(id) {
-      SprintSmooth.find(id)
+    function findCurrentSprint() {
+      SprintSmooth.find('', { page: 1, per_page: 1 })
         .success(onSuccess)
         .error(onError)
 
-      function onSuccess(sprint) {
-        self.sprint = sprint;
+      function onSuccess(sprints) {
+        self.currentSprint = sprints[0];
       }
 
       function onError(response) {

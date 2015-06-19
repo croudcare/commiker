@@ -10,29 +10,29 @@ module Commiker
 
             def perform
               if sprint_attributes.nil?
-                ctx.errors.push(:sprint, 'missing required params for sprint')
-                failure!(:bad_request)
+                failure!(:bad_request, 'missing required params for sprint')
                 return
               end
 
-              if !"#{sprint_attributes[:started_at]}".length == 0
-                ctx.errors.push(:sprint, 'missing required param started_at')
-                failure!(:bad_request)
+              if "#{sprint_attributes['started_at']}".length == 0
+                failure!(:bad_request, 'missing required param started_at')
+                return
               end
 
-              if !"#{sprint_attributes[:ended_at]}".length == 0
-                ctx.errors.push(:sprint, 'missing required param ended_at')
-                failure!(:bad_request)
+              if "#{sprint_attributes['ended_at']}".length == 0
+                failure!(:bad_request, 'missing required param ended_at')
+                return
               end
 
-              if sprint_attributes[:sprints_users].length == 0
-                ctx.errors.push(:sprint, 'missing users')
-                failure!(:bad_request)
+              if !sprint_attributes['users'] ||
+                  sprint_attributes['users'].length == 0
+                failure!(:bad_request, 'missing required param users')
+                return
               else
-                users_attrs = sprint_attributes.delete('sprints_users')
+                users_attrs = sprint_attributes.delete('users')
 
-                sprint_attributes[:users] = users_attrs.map do |user|
-                  Users::FindOne.perform(id: user[:id]).user
+                sprint_attributes['users'] = users_attrs.map do |user|
+                  UseCases::Users::FindOne.perform(id: user[:id]).user
                 end
               end
 
@@ -41,13 +41,16 @@ module Commiker
               sprint_attributes.delete('start_bot')
 
               # inits
-              started_at = sprint_attributes[:started_at].to_time.beginning_of_day.utc
-              ended_at = sprint_attributes[:ended_at].to_time.end_of_day.utc
+              started_at = \
+                sprint_attributes['started_at'].to_time.beginning_of_day.utc
+
+              ended_at = \
+                sprint_attributes['ended_at'].to_time.end_of_day.utc
 
               # validations
               if started_at > ended_at
-                ctx.errors.push(:sprint, 'started_at later than ended_at')
-                ctx.errors.push(:sprint, 'started_at later than ended_at')
+                failure!(:unprocessable_entity, 'started_at later than ended_at')
+                return
               end
             end
 

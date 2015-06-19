@@ -3,7 +3,9 @@ module Commiker
   class Web < ::Sinatra::Base
 
     get '/api/v0/sprints/', auth: :user do
-      json message: 'ping'
+      ctx = UseCases::Sprints::Index::Base.perform(declared_params)
+
+      json Serializers::Sprints::Index.new(ctx)
     end
 
     post '/api/v0/sprints/', auth: :user do

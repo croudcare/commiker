@@ -1,7 +1,7 @@
 module Commiker
   module V0
     module UseCases
-      module Story
+      module Stories
 
         class FindOne < UseCaseBase
 

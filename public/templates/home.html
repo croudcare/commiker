@@ -1,5 +1,5 @@
-
 <div
-  onLoad="sprint = homeCtrl.sprint"
+  ng-if="homeCtrl.currentSprint"
+  onload="sprint = homeCtrl.currentSprint"
   ng-include="'/templates/sprints/show.html'">
 </div>
