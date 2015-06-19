@@ -7,7 +7,7 @@ module Commiker
           class Base < UseCaseBase
 
             context_reader :sprint_id,
-                           :user_id,
+                           :user_slack_uid,
                            :pivotal_ids
 
             def perform
@@ -21,9 +21,11 @@ module Commiker
                 return
               end
 
-              if !user_id
-                failure!(:bad_request, 'missing required param user_id')
+              if !user_slack_uid
+                failure!(:bad_request, 'missing required param user_slack_uid')
                 return
+              else
+                ctx.user = User.find_by(slack_uid: user_slack_uid)
               end
 
               tmp_pivotal_story = nil
@@ -43,7 +45,7 @@ module Commiker
                   create_ctx = UseCases::Stories::Create::Base.perform \
                     story_attributes: {
                       sprint_id: sprint_id,
-                      user_id: user_id,
+                      user_id: ctx.user.id,
                       pivotal_id: tmp_pivotal_story['id'],
                       description: tmp_pivotal_story['name']
                     }

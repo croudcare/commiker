@@ -18,12 +18,13 @@ describe '/api/v0/stories' do
 
       before(:each) do
         @sprint = create :sprint_one
+        @user = @sprint.users.first
       end
 
       it 'should return bad request for missing required params' do
         make_the_call \
           sprint_id: @sprint.id,
-          user_id: @sprint.users.first.id
+          user_slack_uid: @user.slack_uid
 
         expect_bad_request_response
       end
@@ -31,7 +32,7 @@ describe '/api/v0/stories' do
       it 'should return bad request for invalid pivotal_ids' do
         make_the_call \
           sprint_id: @sprint.id,
-          user_id: @sprint.users.first.id,
+          user_slack_uid: @user.slack_uid,
           pivotal_ids: []
 
         expect_bad_request_response
@@ -40,7 +41,7 @@ describe '/api/v0/stories' do
       it 'should return unprocessable_entity for invalid pivotal_ids values' do
         make_the_call \
           sprint_id: @sprint.id,
-          user_id: @sprint.users.first.id,
+          user_slack_uid: @user.slack_uid,
           pivotal_ids: ['invalid']
 
         expect_unprocessable_response
@@ -50,7 +51,7 @@ describe '/api/v0/stories' do
          'and rollback stories already created' do
         make_the_call \
           sprint_id: @sprint.id,
-          user_id: @sprint.users.first.id,
+          user_slack_uid: @user.slack_uid,
           pivotal_ids: ['94839248', 'invalid']
 
         expect_unprocessable_response
@@ -60,13 +61,14 @@ describe '/api/v0/stories' do
       it 'should return created for adding stories do sprint' do
         make_the_call \
           sprint_id: @sprint.id,
-          user_id: @sprint.users.first.id,
+          user_slack_uid: @user.slack_uid,
           pivotal_ids: ['94839248']
 
         expect_created_response
         expect(last_response_json['stories'].length).to eq(1)
         expect(last_response_json['stories'][0]['sprint_id']).to eq(@sprint.id)
-        expect(last_response_json['stories'][0]['user_id']).to eq(@sprint.users.first.id)
+        expect(last_response_json['stories'][0]['user_id']).to eq(@user.id)
+        expect(last_response_json['stories'][0]['user']['slack_uid']).to eq(@user.slack_uid)
         expect(last_response_json['stories'][0]['pivotal_id']).to eq(94839248)
       end
 
