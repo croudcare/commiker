@@ -9,7 +9,7 @@
 
 body {
 	padding: 0;
-	margin: 0; 
+	margin: 0;
 	font-family: 'Titillium Web';
 	text-align: center;
 }
@@ -40,7 +40,7 @@ h2{
 
 .col{
 	margin-bottom: 1%;
-	height: 250px; 
+	height: 250px;
 }
 .center{
 	text-align: center;
@@ -67,7 +67,10 @@ h2{
 
 .member_item{
 }
-
+.thumbnail{
+	background-color: #F2F2F2;
+	border: none;
+}
 .jumbotron {
 	background-color: #F2F2F2;
 	}
@@ -78,7 +81,7 @@ h2{
 }
 
 #in{
-	background-color: black; 
+	background-color: black;
 }
 
 #other {
@@ -87,7 +90,7 @@ h2{
 /*HEADER STYLES*/
 .container{
 	width: 100%;
-	/*text-align: center;*/ 
+	/*text-align: center;*/
 }
 
 .side_space{
