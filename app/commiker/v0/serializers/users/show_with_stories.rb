@@ -6,8 +6,12 @@ module Commiker
         class ShowWithStories < Base
 
           attributes :id,
+                     :name,
+                     :email,
                      :slack_uid,
                      :slack_handler,
+                     :avatar_url,
+                     :avatar_32_url,
                      :stories
 
           def initialize(object, options = {})
