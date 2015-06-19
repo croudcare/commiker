@@ -1,5 +1,11 @@
 FactoryGirl.define do
 
+  factory :sprint, class: Commiker::V0::Sprint do
+    obs 'this is an observation'
+    started_at Time.now
+    ended_at Time.now + 7.days
+  end
+
   factory :sprint_one, class: Commiker::V0::Sprint do
     obs 'this is an observation'
     started_at Time.now

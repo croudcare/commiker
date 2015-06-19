@@ -13,7 +13,7 @@
     	
 		<!--LIST-->
 		<div class="row">
-		    <div class="col-lg-12">
+		    <!-- <div class="col-lg-12">
 		    
 		      <div class="media" style="background-color: green">
 		        
@@ -42,51 +42,31 @@
 		    
 		         
 		    
+ -->
 		    </div>
 
 
-
     	<!-- ITEMS -->
-    	<!-- <!-- <div class="row" style="width: 100%">
-    		<div class="col-sm-5 col-md-3">
+    	<div class="row" style="width: 100%">
+    		<div class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
 	            <div class="thumbnail">
 	            	<div class="caption">
-	                	<h3>Username</h3>
+	                	<h3>{{user.slack_handler}}</h3>
 	             	</div>
-	              	<img class="img-circle" src="http://api.randomuser.me/portraits/thumb/men/22.jpg" alt="...">
+	              	<img class="img-circle" src="{{user.avatar_url}}" alt="...">
 	              	<div class="caption">
-	                	<h4>100%</h4>
+	                	<h4>{{user.completionPerc}}%</h4>
 	                	<div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
-	                    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-	                      		<span class="sr-only">60% Complete</span>
+	                    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{user.completionPerc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.completionPerc}}%;">
+	                      		<span class="sr-only">{{user.completionPerc}}% Complete</span>
 	                    	</div>
 	              		</div>
               		</div>
-	                <p>1/2 completed stories</p>
+	                <p>{{user.completedStories}}/{{user.totalStories}} completed stories</p>
 	                <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
-	            <!--</div>
-	        </div>
-	        <div class="col-sm-5 col-md-3">
-	            <div class="thumbnail">
-	            	<div class="caption">
-	                	<h3>Username</h3>
-	             	</div>
-	              	<img class="img-circle" src="http://api.randomuser.me/portraits/thumb/men/22.jpg" alt="...">
-	              	<div class="caption">
-	                	<h4>100%</h4>
-	                	<div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
-	                    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-	                      		<span class="sr-only">60% Complete</span>
-	                    	</div>
-	              		</div>
-              		</div>
-	                <p>1/2 completed stories</p>
-	                <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
-	            <!--</div>
-	        </div>
-
-	            
-		</div>--><!--Items-->
+	            </div>
+	        </div>	            
+		</div><!--Items-->
 
 
 

@@ -8,6 +8,72 @@ describe '/api/v0/sprints' do
       @user = create :omagad_user
     end
 
+    context 'get /api/v0/sprints/:id' do
+
+      def make_the_call(id, params = {}, headers = {})
+        headers.merge!(session_headers)
+
+        get "/api/v0/sprints/#{id}", params, headers
+      end
+
+      def make_the_bulk_stories_call(params = {}, headers = {})
+        headers.merge!(session_headers)
+
+        post '/api/v0/stories/bulk_create', params, headers
+      end
+
+      before(:each) do
+        @sprint_one = create :sprint_one
+      end
+
+      it 'should return not_found' do
+        make_the_call 99
+
+        expect_not_found_response
+      end
+
+      it 'should return one sprint' do
+        make_the_call @sprint_one.id
+
+        expect_ok_response
+        expect(last_response_json['id']).to eq(@sprint_one.id)
+        expect(last_response_json['starter_id']).to eq(@sprint_one.starter_id)
+        expect(last_response_json['obs']).to eq(@sprint_one.obs)
+
+        expect(last_response_json['started_at'].to_time.utc.iso8601).to \
+          eq(@sprint_one.started_at.utc.iso8601)
+        expect(last_response_json['ended_at'].to_time.utc.iso8601).to \
+          eq(@sprint_one.ended_at.utc.iso8601)
+
+        expect(last_response_json['users'].length).to eq(@sprint_one.users.count)
+      end
+
+      it 'should return sprint with stories' do
+        user = @sprint_one.users.first
+
+        make_the_bulk_stories_call \
+          sprint_id: @sprint_one.id,
+          user_slack_uid: user.slack_uid,
+          pivotal_ids: [
+            '90895614'
+          ]
+
+        expect_created_response
+
+        make_the_call @sprint_one.id
+
+        expect(last_response_json['users'].length).to eq(3)
+
+        last_response_json['users'].each do |sprint_user|
+          if sprint_user['id'] == user.id
+            expect(sprint_user['stories'].length).to eq(1)
+            expect(sprint_user['stories'][0]['pivotal_id']).to eq(90895614)
+          end
+        end
+      end
+
+    end
+
     context 'post /api/v0/sprints/' do
 
       def make_the_call(params = {}, headers = {})

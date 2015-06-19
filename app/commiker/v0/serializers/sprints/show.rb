@@ -11,9 +11,16 @@ module Commiker
                      :obs,
                      :starter_id,
                      :started_at,
-                     :ended_at
+                     :ended_at,
+                     :users
 
-          has_many :users, serializer: Users::Show
+          def users
+            object.users.map do |user|
+              Users::ShowWithStories.new(user, {
+                stories: object.stories.where(user: user.id)
+              })
+            end
+          end
 
         end
 
