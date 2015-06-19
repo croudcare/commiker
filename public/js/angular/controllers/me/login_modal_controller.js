@@ -1,14 +1,14 @@
 (function(commikerApp) {
 
-  commikerApp.controller('MeLoginController', [
+  commikerApp.controller('MeLoginModalController', [
     '$modalInstance',
     'back',
-    MeLoginController
+    MeLoginModalController
   ]);
 
   /****************** PROTECTED ******************/
 
-  function MeLoginController($modalInstance, back) {
+  function MeLoginModalController($modalInstance, back) {
     var self = this;
 
     self.backUrl = [];

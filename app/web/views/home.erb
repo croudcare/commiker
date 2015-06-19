@@ -1,1 +1,15 @@
-<div ui-view></div>
+<% if current_session_user %>
+  <div ui-view></div>
+<% else %>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1>We have a BOT</h1>
+<img class="img-thumbnail" src="http://www.netanimations.net/fatcat-Q.gif" />
+<h4>But you have to login first</h4>
+<% end %>

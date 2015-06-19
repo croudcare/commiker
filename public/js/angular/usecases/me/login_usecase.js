@@ -19,8 +19,8 @@
 
       var modalInstance = $modal.open({
         templateUrl: '/templates/me/login/modal.html',
-        controller: 'MeLoginController',
-        controllerAs: 'meLoginCtrl',
+        controller: 'MeLoginModalController',
+        controllerAs: 'meLoginModalCtrl',
         size: context.size,
         resolve: {
           back: function() {

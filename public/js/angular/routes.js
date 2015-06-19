@@ -58,7 +58,7 @@
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('AuthInjector');
 
-    function authenticate($q, $http, $timeout, $window, $location, MeLoginUsecase) {
+    function authenticate($q, $timeout, MeLoginUsecase) {
       if($.api_client.authenticated)
         return $q.when();
       else {
