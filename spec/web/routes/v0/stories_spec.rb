@@ -26,7 +26,7 @@ describe '/api/v0/stories' do
           pivotal_ids: ['94839248']
         }, session_headers)
 
-        @stories = last_response_json['stories']
+        @stories = last_response_json['created_stories']
       end
 
       it 'should return error for missing required params 1' do
@@ -52,7 +52,7 @@ describe '/api/v0/stories' do
           }
         })
 
-        expect_unprocessable_entity_response
+        expect_unprocessable_response
       end
 
       it 'should return unprocessable_entity invalid completion param 2' do
@@ -62,7 +62,7 @@ describe '/api/v0/stories' do
           }
         })
 
-        expect_unprocessable_entity_response
+        expect_unprocessable_response
       end
 
       it 'should return story not found' do
@@ -70,6 +70,8 @@ describe '/api/v0/stories' do
 
         expect_not_found_response
       end
+
+      it 'should create story interaction'
 
     end
 
@@ -111,18 +113,25 @@ describe '/api/v0/stories' do
             user_slack_uid: @user.slack_uid,
             pivotal_ids: ['invalid']
 
-          expect_unprocessable_response
+          expect_ok_response
+          expect(last_response_json['invalid_stories'][0]['pivotal_id']).to \
+            eq('invalid')
         end
 
         it 'should return unprocessable_entity for one invalid pivotal_ids values ' \
            'and rollback stories already created' do
+
           make_the_call \
             sprint_id: @sprint.id,
             user_slack_uid: @user.slack_uid,
             pivotal_ids: ['94839248', 'invalid']
 
-          expect_unprocessable_response
-          expect(Commiker::V0::Story.count).to eq(0)
+          expect_ok_response
+          expect(last_response_json['created_stories'][0]['pivotal_id']).to \
+            eq(94839248)
+          expect(last_response_json['invalid_stories'][0]['pivotal_id']).to \
+            eq('invalid')
+          expect(Commiker::V0::Story.count).to eq(1)
         end
 
         it 'should return unprocessable_entity for duplicated story' do
@@ -131,19 +140,30 @@ describe '/api/v0/stories' do
             user_slack_uid: @user.slack_uid,
             pivotal_ids: ['94839248']
 
-          expect_created_response
+          expect_ok_response
+          expect(last_response_json['invalid_stories'].length).to \
+            eq(0)
+          expect(last_response_json['duplicated_stories'].length).to \
+            eq(0)
+          expect(last_response_json['created_stories'][0]['pivotal_id']).to \
+            eq(94839248)
 
           make_the_call \
             sprint_id: @sprint.id,
             user_slack_uid: @user.slack_uid,
             pivotal_ids: ['94839248']
 
-          expect_unprocessable_response
+          expect(last_response_json['invalid_stories'].length).to \
+            eq(0)
+          expect(last_response_json['duplicated_stories'][0]['pivotal_id']).to \
+            eq(94839248)
+          expect(last_response_json['created_stories'].length).to \
+            eq(0)
+
+          expect_ok_response
           expect(Commiker::V0::Story.count).to eq(1)
           expect(@sprint.users.count).to eq(3)
           expect(@sprint.users.first.slack_uid).to eq(@user.slack_uid)
-          expect(last_response_json['errors']['unprocessable_entity'][0]).to \
-            eq("a story with pivotal id 94839248 is already created in this sprint")
         end
 
       end
@@ -163,12 +183,12 @@ describe '/api/v0/stories' do
             user_slack_uid: @omagad.slack_uid,
             pivotal_ids: ['94839248']
 
-          expect_created_response
-          expect(last_response_json['stories'].length).to eq(1)
-          expect(last_response_json['stories'][0]['sprint_id']).to eq(@sprint.id)
-          expect(last_response_json['stories'][0]['user_id']).to eq(@omagad.id)
-          expect(last_response_json['stories'][0]['user']['slack_uid']).to eq(@omagad.slack_uid)
-          expect(last_response_json['stories'][0]['pivotal_id']).to eq(94839248)
+          expect_ok_response
+          expect(last_response_json['created_stories'].length).to eq(1)
+          expect(last_response_json['created_stories'][0]['sprint_id']).to eq(@sprint.id)
+          expect(last_response_json['created_stories'][0]['user_id']).to eq(@omagad.id)
+          expect(last_response_json['created_stories'][0]['user']['slack_uid']).to eq(@omagad.slack_uid)
+          expect(last_response_json['created_stories'][0]['pivotal_id']).to eq(94839248)
           expect(Commiker::V0::Story.count).to eq(1)
         end
 
@@ -181,8 +201,8 @@ describe '/api/v0/stories' do
               '97204220'
             ]
 
-          expect_created_response
-          expect(last_response_json['stories'].length).to eq(2)
+          expect_ok_response
+          expect(last_response_json['created_stories'].length).to eq(2)
 
           make_the_call \
             sprint_id: @sprint.id,
@@ -191,7 +211,7 @@ describe '/api/v0/stories' do
               '93796298'
             ]
 
-          expect_created_response
+          expect_ok_response
 
           expect(@sprint.users.count).to eq(2)
           expect(@sprint.stories.count).to eq(3)

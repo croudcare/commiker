@@ -13,7 +13,7 @@ module Commiker
       status 400 if ctx.status.bad_request?
       status 201 if ctx.status.created?
 
-      json ctx.success? ? Serializers::Stories::Index.new(ctx) : ctx.errors
+      json ctx.success? ? Serializers::Stories::BulkCreate.new(ctx) : ctx.errors
     end
 
     post '/api/v0/stories/:id/add_story_interaction', auth: :user do

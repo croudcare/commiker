@@ -58,7 +58,7 @@ describe '/api/v0/sprints' do
             '90895614'
           ]
 
-        expect_created_response
+        expect_ok_response
 
         make_the_call @sprint_one.id
 

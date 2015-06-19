@@ -32,53 +32,52 @@ module Commiker
 
               tmp_pivotal_story = nil
               create_ctx = nil
-              ctx.stories = []
 
-              Story.transaction do
+              ctx.created_stories = []
+              ctx.invalid_stories = []
+              ctx.duplicated_stories = []
 
-                pivotal_ids.each do |story_id|
-                  tmp_pivotal_story = grab_story_from_pivotal(story_id)
+              pivotal_ids.each do |story_id|
+                tmp_pivotal_story = grab_story_from_pivotal(story_id)
 
-                  if tmp_pivotal_story['kind'] == 'error'
-                    failure!(:unprocessable_entity, "unable to find story with id #{story_id}, stories not created")
-                    raise ActiveRecord::Rollback
-                  end
-
-                  story = ctx.sprint.stories.find_by(pivotal_id: tmp_pivotal_story['id'])
-
-                  if !story
-                    story = \
-                      Story.create({
-                        user: ctx.user,
-                        pivotal_id: tmp_pivotal_story['id'],
-                        description: tmp_pivotal_story['name']
-                      })
-
-                    ctx.stories << story
-
-                    Sprint.transaction do
-
-                      if !ctx.sprint.users.find_by(id: ctx.user.id)
-                        ctx.sprint.users.push ctx.user
-                      end
-
-                      if !ctx.sprint.stories.find_by(pivotal_id: story.pivotal_id)
-                        ctx.sprint.stories.push story
-                      end
-
-                      if !ctx.sprint.save
-                        failure!(:unprocessable_entity, ctx.sprint.errors)
-                        raise ActiveRecord::Rollback
-                      end
-                    end
-                  else
-                    failure!(:unprocessable_entity, "a story with pivotal id #{story.pivotal_id} is already created in this sprint")
-                    raise ActiveRecord::Rollback
-                  end
+                if tmp_pivotal_story['kind'] == 'error'
+                  ctx.invalid_stories << { pivotal_id: story_id }
+                  next
                 end
 
-                ctx.status.created!
+                story = ctx.sprint.stories.find_by(pivotal_id: tmp_pivotal_story['id'])
+
+                if !story
+                  story = \
+                    Story.create!({
+                      user: ctx.user,
+                      pivotal_id: tmp_pivotal_story['id'],
+                      description: tmp_pivotal_story['name']
+                    })
+
+                  ctx.created_stories << story
+
+                  if !ctx.sprint.users.find_by(id: ctx.user.id)
+                    ctx.sprint.users.push ctx.user
+                  end
+
+                  if !ctx.sprint.stories.find_by(pivotal_id: story.pivotal_id)
+                    ctx.sprint.stories.push story
+                  end
+
+                  if !ctx.sprint.save
+                    failure!(:unprocessable_entity, ctx.sprint.errors)
+                    return
+                  end
+                else
+                  ctx.duplicated_stories << {
+                    pivotal_id: story.pivotal_id,
+                    description: story.description
+                  }
+                end
               end
+
+              ctx.status.ok!
             end
 
           private
