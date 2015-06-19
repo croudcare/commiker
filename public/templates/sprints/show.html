@@ -1,0 +1,24 @@
+<!--LIST THUMBS-->
+<div class="container side_space" style="text-align: center">
+	<div class="row" style="width: 100%">
+		<div class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
+            <div class="thumbnail">
+            	<div class="caption">
+                	<h3>{{user.slack_handler}}</h3>
+             	</div>
+              	<img class="img-circle" src="{{user.avatar_url}}" alt="...">
+              	<div class="caption">
+                	<h4>{{user.completionPerc}}%</h4>
+                	<div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
+                    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{user.completionPerc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.completionPerc}}%;">
+                      		<span class="sr-only">{{user.completionPerc}}% Complete</span>
+                    	</div>
+              		</div>
+          		</div>
+                <p>{{user.completedStories}}/{{user.totalStories}} completed stories</p>
+                <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+            </div>
+        </div>	            
+	</div><!--Items-->
+</div><!--CONTAINER-->
+
