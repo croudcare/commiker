@@ -11,7 +11,7 @@ module Commiker
                            :pivotal_ids
 
             def perform
-              if !pivotal_ids
+              if !pivotal_ids || (pivotal_ids && !pivotal_ids.is_a?(Array))
                 failure!(:bad_request, 'missing required param array of pivotal_ids')
                 return
               end
