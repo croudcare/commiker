@@ -13,6 +13,10 @@
     var self = this;
 
     self.currentSprint = null;
+    self.listView = false;
+
+    self.setListView = setListView;
+    self.setDefaultView = setDefaultView;
 
     findCurrentSprint();
 
@@ -28,6 +32,14 @@
       function onError(response) {
         debugger
       }
+    }
+
+    function setListView() {
+      self.listView = true;
+    }
+
+    function setDefaultView() {
+      self.listView = false;
     }
   }
 
