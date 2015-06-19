@@ -8,7 +8,7 @@ describe '/api/v0/stories' do
       @user = create :omagad_user
     end
 
-    context 'post /api/v0/stories' do
+    context 'post /api/v0/stories/bulk_create' do
 
       def make_the_call(params = {}, headers = {})
         headers.merge!(session_headers)
@@ -58,7 +58,7 @@ describe '/api/v0/stories' do
         expect(Commiker::V0::Story.count).to eq(0)
       end
 
-      it 'should return created for adding stories do sprint' do
+      it 'should return created for adding stories to sprint' do
         make_the_call \
           sprint_id: @sprint.id,
           user_slack_uid: @user.slack_uid,
@@ -70,6 +70,7 @@ describe '/api/v0/stories' do
         expect(last_response_json['stories'][0]['user_id']).to eq(@user.id)
         expect(last_response_json['stories'][0]['user']['slack_uid']).to eq(@user.slack_uid)
         expect(last_response_json['stories'][0]['pivotal_id']).to eq(94839248)
+        expect(Commiker::V0::Story.count).to eq(1)
       end
 
     end

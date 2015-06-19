@@ -19,6 +19,8 @@ module Commiker
               if !sprint_id
                 failure!(:bad_request, 'missing required param sprint_id')
                 return
+              else
+                ctx.sprint = Sprint.find(sprint_id)
               end
 
               if !user_slack_uid
@@ -42,17 +44,35 @@ module Commiker
                     raise ActiveRecord::Rollback
                   end
 
-                  create_ctx = UseCases::Stories::Create::Base.perform \
-                    story_attributes: {
-                      sprint_id: sprint_id,
-                      user_id: ctx.user.id,
-                      pivotal_id: tmp_pivotal_story['id'],
-                      description: tmp_pivotal_story['name']
-                    }
+                  story = ctx.sprint.stories.find_by(pivotal_id: tmp_pivotal_story['id'])
 
-                  if create_ctx.success?
-                    ctx.stories << create_ctx.story
+                  if !story
+                    story = \
+                      Story.create({
+                        user: ctx.user,
+                        pivotal_id: tmp_pivotal_story['id'],
+                        description: tmp_pivotal_story['name']
+                      })
+
+                    ctx.stories << story
+
+                    Sprint.transaction do
+
+                      if !ctx.sprint.users.find_by(id: ctx.user.id)
+                        ctx.sprint.users.push ctx.user
+                      end
+
+                      if !ctx.sprint.stories.find_by(pivotal_id: story.pivotal_id)
+                        ctx.sprint.stories.push story
+                      end
+
+                      if !ctx.sprint.save
+                        failure!(:unprocessable_entity, ctx.sprint.errors)
+                        raise ActiveRecord::Rollback
+                      end
+                    end
                   else
+                    failure!(:unprocessable_entity, "a story with pivotal id #{story.pivotal_id} is already created in this sprint")
                     raise ActiveRecord::Rollback
                   end
                 end

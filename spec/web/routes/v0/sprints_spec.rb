@@ -49,11 +49,11 @@ describe '/api/v0/sprints' do
       end
 
       it 'should return sprint with stories' do
-        user_id = @sprint_one.users.first.id
+        user = @sprint_one.users.first
 
         make_the_bulk_stories_call \
           sprint_id: @sprint_one.id,
-          user_id: user_id,
+          user_slack_uid: user.slack_uid,
           pivotal_ids: [
             '90895614'
           ]
@@ -64,10 +64,10 @@ describe '/api/v0/sprints' do
 
         expect(last_response_json['users'].length).to eq(3)
 
-        last_response_json['users'].each do |user|
-          if user['id'] == user_id
-            expect(user['stories'].length).to eq(1)
-            expect(user['stories'][0]['pivotal_id']).to eq(90895614)
+        last_response_json['users'].each do |sprint_user|
+          if sprint_user['id'] == user.id
+            expect(sprint_user['stories'].length).to eq(1)
+            expect(sprint_user['stories'][0]['pivotal_id']).to eq(90895614)
           end
         end
       end
