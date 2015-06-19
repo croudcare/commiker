@@ -24,21 +24,23 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container">
             <div id="navbar" class="navbar-collapse collapse">
-              <div class="navbar-header">
+              <div class="navbar-header" style="padding-left: 5.5%">
                   <a class="navbar-brand" ui-sref="home">Commiker</a>
               </div>
               <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
-                <li class="active">
+                <li>
                   <% if current_session_user.blank? %>
                     <a href='/login' target="_self">log in with slack</a>
                   <% end %>
+
                   <% if !current_session_user.blank? %>
-                    <a href='/logout' target="_self"> <%= current_session_user.slack_handler %> <span><img src="/img/log_out.png" width="15px">logout</span></a>
+
+                    <a href='/logout' target="_self"><%= current_session_user.slack_handler %>&nbsp;&nbsp;<img class="logout-off" src="/img/logout.svg" width="13px"></a>
                   <% end %>
                 </li>
-                <li>
+                <!-- <li>
                   <a ui-sref="sprints-new">start sprint</a>
-                </li>
+                </li> -->
               </ul>
             </div><!--navbar-->
           </div><!--container-->
@@ -72,7 +74,7 @@
               <div class="default_text">Sprint progress</div>
               <div style="text-align:right">
                 <h2>
-                  <div class="right perc" style="width: 100%; text-align: right; ">
+                  <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px">
                     <h1>55%</h1>
                   </div>
                 <div class="date_nav prog">
