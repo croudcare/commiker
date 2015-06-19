@@ -22,12 +22,12 @@
     findCurrentSprint();
 
     function findCurrentSprint() {
-      SprintSmooth.find('', { page: 1, per_page: 1 })
+      SprintSmooth.find('/active')
         .success(onSuccess)
         .error(onError)
 
-      function onSuccess(sprints) {
-        self.currentSprint = sprints[0];
+      function onSuccess(sprint) {
+        self.currentSprint = sprint;
       }
 
       function onError(response) {

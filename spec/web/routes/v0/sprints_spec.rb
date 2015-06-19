@@ -46,6 +46,29 @@ describe '/api/v0/sprints' do
         expect(last_response_json['id']).not_to be_nil
       end
 
+      it 'should not return active sprint because its ended' do
+        started_at = (Time.now - 7.days).utc.iso8601
+        ended_at = (Time.now).utc.iso8601
+
+        post('/api/v0/sprints/', {
+          sprint: {
+            starter_id: 1,
+            obs: 'this is an obs',
+            started_at: started_at,
+            ended_at: ended_at,
+            users: [{
+              id: 1
+            }]
+          },
+        }, session_headers)
+
+        expect_created_response
+
+        make_the_call
+
+        expect_no_content_response
+      end
+
     end
 
     context 'get /api/v0/sprints/:id' do

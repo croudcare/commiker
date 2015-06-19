@@ -6,13 +6,21 @@
 
     return {
       new: function(object) {
-        // object.shortName = shortName;
+        var completedStories = [];
 
         object.users = _.map(object.users, function(user) {
-          user.completedStories = 0;
+          completedStories = user.stories.filter(function(story) {
+            if(story.completion_percentage == 100)
+              return story;
+          })
+
+          user.completedStories = completedStories.length;
           user.totalStories = user.stories.length;
 
-          user.completionPerc = (user.completedStories*100/user.totalStories);
+          if(user.totalStories > 0)
+            user.completionPerc = Math.round(user.completedStories*100/user.totalStories);
+          else
+            user.completionPerc = 0;
 
           return user;
         });

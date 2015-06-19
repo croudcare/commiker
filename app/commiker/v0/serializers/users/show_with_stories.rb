@@ -13,7 +13,8 @@ module Commiker
                      :avatar_url,
                      :avatar_32_url,
                      :avatar_72_url,
-                     :stories
+                     :stories,
+                     :completion_percentage
 
           def initialize(object, options = {})
             if options[:stories]
@@ -25,6 +26,16 @@ module Commiker
 
           def stories
             @stories.map{ |story| Stories::ShowLess.new(story) }
+          end
+
+          def completion_percentage
+            total = (@stories.count * 100)
+
+            return 0 if (total == 0)
+
+            completion_sum = @stories.map(&:completion_percentage).sum
+
+            (completion_sum * 100 / total)
           end
 
         end

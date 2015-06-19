@@ -18,10 +18,13 @@ module Commiker
 
           def users
             return [] if !object.users
+            tmp_user_stories = []
 
             object.users.map do |user|
+              tmp_user_stories = object.stories.where(user: user.id)
+
               Users::ShowWithStories.new(user, {
-                stories: object.stories.where(user: user.id)
+                stories: tmp_user_stories
               })
             end
           end
