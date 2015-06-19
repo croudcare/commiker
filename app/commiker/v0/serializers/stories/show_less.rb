@@ -7,7 +7,8 @@ module Commiker
 
           attributes :id,
                      :pivotal_id,
-                     :description
+                     :description,
+                     :completion_percentage
 
         end
 

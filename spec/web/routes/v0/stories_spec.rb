@@ -123,6 +123,54 @@ describe '/api/v0/stories' do
         expect(last_response_json['story_interactions'].length).to eq(3)
       end
 
+      context 'with multiple stories' do
+
+        before(:each) do
+          sprint = create :sprint
+          user = create :iron_man_user
+
+          post('/api/v0/stories/bulk_create', {
+            sprint_id: sprint.id,
+            user_slack_uid: user.slack_uid,
+            pivotal_ids: ['94839248', '97204220', '93796298']
+          }, session_headers)
+
+          @stories = last_response_json['created_stories']
+        end
+
+        it 'should create multiple stories and story interactions and return completion_percentage' do
+          make_the_call(@stories[0]['id'], {
+            story_interaction: {
+              completion_percentage: 20
+            }
+          })
+
+          make_the_call(@stories[1]['id'], {
+            story_interaction: {
+              completion_percentage: 80
+            }
+          })
+
+          make_the_call(@stories[2]['id'], {
+            story_interaction: {
+              completion_percentage: 34
+            }
+          })
+
+          get \
+            "/api/v0/sprints/#{last_response_json['sprint_id']}",
+            {},
+            session_headers
+
+          total = (@stories.count * 100)
+          completion_sum = [20, 80, 34].sum
+          expected_percentage = (completion_sum * 100 / total)
+
+          expect(last_response_json['completion_percentage']).to eq(expected_percentage)
+        end
+
+      end
+
     end
 
     context 'post /api/v0/stories/bulk_create' do

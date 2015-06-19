@@ -12,7 +12,8 @@ module Commiker
                      :starter_id,
                      :started_at,
                      :ended_at,
-                     :users
+                     :users,
+                     :completion_percentage
 
           def users
             object.users.map do |user|

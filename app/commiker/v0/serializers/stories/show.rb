@@ -9,7 +9,8 @@ module Commiker
                      :sprint_id,
                      :user_id,
                      :pivotal_id,
-                     :description
+                     :description,
+                     :completion_percentage
 
           has_one :user, serializer: Users::Show
           has_many :story_interactions, serializer: StoryInteractions::Show
