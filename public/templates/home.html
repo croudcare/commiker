@@ -1,3 +1,11 @@
+
+<div id="new_spr" class="new_spr">
+  There's no active sprint. <p>Start a new one and set your awesome team to work!
+  <p>
+  <a ui-sref="sprints-new" class="btn btn-default"><b>Start sprint</b></a>
+    
+</div>
+
 <div id="navig" class="side_space">
   <div class="sprint_id">
       <span class="default_text">Sprint</span>
@@ -17,9 +25,18 @@
         </h2>
       </div><!--date_nav-->
     </div><!--sprint_id-->
+    
 
+
+    <!--CONTENT INSIDE IF (NO ACTIVE SPRINT)-->
     <div class="sprint_progress">
-      <div class="default_text">Sprint progress</div>
+      <div style="text-align:right">
+          <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px; font-line: 40px; padding-top: 18px">
+            <h2>Sprint completed.</h2>
+          </div> 
+      </div>
+
+      <!-- <div class="default_text">Sprint progress</div>
       <div style="text-align:right">
         <h2>
           <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px">
@@ -32,12 +49,14 @@
             </div>
           </div>
         </div>
-        </h2><!--date_nav-->
-      </div>
-    </div><!--sprint_id-->
+        </h2>
+      </div>--> 
+    </div><!--sprint_progress-->
   </div><!--navig-->
 
 </div><!--HEADER-->
+
+
 
 <nav class="navbar navbar-default" style="background-color: white; padding-top:20px">
   <div class="container-fluid">

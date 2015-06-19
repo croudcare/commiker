@@ -55,6 +55,14 @@ a{
 	font-size: 14px;
 	color: #464B57;
 }
+.title_modal{
+	font-weight: 400;
+	font-size: 14px;
+	color: #464B57;
+}
+
+
+
 
 .row{
 	padding-left: 1%;
@@ -187,27 +195,36 @@ float: right;
 	text-align: right;
 	box-shadow: none;
 }
+.progress-bar-card{
+	background-color: green;
+}
+
+.progress.raquel{
+	box-shadow: none;
+	background-color: #E2E2E2;
+}
+
 .progress{
 	box-shadow: none;
 	background-color: white;
 }
 
-.team{
-	text-align: right;
+
+
+.card{
 	box-shadow: none;
-	border-radius: 12px;
-	border: 1px #D5D5D5;
-	height: 13px;
+	background-color: #E2E2E2;
 }
+
+
+
 #sprints ul.navbar-nav li{
 	/*height: 30%;
 	*/width: 200px;
 }
 
 
-.logout-off{
-	opacity:0.5;
-}
+
 
 
 /*LIST LITS LIST*/
@@ -274,3 +291,45 @@ a:hover {
 	opacity: 1;
 	font-size: 25px;
 }
+.check{
+	padding: 0 10px 0 10px;
+}
+
+.center {
+	text-align: center;
+}
+
+
+.log_in_txt:hover{
+	color: white;
+}
+
+.log_in_img{
+	opacity: 0.5;
+}
+
+.log_in_txt:hover .log_in_img{
+	opacity: 1;
+}
+
+.form_new{
+	padding-left: 100px;
+}
+
+
+
+
+/*NEW SPRINT*/
+#new_spr{
+	background-color: #F2F2F2;
+	width: 100%;
+	font-size: 18px;
+	padding: 3% 0 1% 0;
+	border-bottom: 1px solid #ccc;
+}
+.new_spr .btn {
+	background-color: #4C91E4;
+	color: white;
+	border: none;
+}
+

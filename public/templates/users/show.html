@@ -6,14 +6,25 @@
 </div>
 <div class="modal-body">
 
-	<div class="list_stories" style="width:90%; padding: auto; margin: auto; background-color: red">
+	<div class="list_stories" style="width:90%;  padding: auto; margin: auto;">
 		<ul class="list-group default_text">
-		  	<li class="list-group-item st_working">
-		    	<!-- <span class="story_check"><img src="/img/check_ok.svg"></span> -->
-		    	<span>[mockups] (template 01) when I signup in to prolinkedcare I want to receive a "Welcome email"  so I know how I can get more value of software.</span>
+
+			<li class="list-group-item center title_modal">
+		    	<strong>Stories</strong>
+			</li>
+
+		  	<li class="list-group-item st_working" style="padding-bottom: 10px">
+		  		<div style="float: left"><img class="check" src="/img/check_no.svg"></div>
+		  		<div>
+			    	<!-- <span class="story_check"><img src="/img/check_ok.svg"></span> -->
+			    	<span>[mockups] (template 01) when I signup in to prolinkedcare I want to receive a "Welcome email"  so I know how I can get more value of software.</span>
+				</div>
 			</li>
 			<li class="list-group-item st_done ">
-		    	<span>[mockups] (template 01) when I signup in to prolinkedcare I want to receive a "Welcome email"  so I know how I can get more value of software prolinkedcare I want to receive a "Welcome email.</span>
+				<div style="float: left"><img class="check" src="/img/check_ok.svg"></div>
+		    	<div>
+		    		<span>[mockups] (template 01) when I signup in to prolinkedcare I want to receive a "Welcome email"  so I know how I can get more value of software prolinkedcare I want to receive a "Welcome email.</span>
+		    	</div>	
 			</li>
 		</ul>
 	</div>
@@ -27,5 +38,16 @@
   </div>
 </div>
 <div class="modal-footer">
+	<div class="" style="text-align: center">
+		<span style="margin-bottom: 10px">Commitment progress:{{user.completionPerc}}18%<span>
+		<p>
+		<div class="raquel progress" style="width: 50%; height: 10px; margin: auto; padding: auto">
+	    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{user.completionPerc}}" aria-valuemin="0" aria-valuemax="100" style="width:{{user.completionPerc}}%;"><!--{{user.completionPerc}}%-->
+	      		<span class="sr-only">{{user.completionPerc}}% Complete</span>
+	    	</div>
+		</div>
 
+		
+
+	</div>
 </div>

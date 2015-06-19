@@ -30,17 +30,14 @@
               <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
                 <li>
                   <% if current_session_user.blank? %>
-                    <a href='/login' target="_self">log in with slack</a>
+                    <a class="log_in_txt" href='/login' target="_self"><span style="padding-right: 10px">Log in with slack</span> <img class="log_in_img" src="/img/slack.png" width="15px;"></a>
                   <% end %>
 
                   <% if !current_session_user.blank? %>
 
-                    <a href='/logout' target="_self"><%= current_session_user.slack_handler %>&nbsp;&nbsp;<img class="logout-off" src="/img/logout.svg" width="13px"></a>
+                    <a lass="log_in_txt" href='/logout' target="_self"><%= current_session_user.slack_handler %>&nbsp;&nbsp;<img class="log_in_img" src="/img/logout.svg" width="13px"></a>
                   <% end %>
                 </li>
-                <!-- <li>
-                  <a ui-sref="sprints-new">start sprint</a>
-                </li> -->
               </ul>
             </div><!--navbar-->
           </div><!--container-->
