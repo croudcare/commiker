@@ -10,27 +10,44 @@ module Commiker
                            :omniauth_data
 
             def perform
-              context.user = \
+              ctx.user = \
                 Users::FindOne.perform(slack_uid: slack_uid).user
 
-              context.user = persist_user if !context.user
+              ctx.user = \
+                if ctx.user
+                  update_user
+                else
+                  create_user
+                end
             end
 
-            def persist_user
-              user = User.new({
+            def create_user
+              creatable_info = updatable_info.merge({
+                slack_uid: slack_uid,
+                registration_complete: true
+              })
+
+              user = User.create(creatable_info)
+
+              if user.save
+                user
+              end
+            end
+
+            def update_user
+              ctx.user.update_attributes(updatable_info)
+              ctx.user
+            end
+
+            def updatable_info
+              {
                 name: omniauth_data['info']['name'],
                 email: omniauth_data['info']['email'],
                 avatar_url: omniauth_data['info']['image'],
                 avatar_32_url: (omniauth_data['extra']['user_info']['user']['profile']['image_32'] rescue ''),
                 avatar_72_url: (omniauth_data['extra']['user_info']['user']['profile']['image_72'] rescue ''),
-                slack_uid: slack_uid,
-                slack_handler: omniauth_data['info']['nickname'],
-                registration_complete: true
-              })
-
-              if user.save
-                user
-              end
+                slack_handler: omniauth_data['info']['nickname']
+              }
             end
 
           end
