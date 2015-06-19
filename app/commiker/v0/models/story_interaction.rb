@@ -4,7 +4,6 @@ module Commiker
     class StoryInteraction < Base
 
       belongs_to :story
-      belongs_to :sprint
 
     end
 

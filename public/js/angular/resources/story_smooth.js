@@ -10,7 +10,7 @@
 
   function StorySmooth(SmoothOperator, StoryModel) {
     var story = SmoothOperator.new({
-      url: 'http://localhost:5000/api/v0/',
+      url: $.api_client.endpoint,
       modelFactory: StoryModel,
       resourceName: 'story',
       resourcesName: 'stories',

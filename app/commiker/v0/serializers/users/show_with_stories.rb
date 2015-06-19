@@ -12,6 +12,7 @@ module Commiker
                      :slack_handler,
                      :avatar_url,
                      :avatar_32_url,
+                     :avatar_72_url,
                      :stories
 
           def initialize(object, options = {})

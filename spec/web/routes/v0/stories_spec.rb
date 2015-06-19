@@ -8,6 +8,71 @@ describe '/api/v0/stories' do
       @user = create :omagad_user
     end
 
+    context 'post /api/v0/stories/:id/add_story_interaction' do
+
+      def make_the_call(id, params = {}, headers = {})
+        headers.merge!(session_headers)
+
+        post "/api/v0/stories/#{id}/add_story_interaction", params, headers
+      end
+
+      before(:each) do
+        sprint = create :sprint
+        user = create :iron_man_user
+
+        post('/api/v0/stories/bulk_create', {
+          sprint_id: sprint.id,
+          user_slack_uid: user.slack_uid,
+          pivotal_ids: ['94839248']
+        }, session_headers)
+
+        @stories = last_response_json['stories']
+      end
+
+      it 'should return error for missing required params 1' do
+        make_the_call(@stories[0]['id'])
+
+        expect_bad_request_response
+      end
+
+      it 'should return error for missing required params 2' do
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            a: 1
+          }
+        })
+
+        expect_bad_request_response
+      end
+
+      it 'should return unprocessable_entity invalid completion param 1' do
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            completion: "two"
+          }
+        })
+
+        expect_unprocessable_entity_response
+      end
+
+      it 'should return unprocessable_entity invalid completion param 2' do
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            completion: 120
+          }
+        })
+
+        expect_unprocessable_entity_response
+      end
+
+      it 'should return story not found' do
+        make_the_call(25)
+
+        expect_not_found_response
+      end
+
+    end
+
     context 'post /api/v0/stories/bulk_create' do
 
       def make_the_call(params = {}, headers = {})

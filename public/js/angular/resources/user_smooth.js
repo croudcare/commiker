@@ -10,7 +10,7 @@
 
   function UserSmooth(SmoothOperator, UserModel) {
     var user = SmoothOperator.new({
-      url: 'http://localhost:5000/api/v0/',
+      url: $.api_client.endpoint,
       modelFactory: UserModel,
       resourceName: 'user',
       resourcesName: 'users',

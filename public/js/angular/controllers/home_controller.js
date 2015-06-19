@@ -3,18 +3,19 @@
   commikerApp.controller('HomeController', [
     '$state',
     'SprintSmooth',
-    'MeLoginUsecase',
+    'UsersShowUseCase',
     HomeController
   ]);
 
   /****************** PROTECTED ******************/
 
-  function HomeController($state, SprintSmooth, MeLoginUsecase) {
+  function HomeController($state, SprintSmooth, UsersShowUseCase) {
     var self = this;
 
     self.currentSprint = null;
     self.listView = false;
 
+    self.showUser = showUser;
     self.setListView = setListView;
     self.setDefaultView = setDefaultView;
 
@@ -40,6 +41,10 @@
 
     function setDefaultView() {
       self.listView = false;
+    }
+
+    function showUser(user) {
+      UsersShowUseCase.perform({ user: user });
     }
   }
 

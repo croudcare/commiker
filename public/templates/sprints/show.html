@@ -1,12 +1,12 @@
 <!--LIST THUMBS-->
 <div class="container side_space" style="text-align: center">
 	<div class="row" style="width: 100%">
-		<div class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
+		<div ng-click="homeCtrl.showUser(user)" class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
             <div class="thumbnail">
             	<div class="caption">
                 	<h3>{{user.slack_handler}}</h3>
              	</div>
-              	<img class="img-circle" src="{{user.avatar_url}}" alt="...">
+              	<img class="img-circle" src="{{user.avatar_72_url}}" alt="...">
               	<div class="caption">
                 	<h4>{{user.completionPerc}}%</h4>
                 	<div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
@@ -18,7 +18,7 @@
                 <p>{{user.completedStories}}/{{user.totalStories}} completed stories</p>
                 <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
             </div>
-        </div>	            
+        </div>
 	</div><!--Items-->
 </div><!--CONTAINER-->
 

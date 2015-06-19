@@ -10,7 +10,7 @@
 
   function SprintSmooth(SmoothOperator, SprintModel) {
     var sprint = SmoothOperator.new({
-      url: 'http://localhost:5000/api/v0/',
+      url: $.api_client.endpoint,
       modelFactory: SprintModel,
       resourceName: 'sprint',
       resourcesName: 'sprints',

@@ -22,6 +22,7 @@ module Commiker
                 email: omniauth_data['info']['email'],
                 avatar_url: omniauth_data['info']['image'],
                 avatar_32_url: (omniauth_data['extra']['user_info']['user']['profile']['image_32'] rescue ''),
+                avatar_72_url: (omniauth_data['extra']['user_info']['user']['profile']['image_72'] rescue ''),
                 slack_uid: slack_uid,
                 slack_handler: omniauth_data['info']['nickname'],
                 registration_complete: true
