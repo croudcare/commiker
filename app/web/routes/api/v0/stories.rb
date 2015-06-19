@@ -23,7 +23,7 @@ module Commiker
       status 400 if ctx.status.bad_request?
       status 201 if ctx.status.created?
 
-      json ctx.success? ? Serializers::Stories::Index.new(ctx.story) : ctx.errors
+      json ctx.success? ? Serializers::Stories::Show.new(ctx.story) : ctx.errors
     end
 
   end

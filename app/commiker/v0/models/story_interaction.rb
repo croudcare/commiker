@@ -3,6 +3,8 @@ module Commiker
 
     class StoryInteraction < Base
 
+      default_scope { order('interacted_at DESC') }
+
       belongs_to :story
 
     end

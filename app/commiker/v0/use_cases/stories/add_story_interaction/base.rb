@@ -13,7 +13,11 @@ module Commiker
                            :story_interaction_attributes
 
             def perform
+              story_interaction_attributes.merge!({
+                interacted_at: Time.now
+              })
 
+              story.story_interactions.create(story_interaction_attributes)
             end
 
           end

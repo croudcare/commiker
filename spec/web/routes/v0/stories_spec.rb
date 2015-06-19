@@ -45,20 +45,20 @@ describe '/api/v0/stories' do
         expect_bad_request_response
       end
 
-      it 'should return unprocessable_entity invalid completion param 1' do
+      it 'should return unprocessable_entity invalid completion_percentage param 1' do
         make_the_call(@stories[0]['id'], {
           story_interaction: {
-            completion: "two"
+            completion_percentage: "two"
           }
         })
 
         expect_unprocessable_response
       end
 
-      it 'should return unprocessable_entity invalid completion param 2' do
+      it 'should return unprocessable_entity invalid completion_percentage param 2' do
         make_the_call(@stories[0]['id'], {
           story_interaction: {
-            completion: 120
+            completion_percentage: 120
           }
         })
 
@@ -71,7 +71,57 @@ describe '/api/v0/stories' do
         expect_not_found_response
       end
 
-      it 'should create story interaction'
+      it 'should create story interaction' do
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            completion_percentage: 20
+          }
+        })
+
+        expect_ok_response
+
+        expect(last_response_json['story_interactions'].length).to eq(1)
+        expect(last_response_json['story_interactions'][0]['completion_percentage']).to eq(20)
+        expect(last_response_json['story_interactions'][0]['obs']).to be_nil
+        expect(last_response_json['story_interactions'][0]['interacted_at']).not_to be_nil
+      end
+
+      it 'should create story interaction with obs' do
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            completion_percentage: 40,
+            obs: 'its all ok'
+          }
+        })
+
+        expect_ok_response
+        expect(last_response_json['story_interactions'].length).to eq(1)
+        expect(last_response_json['story_interactions'][0]['completion_percentage']).to eq(40)
+        expect(last_response_json['story_interactions'][0]['obs']).to eq('its all ok')
+        expect(last_response_json['story_interactions'][0]['interacted_at']).not_to be_nil
+      end
+
+      it 'should create multiple story interactions' do
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            completion_percentage: 20
+          }
+        })
+
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            completion_percentage: 40
+          }
+        })
+
+        make_the_call(@stories[0]['id'], {
+          story_interaction: {
+            completion_percentage: 50
+          }
+        })
+
+        expect(last_response_json['story_interactions'].length).to eq(3)
+      end
 
     end
 
