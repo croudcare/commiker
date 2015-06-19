@@ -13,11 +13,11 @@
   </head>
   <body>
 
-  
+
 
     <base href="/">
     <!-- <br /> -->
-    
+
     <div id="container">
       <div id="header">
 
@@ -47,7 +47,7 @@
 
 
         <div id="top"></div>
-        
+
         <div id="navig" class="side_space">
           <div class="sprint_id">
               <span class="default_text">Sprint</span>
@@ -69,7 +69,7 @@
             <div class="sprint_progress">
               <div class="default_text">Sprint progress</div>
               <div style="text-align:right">
-                <h2>                
+                <h2>
                   <div class="right perc" style="width: 100%; text-align: right; ">
                     <h1>55%</h1>
                   </div>
@@ -78,17 +78,17 @@
                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
                       <span class="sr-only">60% Complete</span>
                     </div>
-                  </div> 
+                  </div>
                 </div>
                 </h2><!--date_nav-->
               </div>
             </div><!--sprint_id-->
           </div><!--navig-->
 
-         
-            <nav class="navbar navbar-default" style="background-color: white; padding-top:20px"> 
+
+            <nav class="navbar navbar-default" style="background-color: white; padding-top:20px">
             <div class="container-fluid">
-            
+
               <ul class="nav navbar-nav navbar-left" style="padding-left: 4%; width: 40%">
                 <li>
                     <a href='' target="_self"><img src="/img/thumb.svg"></a>
@@ -108,49 +108,9 @@
               </ul>
             </div>
           </nav>
-          
+
         </div><!--HEADER-->
       </div><!--CONTAINER-->
-
-
-      <nav class="navbar navbar-default side_space"> 
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" ui-sref="home">Commiker</a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active">
-                <% if current_session_user.blank? %>
-                  <a href='/login' target="_self">log in with slack</a>
-                <% end %>
-                <% if !current_session_user.blank? %>
-                  <a href='/logout' target="_self">logout <%= current_session_user.slack_handler %></a>
-                <% end %>
-              </li>
-              <li>
-                <a ui-sref="sprints-new">start sprint</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-
-
-         
-
-
-
-
-                  
-
-
-    
-
-
-    
-
-      
-
 
       <%= yield %>
     </div>
