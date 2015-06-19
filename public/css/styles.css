@@ -39,9 +39,20 @@ a{
 	color: #464B57;	
 }
 
+.username_txt{
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 10px;
+	color: #464B57;
+}
 .default_text{
 	font-weight: normal;
 	font-size: 16px;
+	color: #464B57;
+}
+.sub_title{
+	font-weight: lighter;
+	font-size: 14px;
 	color: #464B57;
 }
 
@@ -215,4 +226,40 @@ float: right;
 
 .list-group-item{
 	text-align: left;
+	border: none;
+	height: 80%;
+	padding: 5px 0 5px 0;
+
 }
+
+
+.list-group{
+	border: none;
+	padding-top: 10px;
+}
+
+.story_check{
+	font-weight: black;
+	font-size: 16px;
+	color: #4C91E4;
+	padding: 2%;
+	height: 20px;
+
+}
+
+.st_done{
+	color: #808AA0;
+}
+
+a:hover {
+	color: #4C91E4;
+	text-decoration: none;
+}
+
+.media {
+	padding-bottom: 20px;
+}
+
+
+
+
