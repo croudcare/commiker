@@ -16,6 +16,10 @@ module RequestHelper
     expect(last_response.status).to be 202
   end
 
+  def expect_no_content_response
+    expect(last_response.status).to be 204
+  end
+
   def expect_not_found_response
     expect(last_response.status).to be 404
   end

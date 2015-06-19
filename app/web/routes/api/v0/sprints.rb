@@ -2,6 +2,14 @@ module Commiker
 
   class Web < ::Sinatra::Base
 
+    get '/api/v0/sprints/active', auth: :user do
+      ctx = UseCases::Sprints::Active::Base.perform(declared_params)
+
+      status 204 if ctx.status.no_content?
+
+      json Serializers::Sprints::Show.new(ctx.sprint)
+    end
+
     get '/api/v0/sprints/', auth: :user do
       ctx = UseCases::Sprints::Index::Base.perform(declared_params)
 

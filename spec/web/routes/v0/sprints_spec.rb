@@ -8,6 +8,46 @@ describe '/api/v0/sprints' do
       @user = create :omagad_user
     end
 
+    context 'get /api/v0/sprints/active' do
+
+      def make_the_call(params = {}, headers = {})
+        headers.merge!(session_headers)
+
+        get "/api/v0/sprints/active", params, headers
+      end
+
+      it 'should no_content for active sprint' do
+        make_the_call
+
+        expect_no_content_response
+      end
+
+      it 'should return active sprint' do
+        started_at = Time.now.utc.iso8601
+        ended_at = (Time.now + 7.days).utc.iso8601
+
+        post('/api/v0/sprints/', {
+          sprint: {
+            starter_id: 1,
+            obs: 'this is an obs',
+            started_at: started_at,
+            ended_at: ended_at,
+            users: [{
+              id: 1
+            }]
+          },
+        }, session_headers)
+
+        expect_created_response
+
+        make_the_call
+
+        expect_ok_response
+        expect(last_response_json['id']).not_to be_nil
+      end
+
+    end
+
     context 'get /api/v0/sprints/:id' do
 
       def make_the_call(id, params = {}, headers = {})
@@ -130,9 +170,45 @@ describe '/api/v0/sprints' do
         expect_created_response
         expect(last_response_json['id']).not_to be_nil
         expect(last_response_json['starter_id']).to eq(starter_id)
+        expect(last_response_json['active']).to eq(true)
         expect(last_response_json['obs']).to eq(obs)
         expect(last_response_json['started_at'].to_time.utc.iso8601).to eq(started_at)
         expect(last_response_json['ended_at'].to_time.utc.iso8601).to eq(ended_at)
+      end
+
+      it 'should not create sprint if another is' do
+        starter_id = 1
+        started_at = Time.now.utc.iso8601
+        ended_at = (Time.now + 7.days).utc.iso8601
+        obs = 'this is an obs'
+
+        make_the_call \
+          sprint: {
+            starter_id: 1,
+            obs: 'this is an obs',
+            started_at: started_at,
+            ended_at: ended_at,
+            users: [{
+              id: 1
+            }]
+          }
+
+        expect_created_response
+
+        make_the_call \
+          sprint: {
+            starter_id: 1,
+            obs: 'this is an obs',
+            started_at: started_at,
+            ended_at: ended_at,
+            users: [{
+              id: 1
+            }]
+          }
+
+         expect_unprocessable_response
+         expect(last_response_json['errors']['unprocessable_entity'][0]).to \
+          eq('there is already a sprint on track')
       end
 
     end

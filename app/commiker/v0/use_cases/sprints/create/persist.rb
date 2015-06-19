@@ -10,11 +10,21 @@ module Commiker
 
             def perform
               # complete params
-              sprint_attributes.merge!(starter_id: current_user.id)
+              sprint_attributes.merge!({
+                starter_id: current_user.id,
+                active: true
+              })
 
-              ctx.sprint = Sprint.create(sprint_attributes)
+              active_sprints = Sprint.where(active: true).count
 
-              ctx.status.created!
+              if active_sprints == 0
+                ctx.sprint = Sprint.create(sprint_attributes)
+                ctx.status.created!
+              else
+                failure!(:unprocessable_entity, 'there is already a sprint on track')
+                ctx.start_bot = false
+                return
+              end
             end
 
           end
