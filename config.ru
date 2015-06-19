@@ -12,7 +12,7 @@ use Rack::Jwt::Auth::Authenticate, {
 }
 
 use OmniAuth::Builder do
-  provider :slack, Configs['SLACK_CLIENT_ID'], Configs['SLACK_CLIENT_SECRET'], scope: 'identify', team: Configs['SLACK_TEAM_ID']
+  provider :slack, Configs['SLACK_CLIENT_ID'], Configs['SLACK_CLIENT_SECRET'], scope: ['identify', 'read'], team: Configs['SLACK_TEAM_ID']
 end
 
 OmniAuth.config.on_failure = Proc.new { |env|
