@@ -116,7 +116,7 @@ padding: 3% 2% 0 2%;
 }
 
 .sprint_progress{
-padding: 3% 2% 0 2%;
+padding: 3% 3% 0 2%;
 text-align: right;
 width: 50%;
 float: right;
@@ -128,7 +128,7 @@ float: right;
 	width: 100%;
 }
 #top{
-	background-color: #464B57;
+	background-color: #F2F2F2;
 	height: 50px;
 }
 
@@ -163,8 +163,19 @@ float: right;
 .progress-bar{
 	width: 50%;
 	text-align: right;
+	box-shadow: none;
+}
+.progress{
+	box-shadow: none;
+	background-color: white;
 }
 
+.team{
+	text-align: right;
+	box-shadow: none;
+	border-radius: 12px;
+	border: 1px #D5D5D5;
+}
 #sprints ul.navbar-nav li{
 	/*height: 30%;
 	*/width: 200px;
