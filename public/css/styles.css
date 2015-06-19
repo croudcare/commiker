@@ -8,30 +8,34 @@
 
 
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
-  font-family: 'Titillium Web';
+	padding: 0;
+	margin: 0; 
+	font-family: 'Titillium Web';
+	text-align: center;
 }
 
-/*.col:not(:first-child),.col:not(:last-child) {
-  padding-right:7px;
-  padding-left:7px;
+h1{
+	font-weight: bold;
+	font-size: 40px;
+	line-height: 24px;
+	color: #464B57;
 }
 
-.col{
-  background: #ccc;
-  border: 1px solid;
-  margin: 0 10px 10px 0;
-}
-.col:last-child{
-  background: yellow;
-  margin: 0 0 10px 0;
-}*/
-
-.col-xs-5{
+h2{
+	font-weight: bold;
+	font-size: 28px;
+	line-height: 24px;
+	color: #464B57;
 }
 
-.col-sm-3 {
+.default_text{
+	font-weight: normal;
+	font-size: 16px;
+	color: #464B57;
+}
+
+.row{
+	padding-left: 1%;
 }
 
 .col{
@@ -42,6 +46,9 @@ body {
 	text-align: center;
 }
 
+.user_pic{
+	padding: 5% 0 7% 0;
+}
 .circle{
   	border-radius: 50%;
   	border: 5px solid blue;
@@ -50,10 +57,117 @@ body {
 .card{
 	background-color: #F2F2F2;
 	border: 0px grey dashed;
-	margin: 2%;
-	padding: 2%; 
+	margin-bottom: 10px;
+	padding: 1%;
+	border-radius: 4px;
+}
+.row{
+	margin-bottom: 20px;
+}
+
+.member_item{
 }
 
 .jumbotron {
 	background-color: #F2F2F2;
 	}
+
+
+#out{
+	border: 1px solid pink;
+}
+
+#in{
+	background-color: black; 
+}
+
+#other {
+	background-color: cyan;
+}
+/*HEADER STYLES*/
+.container{
+	width: 100%;
+	/*text-align: center;*/ 
+}
+
+.side_space{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#header {
+	width: 100%;
+}
+
+#navig {
+height: 150px;
+width: 100%;
+background-color: #EFEFEF;
+}
+
+.sprint_id{
+width: 50%;
+float: left;
+text-align: left;
+padding: 3% 2% 0 2%;
+}
+
+.sprint_progress{
+padding: 3% 2% 0 2%;
+text-align: right;
+width: 50%;
+float: right;
+}
+
+.navbar-default{
+	border: none;
+	background-color: #F2F2F2;
+	width: 100%;
+}
+#top{
+	background-color: #464B57;
+	height: 50px;
+}
+
+.arrow-prev{
+	padding: 0 3% 0 0;
+}
+.arrow-next {
+	margin: 0 0 0 3%;
+}
+
+.date_nav{
+	height: 30px;
+	text-align: right;
+}
+.prog{
+	float: right;
+	width: 200px;
+}
+
+.fl_left{
+	float: left;
+	height: 30px;
+}
+.left {
+	float: left;
+}
+
+.spr_date{
+	padding: 0 5% 0 5%;
+}
+
+.progress-bar{
+	width: 50%;
+	text-align: right;
+}
+
+#sprints ul.navbar-nav li{
+	/*height: 30%;
+	*/width: 200px;
+}
+
+
+
+}
+
