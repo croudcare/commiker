@@ -31,7 +31,7 @@
       function onSuccess(sprints, code) {
         var sprintsCount = sprints.length;
 
-        if(self.page == 1)
+        if(self.page == 1 && sprints[0].active)
           self.latestSprint = sprints.shift();
 
         self.previousSprints = self.previousSprints.concat(sprints);

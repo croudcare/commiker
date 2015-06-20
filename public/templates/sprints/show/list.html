@@ -36,9 +36,27 @@
           ng-if="user.stories.length > 0"
           style="text-align:left; width: 80%; border-top: 1px solid #F2F2F2; margin-left: -10px; margin-top: 20px">
           <ul class="list-group default_text">
-            <li class="list-group-item st_working" ng-repeat="story in user.stories">
+            <li
+              class="list-group-item st_working"
+              ng-init="delivered = (!sprint.active && story.completion_percentage == 100)"
+              ng-class="{ 'delivered': delivered, 'not-delivered': delivered }"
+              ng-repeat="story in user.stories">
+              <span
+                ng-if="!sprint.active"
+                class="label label-{{delivered ? 'success' : 'danger'}}">{{delivered ? 'delivered' : 'not delivered'}}</span>
               <span class="story_check"><img src="/img/check_ok.svg"></span>
               <span>{{story.description}}</span>
+              <span class="label label-warning">{{story.completion_percentage}}%</span>
+              <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank">
+                Check story in pivotal
+                <img src="/img/pivotal.png" width="15px">
+              </a>
+              <span ng-show="usersModalShowCtrl.editableSprint">
+                <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
+                Delete story
+                </a>
+                <img src="/img/delete.svg" width="13px">
+              </span>
             </li>
           </ul>
         </div>
