@@ -234,6 +234,15 @@ describe '/api/v0/stories' do
           expect_bad_request_response
         end
 
+        it 'should return unprocessable_entity for invalid slack_uid' do
+          make_the_call \
+            sprint_id: @sprint.id,
+            user_slack_uid: 'slack_not_uid',
+            pivotal_ids: ['invalid']
+
+          expect_unprocessable_response
+        end
+
         it 'should return bad request for invalid pivotal_ids' do
           make_the_call \
             sprint_id: @sprint.id,

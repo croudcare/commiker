@@ -28,6 +28,11 @@ module Commiker
                 return
               else
                 ctx.user = User.find_by(slack_uid: user_slack_uid)
+
+                if ctx.user.blank?
+                  failure!(:unprocessable_entity, 'invalid user_slack_uid, could not find user')
+                  return
+                end
               end
 
               tmp_pivotal_story = nil
