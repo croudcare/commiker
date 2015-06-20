@@ -185,6 +185,9 @@ float: right;
 .left {
 	float: left;
 }
+.right {
+	float: right;
+}
 
 .spr_date{
 	padding: 0 5% 0 5%;
@@ -292,7 +295,7 @@ a:hover {
 	font-size: 25px;
 }
 .check{
-	padding: 0 10px 0 10px;
+	padding-right: 10px;
 }
 
 .center {
@@ -332,4 +335,6 @@ a:hover {
 	color: white;
 	border: none;
 }
-
+.modal-story{
+	font-size: 16px;
+}

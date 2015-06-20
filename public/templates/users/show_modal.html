@@ -1,75 +1,51 @@
 
 <!--MODAL - click user card-->
-
+<!--HEADER-->
 <div class="modal-header" style="background-color: #4C91E4;">
   <h3 class="modal-title" style="color: white;">{{usersModalShowCtrl.user.slack_handler}}'s stories<button type="button" class="close" ng-click="usersModalShowCtrl.cancel()" aria-label="Close"><span aria-hidden="true"><img src="/img/close.svg"></span></button></h3>
-
 </div>
-<div class="modal-body" style="text-align: left">
 
-  <!-- <div ng-repeat="story in usersModalShowCtrl.user.stories" class="list_stories" style="width:100%;  padding: auto; margin: auto;"> -->
-    <ul class="list-group default_text" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%">
-
-      <!--
-      IF story completed
-        /img/check_ok.svg
-        class = st_done
-        ELSE
-        /img/check_no.svg
-        class = st_working
-      -->
-        <li class="list-group-item">
-        <ul style="list-style: none">
-          <li style="float: left;">
-            <img class="check" src="/img/check_ok.svg" style="float: left; padding: 2%">
-            <span class="st_working" style="font-size: 16px; flex: 1;">{{story.description}} encekhaj sdcd gsdgs cbsud gwuv  guvtyf cfts  jh dasbdhu sidusi dvusfu sf jh dasbdhu sidusi dvusfu sfdvdy ufudfydu. iiiijjiih</span>
-          </li>
-          <li>
-
-          </li>
-          <li>
-
-            Check story in pivotal <img src="/img/pivotal.png" width="20px">
-            <div style="float: right">
-            {{story.completion_percentage}}%
-            </div>
-          </li>
-        </ul>
-
-
-        <!-- <div style="float: left"><img class="check" src="/img/check_ok.svg"></div>
-          <div>
-            <span>{{story.description}}</span>
-          </div>
-          <div>Ver no pivas</div> -->
-      </li>
-
-      <!--EXAMPLE ELSE (apagar depois)-->
-      <!--<li class="list-group-item st_working" style="padding-bottom: 10px">
-          <div style="float: left"><img class="check" src="/img/check_no.svg"></div>
-          <div>
-            <span>{{story.description}}</span>
+<!--BODY-->
+<div class="modal-body" style="margin: auto; padding: auto">
+  <ul class="list-group default_text list_center" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%;">
+    <!--
+    IF story completed
+      /img/check_ok.svg
+      class = st_done
+      ELSE
+      /img/check_no.svg
+      class = st_working
+    -->
+    <li class="list-group-item" style="padding-left: 5%; padding-bottom: 10px" ;>  
+      <div style="width: 100%; border-bottom: 1px solid #EFEFEF; padding: 1%">     
+        <div class="left">
+          <img class="check" src="/img/check_ok.svg">
         </div>
-      </li>-->
-    </ul>
-  <!-- </div> -->
+        <div class="modal-story">
+          {{story.description}} [mockups] (template 01) when I signup in to prolinkedcare I want to receive a "Welcome email"  so I know how I can get more value of software.
+        </div>
+      </div>
 
-  <div ng-repeat="story in usersModalShowCtrl.user.stories">
-    <!--stories-->
-    <span>{{story.description}}</span>
-    <!--progress-->
-    <label class="label label-warning">{{story.completion_percentage}}%</label>
-    <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank" class="label label-info">pivotal</a>
-    <button
-      type="button"
-      class="btn btn-danger btn-xs"
-      ng-really-message="Are you sure?"
-      ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
-      Delete
-    </button>
-  </div>
+      <div class="left" style="padding-top: 2%; font-size: 12px">
+        <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank">
+          Check story in pivotal
+          <img src="/img/pivotal.png" width="15px">
+        </a>
+        <span ng-really-message="Are you sure?"
+    ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
+          <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
+          Delete story
+          </a>
+          <img src="/img/delete.svg" width="13px">
+        </span>
+      </div>
 
+      <div class="right">{{story.completion_percentage}}%</div>
+    </li>
+  </ul>
 </div>
+
+<!--FOOTER-->
 <div class="modal-footer">
   <div class="" style="text-align: center">
     <span style="margin-bottom: 10px">Commitment progress:{{usersModalShowCtrl.user.completionPerc()}}%<span>
@@ -81,4 +57,3 @@
     </div>
   </div>
 </div>
-
