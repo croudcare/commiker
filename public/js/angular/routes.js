@@ -20,18 +20,18 @@
         controllerAs: 'homeCtrl',
         resolve: { authenticate: authenticate }
       })
-      .state('sprints', {
-        url: '/sprints/:id',
-        templateUrl: '/templates/sprints/show.html',
-        controller: 'SprintsShowController',
-        controllerAs: 'sprintsShowCtrl',
-        resolve: { authenticate: authenticate }
-      })
       .state('sprints-new', {
         url: '/sprints/new',
         templateUrl: '/templates/sprints/new.html',
         controller: 'SprintsNewController',
         controllerAs: 'sprintsNewCtrl',
+        resolve: { authenticate: authenticate }
+      })
+      .state('sprints', {
+        url: '/sprints/:id',
+        templateUrl: '/templates/sprints/show.html',
+        controller: 'SprintsShowController',
+        controllerAs: 'sprintsShowCtrl',
         resolve: { authenticate: authenticate }
       })
       .state('not_found', {
