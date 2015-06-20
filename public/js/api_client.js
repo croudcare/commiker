@@ -1,6 +1,2 @@
-$.api_client = {
-
-  endpoint: '',
-  authToken: ''
-
-}
+// populated on angular manifest
+$.api_client = {}

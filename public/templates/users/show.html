@@ -38,6 +38,7 @@
     <button
       type="button"
       class="btn btn-danger btn-xs"
+      ng-if="usersShowCtrl.user.id == apiClient.user_id"
       ng-really-message="Are you sure?"
       ng-really-click="usersShowCtrl.deleteStory(story.id)">
       Delete

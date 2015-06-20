@@ -8,6 +8,7 @@
 
 <script type="text/javascript">
   $.api_client = {
+    user_id: <%= current_session_user.try(:id) %>,
     authenticated: <%= !current_session_user.try(:id).blank? %>,
     endpoint: '<%= Configs["API_ENDPOINT"] %>',
     authToken: '<%= "Bearer #{Rack::Jwt::Auth::AuthToken.issue_token({ user_id: current_session_user.try(:id) }, Configs["AUTHENTICATION_SECRET"])}" %>'

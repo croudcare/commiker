@@ -13,6 +13,7 @@
     $rootScope._ = $window._;
     $rootScope.moment = $window.moment;
     $rootScope.SprintFactory = SprintFactory;
+    $rootScope.apiClient = $.api_client;
   }
 
 })(angular.module('commikerApp'));
