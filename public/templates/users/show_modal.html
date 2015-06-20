@@ -13,52 +13,58 @@
 
 <!--BODY-->
 <div class="modal-body" style="margin: auto; padding: auto">
-  <ul class="list-group default_text list_center" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%;">
-    <!--
-    IF story completed
-      /img/check_ok.svg
-      class = st_done
-      ELSE
-      /img/check_no.svg
-      class = st_working
-    -->
-    <li class="list-group-item" style="padding-left: 5%; padding-bottom: 15px" ;>
-      <div style="width: 100%;">
-        <div class="left" style="padding: 1%">
-          <img class="check" src="/img/check_ok.svg">
-        </div>
-        <div class="modal-story">
-          {{story.description}}
-        </div>
-      </div>
+  <div ng-if="usersModalShowCtrl.user.stories.length == 0">
+    <h1 style="color: red">NO STORIES WERE GIVEN</h1>
+  </div>
 
-      <div class="left" style="padding-top: 2%; font-size: 12px">
-        <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank">
-          Check story in pivotal
-          <img src="/img/pivotal.png" width="15px">
-        </a>
-        <span ng-show="usersModalShowCtrl.editableSprint">
-          <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
-          Delete story
+  <div ng-if="usersModalShowCtrl.user.stories.length > 0">
+    <ul class="list-group default_text list_center" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%;">
+      <!--
+      IF story completed
+        /img/check_ok.svg
+        class = st_done
+        ELSE
+        /img/check_no.svg
+        class = st_working
+      -->
+      <li class="list-group-item" style="padding-left: 5%; padding-bottom: 15px" ;>
+        <div style="width: 100%;">
+          <div class="left" style="padding: 1%">
+            <img class="check" src="/img/check_ok.svg">
+          </div>
+          <div class="modal-story">
+            {{story.description}}
+          </div>
+        </div>
+
+        <div class="left" style="padding-top: 2%; font-size: 12px">
+          <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank">
+            Check story in pivotal
+            <img src="/img/pivotal.png" width="15px">
           </a>
-          <img src="/img/delete.svg" width="13px">
-        </span>
-      </div>
-
-      <div class="right">{{story.completion_percentage}}%</div>
-    </li>
-  </ul>
-</div>
-
-<!--FOOTER-->
-<div class="modal-footer" style="padding-bottom: 20px">
-  <div class="" style="text-align: center">
-    <span style="margin-bottom: 10px">Commitment progress: <h4>{{usersModalShowCtrl.user.completionPerc()}}%</h4><span>
-    <p>
-    <div class="raquel progress" style="width: 50%; height: 10px; margin: auto; padding: auto">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersModalShowCtrl.user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersModalShowCtrl.user.completionPerc()}}%;">
-            <span class="sr-only">{{usersModalShowCtrl.user.completionPerc()}}% Complete</span>
+          <span ng-show="usersModalShowCtrl.editableSprint">
+            <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
+            Delete story
+            </a>
+            <img src="/img/delete.svg" width="13px">
+          </span>
         </div>
+
+        <div class="right">{{story.completion_percentage}}%</div>
+      </li>
+    </ul>
+
+  <!--FOOTER-->
+  <div class="modal-footer" style="padding-bottom: 20px">
+    <div class="" style="text-align: center">
+      <span style="margin-bottom: 10px">Commitment progress: <h4>{{usersModalShowCtrl.user.completionPerc()}}%</h4><span>
+      <p></p>
+      <div class="raquel progress" style="width: 50%; height: 10px; margin: auto; padding: auto">
+          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersModalShowCtrl.user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersModalShowCtrl.user.completionPerc()}}%;">
+              <span class="sr-only">{{usersModalShowCtrl.user.completionPerc()}}% Complete</span>
+          </div>
+      </div>
     </div>
+
   </div>
 </div>
