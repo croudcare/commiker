@@ -25,8 +25,13 @@
           <div class="container">
             <div id="navbar" class="navbar-collapse collapse">
               <div class="navbar-header" style="padding-left: 5.5%">
-                  <a class="navbar-brand" ui-sref="home">Commiker</a>
+                <a class="navbar-brand" ui-sref="home">Commiker</a>
               </div>
+              <ul class="nav navbar-nav">
+                <li>
+                  <a ui-sref="sprints">Sprints</a>
+                </li>
+              </ul>
               <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
                 <li>
                   <% if current_session_user.blank? %>

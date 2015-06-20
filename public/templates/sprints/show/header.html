@@ -25,7 +25,7 @@
           </div>
       </div>
       <div ng-if="sprint">
-        <div class="default_text">Sprint progress</div>
+        <div class="default_text">{{ sprint.active ? 'Sprint progress' : 'Finished'}}</div>
         <div style="text-align:right">
           <h2>
             <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px">
