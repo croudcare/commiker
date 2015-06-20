@@ -338,3 +338,7 @@ a:hover {
 .modal-story{
 	font-size: 16px;
 }
+
+.poke a:hover{
+	color: red;
+}
