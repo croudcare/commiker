@@ -18,6 +18,7 @@
         instancesProvider   = new SmoothInstanceProvider($http, config, makeTheCall, transformRESTResponse);
 
     self.find               = find;
+    self.destroy            = destroy;
     self.create             = create;
     self.patch              = patch;
     self.newInstance        = instancesProvider.new;
@@ -28,6 +29,15 @@
     function find(relativePath, params, options) {
       var defaulOptions = {
         httpVerb: 'GET',
+        transformResponse: transformRESTResponse
+      }
+
+      return makeTheCall(relativePath, params, null, _.merge({}, defaulOptions, options));
+    }
+
+    function destroy(relativePath, params, options) {
+      var defaulOptions = {
+        httpVerb: 'DELETE',
         transformResponse: transformRESTResponse
       }
 

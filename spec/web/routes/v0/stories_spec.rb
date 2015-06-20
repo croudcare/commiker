@@ -17,11 +17,11 @@ describe '/api/v0/stories' do
       end
 
       before(:each) do
-        sprint = create :sprint
+        @sprint = create :sprint
         user = create :iron_man_user
 
         post('/api/v0/stories/bulk_create', {
-          sprint_id: sprint.id,
+          sprint_id: @sprint.id,
           user_slack_uid: user.slack_uid,
           pivotal_ids: ['94839248']
         }, session_headers)

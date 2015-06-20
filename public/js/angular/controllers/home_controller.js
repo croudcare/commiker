@@ -2,6 +2,7 @@
 
   commikerApp.controller('HomeController', [
     '$state',
+    '$rootScope',
     'SprintSmooth',
     'UsersShowUseCase',
     HomeController
@@ -9,7 +10,7 @@
 
   /****************** PROTECTED ******************/
 
-  function HomeController($state, SprintSmooth, UsersShowUseCase) {
+  function HomeController($rootScope, $state, SprintSmooth, UsersShowUseCase) {
     var self = this;
 
     self.currentSprint = null;

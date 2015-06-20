@@ -33,16 +33,24 @@
   	<!--stories-->
   	<span>{{story.description}}</span>
   	<!--progress-->
-    <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank" class="label label-info">pivotal</a>
   	<label class="label label-warning">{{story.completion_percentage}}%</label>
+    <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank" class="label label-info">pivotal</a>
+    <button
+      type="button"
+      class="btn btn-danger btn-xs"
+      ng-really-message="Are you sure?"
+      ng-really-click="usersShowCtrl.deleteStory(story.id)">
+      Delete
+    </button>
   </div>
+
 </div>
 <div class="modal-footer">
 	<div class="" style="text-align: center">
 		<span style="margin-bottom: 10px">Commitment progress:{{usersShowCtrl.user.completionPerc}}%<span>
 		<p>
 		<div class="raquel progress" style="width: 50%; height: 10px; margin: auto; padding: auto">
-	    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersShowCtrl.user.completionPerc}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersShowCtrl.user.completionPerc}}%;"><!--{{usersShowCtrl.user.completionPerc}}%-->
+	    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersShowCtrl.user.completionPerc}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersShowCtrl.user.completionPerc}}%;">
 	      		<span class="sr-only">{{usersShowCtrl.user.completionPerc}}% Complete</span>
 	    	</div>
 		</div>
