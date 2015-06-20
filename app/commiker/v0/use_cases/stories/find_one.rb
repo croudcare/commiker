@@ -6,7 +6,7 @@ module Commiker
         class FindOne < UseCaseBase
 
           def perform
-            context.story = Story.find(context.id)
+            context.story = Story.find(context.id.to_i)
           end
 
         end

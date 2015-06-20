@@ -27,8 +27,12 @@
         .success(onSuccess)
         .error(onError)
 
-      function onSuccess(sprint) {
-        self.sprint = sprint;
+      function onSuccess(sprint, code) {
+        // no active sprint
+        if(code == 204)
+          $state.go('sprints')
+        else
+          self.sprint = sprint;
       }
 
       function onError(response) {

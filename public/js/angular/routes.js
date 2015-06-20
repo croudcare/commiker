@@ -28,6 +28,13 @@
         resolve: { authenticate: authenticate }
       })
       .state('sprints', {
+        url: '/sprints',
+        templateUrl: '/templates/sprints/index.html',
+        controller: 'SprintsIndexController',
+        controllerAs: 'sprintsIndexCtrl',
+        resolve: { authenticate: authenticate }
+      })
+      .state('sprints-show', {
         url: '/sprints/:id',
         templateUrl: '/templates/sprints/show.html',
         controller: 'SprintsShowController',

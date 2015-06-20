@@ -11,7 +11,7 @@ module Commiker
             def perform
               context.sprints = \
                 Sprint
-                  .order('started_at DESC')
+                  .order('ended_at DESC')
                   .page(ctx.page)
                   .per(ctx.per_page)
             end

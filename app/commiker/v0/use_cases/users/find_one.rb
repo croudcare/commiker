@@ -17,7 +17,7 @@ module Commiker
               end
 
               if(user_id || id)
-                context.user = User.find(id || user_id)
+                context.user = User.find(id.to_i || user_id.to_i)
               end
             end
           end
