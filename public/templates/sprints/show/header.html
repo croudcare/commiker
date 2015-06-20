@@ -1,0 +1,80 @@
+<div id="navig" class="side_space" ng-if="sprint">
+  <div class="sprint_id">
+      <span class="default_text">Sprint</span>
+
+      <div class="date_nav">
+        <h2>
+          <div class="fl_left">
+            <img class="arrow-prev" src="/img/arrow_prev.svg">
+          </div>
+          <div class="fl_left spr_date">
+            <span>{{ sprint.started_at | dateformat: 'D MMM' }}</span> - <span>{{ sprint.ended_at | dateformat: 'D MMM' }}</span>
+          </div>
+          <!-- <div class="fl_left">
+            <img class="arrow-prev" src="/img/arrow_next.svg">
+          </div> -->
+        </h2>
+      </div><!--date_nav-->
+    </div><!--sprint_id-->
+
+    <!--CONTENT INSIDE IF (NO ACTIVE SPRINT)-->
+    <div class="sprint_progress">
+      <div style="text-align:right" ng-if="!sprint">
+          <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px; font-line: 40px; padding-top: 18px">
+            <h2>No Active Sprint.</h2>
+          </div>
+      </div>
+      <div ng-if="sprint">
+        <div class="default_text">Sprint progress</div>
+        <div style="text-align:right">
+          <h2>
+            <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px">
+              <h1>{{sprint.completionPercentage()}}%</h1>
+            </div>
+          <div class="date_nav prog">
+            <div class="progress team">
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{sprint.completionPercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{sprint.completionPercentage()}}%;">
+                <span class="sr-only">{{sprint.completionPercentage()}}% Complete</span>
+              </div>
+            </div>
+          </div>
+          </h2>
+        </div>
+      </div>
+    </div><!--sprint_progress-->
+  </div><!--navig-->
+
+
+
+<nav class="navbar navbar-default" style="background-color: white; padding-top:20px">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav navbar-left" style="padding-left: 4%; width: 40%">
+      <li>
+        <a
+          href=""
+          ng-click="sprintsShowCtrl.setDefaultView()"
+          ng-class="{ active: sprintsShowCtrl.listView }">
+          <img src="/img/thumb.svg">
+        </a>
+      </li>
+      <li>
+        <a
+          href=""
+          ng-click="sprintsShowCtrl.setListView()"
+          ng-class="{ active: sprintsShowCtrl.listView }">
+          <img src="/img/list.svg">
+        </a>
+      </li>
+    </ul>
+
+    <!-- <ul class="nav navbar-nav navbar-right" style="padding-right: 5%" >
+      <li>
+          <a href='/login' target="_self">Team</a>
+      </li>
+      <li>
+        <a>Stories</a>
+      </li>
+    </ul> -->
+  </div>
+</nav>

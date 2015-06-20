@@ -21,12 +21,7 @@
         templateUrl: '/templates/me/login/modal.html',
         controller: 'MeLoginModalController',
         controllerAs: 'meLoginModalCtrl',
-        size: context.size,
-        resolve: {
-          back: function() {
-            return context.from;
-          }
-        }
+        size: context.size
       });
 
       /****************** PROTECTED ******************/

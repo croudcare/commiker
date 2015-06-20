@@ -1,0 +1,29 @@
+<!--LIST-->
+<div class="container side_space" style="text-align: center">
+  <div class="row">
+      <div class="col-lg-12">
+
+      <div class="media" ng-repeat="user in sprint.users">
+
+        <div href="#" class="pull-left" style="padding-right: 20px;">
+                <img alt="64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="{{user.avatar_72_url}}">
+            </div>
+            <div class="media-body">
+                <div class="media-heading" style="text-align: left"><h3><span class="username_txt" href="#"> {{user.slack_handler}}</span></h3></div>
+                <span style="text-align: left"><p class="small sub_title">{{user.completedStories()}}/{{user.totalStories()}} completed stories</p></span>
+              </div>
+
+
+              <div ng-repeat="story in sprint.user.stories" style="text-align:left; width: 80%; border-top: 1px solid #F2F2F2; margin-left: -10px; margin-top: 20px">
+
+                <ul class="list-group default_text">
+              <li class="list-group-item st_working">
+                <!-- <span class="story_check"><img src="/img/check_ok.svg"></span> -->
+                <span>{{story}}</span>
+              </li>
+          </ul>
+              </div>
+          </div>
+    </div>
+  </div>
+</div>

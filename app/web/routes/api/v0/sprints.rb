@@ -10,6 +10,14 @@ module Commiker
       json Serializers::Sprints::Show.new(ctx.sprint)
     end
 
+    get '/api/v0/sprints/:id', auth: :user do
+      ctx = UseCases::Sprints::FindOne.perform(declared_params)
+
+      status 204 if ctx.status.no_content?
+
+      json Serializers::Sprints::Show.new(ctx.sprint)
+    end
+
     get '/api/v0/sprints/', auth: :user do
       ctx = UseCases::Sprints::Index::Base.perform(declared_params)
 

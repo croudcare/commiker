@@ -1,52 +1,19 @@
 (function(commikerApp) {
 
   commikerApp.controller('HomeController', [
-    '$state',
-    'SprintSmooth',
-    'SprintFactory',
-    'UsersShowUseCase',
-    'MeLoginUsecase',
+    '$timeout',
+    '$location',
     HomeController
   ]);
 
   /****************** PROTECTED ******************/
 
-  function HomeController($state, SprintSmooth, SprintFactory, UsersShowUseCase, MeLoginUsecase) {
+  function HomeController($timeout, $location) {
     var self = this;
 
-    self.listView = false;
-
-    self.showUser = showUser;
-    self.setListView = setListView;
-    self.setDefaultView = setDefaultView;
-
-    findCurrentSprint();
-
-    function findCurrentSprint() {
-      SprintSmooth.find('active')
-        .success(onSuccess)
-        .error(onError)
-
-      function onSuccess(sprint) {
-        SprintFactory.current = sprint;
-      }
-
-      function onError(response) {
-        // debugger
-      }
-    }
-
-    function setListView() {
-      self.listView = true;
-    }
-
-    function setDefaultView() {
-      self.listView = false;
-    }
-
-    function showUser(user) {
-      UsersShowUseCase.perform({ user: user })
-    }
+    $timeout(function(){
+      $location.path('/sprints/active');
+    });
   }
 
 })(angular.module('commikerApp'));

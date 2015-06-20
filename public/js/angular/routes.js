@@ -22,7 +22,7 @@
       })
       .state('sprints', {
         url: '/sprints/:id',
-        templateUrl: '/templates/home.html',
+        templateUrl: '/templates/sprints/show.html',
         controller: 'SprintsShowController',
         controllerAs: 'sprintsShowCtrl',
         resolve: { authenticate: authenticate }
@@ -39,7 +39,7 @@
         templateUrl: '/templates/404.html'
       });
 
-    $urlRouterProvider.when('/stories', '/');
+    $urlRouterProvider.when('', '/sprints/active');
     $urlRouterProvider.otherwise('/404');
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('AuthInjector');
@@ -49,7 +49,7 @@
         return $q.when();
       else {
         $timeout(function() {
-          MeLoginUsecase.perform({ from: '/stories/new' });
+          MeLoginUsecase.perform();
         });
 
         return $q.reject()
