@@ -35,12 +35,12 @@
         <div style="text-align:right">
           <h2>
             <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px">
-              <h1>{{SprintFactory.current.completion_percentage}}%</h1>
+              <h1>{{SprintFactory.current.completionPercentage()}}%</h1>
             </div>
           <div class="date_nav prog">
             <div class="progress team">
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{SprintFactory.current.completion_percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{SprintFactory.current.completion_percentage}}%;">
-                <span class="sr-only">{{SprintFactory.current.completion_percentage}}% Complete</span>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{SprintFactory.current.completionPercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{SprintFactory.current.completionPercentage()}}%;">
+                <span class="sr-only">{{SprintFactory.current.completionPercentage()}}% Complete</span>
               </div>
             </div>
           </div>

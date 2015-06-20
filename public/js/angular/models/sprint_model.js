@@ -6,13 +6,29 @@
 
     return {
       new: function(object) {
+
         object.users = _.map(object.users, function(user) {
-          user.completedStories = completedStories;
-          user.totalStories = totalStories;
-          user.completionPerc = completionPerc;
+          user.completedStories = userCompletedStories;
+          user.totalStories = userTotalStories;
+          user.completionPerc = userCompletionPerc;
 
           return user;
         });
+
+        object.completionPercentage = function(){
+          var total = this.users.length * 100;
+
+          if(total == 0)
+            return 0;
+
+          var completionSumAry = _.map(this.users, function(user){
+            return user.completionPerc();
+          });
+
+          completionSum = _.sum(completionSumAry);
+
+          return Math.round(completionSum * 100 / total)
+        }
 
         return object;
       }
@@ -21,7 +37,7 @@
 
   /****************** PROTECTED ******************/
 
-  function completedStories() {
+  function userCompletedStories() {
     var stories = this.stories.filter(function(story) {
       if(story.completion_percentage == 100)
         return story;
@@ -30,11 +46,11 @@
     return stories.length;
   }
 
-  function totalStories() {
+  function userTotalStories() {
     return this.stories.length;
   }
 
-  function completionPerc() {
+  function userCompletionPerc() {
     var total = this.totalStories() * 100;
 
     if(total == 0)
@@ -46,7 +62,7 @@
 
     completionSum = _.sum(completionSumAry);
 
-    return Math.round(completionSum * 100 / total)
+    return Math.round(completionSum * 100 / total);
   }
 
 })(angular.module('commikerApp'));
