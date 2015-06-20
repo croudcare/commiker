@@ -16,7 +16,11 @@
         });
 
         object.completionPercentage = function(){
-          var total = this.users.length * 100;
+          var total = _.sum(this.users, function(user) {
+            return (user.totalStories() > 0 ? 1 : 0);
+          });
+
+          total = total * 100;
 
           if(total == 0)
             return 0;
@@ -27,7 +31,7 @@
 
           completionSum = _.sum(completionSumAry);
 
-          return Math.round(completionSum * 100 / total)
+          return Math.round((completionSum * 100 / total)*10)/10;
         }
 
         return object;
@@ -62,7 +66,7 @@
 
     completionSum = _.sum(completionSumAry);
 
-    return Math.round(completionSum * 100 / total);
+    return Math.round((completionSum * 100 / total)*10)/10;
   }
 
 })(angular.module('commikerApp'));
