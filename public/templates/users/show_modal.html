@@ -1,7 +1,7 @@
 <!--MODAL - click user card-->
 
 <div class="modal-header" style="background-color: #4C91E4;">
-  <h3 class="modal-title" style="color: white;">{{usersShowCtrl.user.slack_handler}}<button type="button" class="close" ng-click="usersShowCtrl.cancel()" aria-label="Close"><span aria-hidden="true"><img src="/img/close.svg"></span></button></h3>
+  <h3 class="modal-title" style="color: white;">{{usersModalShowCtrl.user.slack_handler}}<button type="button" class="close" ng-click="usersModalShowCtrl.cancel()" aria-label="Close"><span aria-hidden="true"><img src="/img/close.svg"></span></button></h3>
 
 </div>
 <div class="modal-body">
@@ -29,7 +29,7 @@
     </ul>
   </div>
 
-  <div ng-repeat="story in usersShowCtrl.user.stories">
+  <div ng-repeat="story in usersModalShowCtrl.user.stories">
     <!--stories-->
     <span>{{story.description}}</span>
     <!--progress-->
@@ -38,9 +38,9 @@
     <button
       type="button"
       class="btn btn-danger btn-xs"
-      ng-if="usersShowCtrl.user.id == apiClient.user_id"
+      ng-if="usersModalShowCtrl.user.id == apiClient.user_id"
       ng-really-message="Are you sure?"
-      ng-really-click="usersShowCtrl.deleteStory(story.id)">
+      ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
       Delete
     </button>
   </div>
@@ -48,11 +48,11 @@
 </div>
 <div class="modal-footer">
   <div class="" style="text-align: center">
-    <span style="margin-bottom: 10px">Commitment progress:{{usersShowCtrl.user.completionPerc()}}%<span>
+    <span style="margin-bottom: 10px">Commitment progress:{{usersModalShowCtrl.user.completionPerc()}}%<span>
     <p>
     <div class="raquel progress" style="width: 50%; height: 10px; margin: auto; padding: auto">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersShowCtrl.user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersShowCtrl.user.completionPerc()}}%;">
-            <span class="sr-only">{{usersShowCtrl.user.completionPerc()}}% Complete</span>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersModalShowCtrl.user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersModalShowCtrl.user.completionPerc()}}%;">
+            <span class="sr-only">{{usersModalShowCtrl.user.completionPerc()}}% Complete</span>
         </div>
     </div>
   </div>
