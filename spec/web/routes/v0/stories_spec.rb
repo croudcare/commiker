@@ -8,6 +8,44 @@ describe '/api/v0/stories' do
       @user = create :omagad_user
     end
 
+    context 'delete /api/v0/stories/:id' do
+
+      def make_the_call(id, params = {}, headers = {})
+        headers.merge!(session_headers)
+
+        delete "/api/v0/stories/#{id}", params, headers
+      end
+
+      before(:each) do
+        sprint = create :sprint
+        user = create :iron_man_user
+
+        post('/api/v0/stories/bulk_create', {
+          sprint_id: sprint.id,
+          user_slack_uid: user.slack_uid,
+          pivotal_ids: ['94839248']
+        }, session_headers)
+
+        @stories = last_response_json['created_stories']
+      end
+
+      it 'should return not found for invalid story' do
+        make_the_call 123
+
+        expect_not_found_response
+      end
+
+      it 'should soft delete story' do
+        story_id = @stories[0]['id']
+
+        make_the_call story_id
+
+        expect_accepted_response
+        expect(Commiker::V0::Story.with_deleted.find(story_id)).not_to be_nil
+      end
+
+    end
+
     context 'post /api/v0/stories/:id/add_story_interaction' do
 
       def make_the_call(id, params = {}, headers = {})

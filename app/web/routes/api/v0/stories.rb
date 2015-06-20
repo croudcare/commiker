@@ -27,9 +27,10 @@ module Commiker
     end
 
     delete '/api/v0/stories/:id', auth: :user do
-      ctx = UseCases::Stories::Delete::Base.perform
+      ctx = UseCases::Stories::Delete::Base.perform(declared_params)
 
-      status context.status.ok? ? 202 : 422
+      status 422 if ctx.status.unprocessable_entity?
+      status 202 if ctx.status.accepted?
     end
 
   end
