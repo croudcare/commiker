@@ -238,7 +238,7 @@ describe '/api/v0/stories' do
           make_the_call \
             sprint_id: @sprint.id,
             user_slack_uid: 'slack_not_uid',
-            pivotal_ids: ['invalid']
+            pivotal_ids: ['123']
 
           expect_unprocessable_response
         end

@@ -21,6 +21,11 @@ module Commiker
                 return
               else
                 ctx.sprint = Sprint.find(sprint_id)
+
+                if ctx.sprint.blank?
+                  failure!(:unprocessable_entity, 'invalid sprint_id, could not find sprint')
+                  return
+                end
               end
 
               if !user_slack_uid
