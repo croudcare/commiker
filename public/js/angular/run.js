@@ -3,16 +3,16 @@
   commikerApp.run([
     '$rootScope',
     '$window',
-    'RefData',
+    'SprintFactory',
     run
   ]);
 
   /****************** PROTECTED ******************/
 
-  function run($rootScope, $window, RefData) {
+  function run($rootScope, $window, SprintFactory) {
     $rootScope._ = $window._;
     $rootScope.moment = $window.moment;
-    $rootScope.refData = RefData;
+    $rootScope.SprintFactory = SprintFactory;
   }
 
 })(angular.module('commikerApp'));

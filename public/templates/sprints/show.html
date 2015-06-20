@@ -8,14 +8,14 @@
              	</div>
               	<img class="img-circle" src="{{user.avatar_72_url}}" alt="...">
               	<div class="caption">
-                	<h4>{{user.completionPerc}}%</h4>
+                	<h4>{{user.completionPerc()}}%</h4>
                 	<div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
-                    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{user.completionPerc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.completionPerc}}%;">
-                      		<span class="sr-only">{{user.completionPerc}}% Complete</span>
+                    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.completionPerc()}}%;">
+                      		<span class="sr-only">{{user.completionPerc()}}% Complete</span>
                     	</div>
               		</div>
           		</div>
-                <p>{{user.completedStories}}/{{user.totalStories}} completed stories</p>
+                <p>{{user.completedStories()}}/{{user.totalStories()}} completed stories</p>
                 <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
             </div>
         </div>

@@ -1,10 +1,10 @@
-<div id="new_spr" class="new_spr" ng-if="!homeCtrl.currentSprint">
+<div id="new_spr" class="new_spr" ng-if="!SprintFactory.current">
   <p>There's no active sprint.</p>
   <p>Start a new one and set your awesome team to work!</p>
   <a ui-sref="sprints-new" class="btn btn-default"><b>Start sprint</b></a>
 </div>
 
-<div id="navig" class="side_space" ng-if="homeCtrl.currentSprint">
+<div id="navig" class="side_space" ng-if="SprintFactory.current">
   <div class="sprint_id">
       <span class="default_text">Sprint</span>
 
@@ -14,7 +14,7 @@
             <img class="arrow-prev" src="/img/arrow_prev.svg">
           </div>
           <div class="fl_left spr_date">
-            <span>{{ homeCtrl.currentSprint.started_at | dateformat: 'D MMM' }}</span> - <span>{{ homeCtrl.currentSprint.ended_at | dateformat: 'D MMM' }}</span>
+            <span>{{ SprintFactory.current.started_at | dateformat: 'D MMM' }}</span> - <span>{{ SprintFactory.current.ended_at | dateformat: 'D MMM' }}</span>
           </div>
           <!-- <div class="fl_left">
             <img class="arrow-prev" src="/img/arrow_next.svg">
@@ -25,22 +25,22 @@
 
     <!--CONTENT INSIDE IF (NO ACTIVE SPRINT)-->
     <div class="sprint_progress">
-      <div style="text-align:right" ng-if="!homeCtrl.currentSprint">
+      <div style="text-align:right" ng-if="!SprintFactory.current">
           <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px; font-line: 40px; padding-top: 18px">
             <h2>No Active Sprint.</h2>
           </div>
       </div>
-      <div ng-if="homeCtrl.currentSprint">
+      <div ng-if="SprintFactory.current">
         <div class="default_text">Sprint progress</div>
         <div style="text-align:right">
           <h2>
             <div class="right perc" style="width: 100%; text-align: right; padding-bottom: 10px">
-              <h1>{{homeCtrl.currentSprint.completion_percentage}}%</h1>
+              <h1>{{SprintFactory.current.completion_percentage}}%</h1>
             </div>
           <div class="date_nav prog">
             <div class="progress team">
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{homeCtrl.currentSprint.completion_percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{homeCtrl.currentSprint.completion_percentage}}%;">
-                <span class="sr-only">{{homeCtrl.currentSprint.completion_percentage}}% Complete</span>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{SprintFactory.current.completion_percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{SprintFactory.current.completion_percentage}}%;">
+                <span class="sr-only">{{SprintFactory.current.completion_percentage}}% Complete</span>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
 
 
 
-<nav class="navbar navbar-default" style="background-color: white; padding-top:20px" ng-if="homeCtrl.currentSprint">
+<nav class="navbar navbar-default" style="background-color: white; padding-top:20px" ng-if="SprintFactory.current">
   <div class="container-fluid">
 
     <ul class="nav navbar-nav navbar-left" style="padding-left: 4%; width: 40%">
@@ -86,13 +86,13 @@
 </nav>
 
 <div
-  ng-if="homeCtrl.currentSprint && !homeCtrl.listView"
-  onload="sprint = homeCtrl.currentSprint"
+  ng-if="SprintFactory.current && !homeCtrl.listView"
+  onload="sprint = SprintFactory.current"
   ng-include="'/templates/sprints/show.html'">
 </div>
 
 <div
-  ng-if="homeCtrl.currentSprint && homeCtrl.listView"
-  onload="sprint = homeCtrl.currentSprint"
+  ng-if="SprintFactory.current && homeCtrl.listView"
+  onload="sprint = SprintFactory.current"
   ng-include="'/templates/sprints/show_list.html'">
 </div>

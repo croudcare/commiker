@@ -4,16 +4,16 @@
     '$state',
     '$rootScope',
     'SprintSmooth',
+    'SprintFactory',
     'UsersShowUseCase',
     HomeController
   ]);
 
   /****************** PROTECTED ******************/
 
-  function HomeController($rootScope, $state, SprintSmooth, UsersShowUseCase) {
+  function HomeController($rootScope, $state, SprintSmooth, SprintFactory, UsersShowUseCase) {
     var self = this;
 
-    self.currentSprint = null;
     self.listView = false;
 
     self.showUser = showUser;
@@ -28,7 +28,7 @@
         .error(onError)
 
       function onSuccess(sprint) {
-        self.currentSprint = sprint;
+        SprintFactory.current = sprint;
       }
 
       function onError(response) {

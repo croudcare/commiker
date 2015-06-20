@@ -47,11 +47,11 @@
 </div>
 <div class="modal-footer">
 	<div class="" style="text-align: center">
-		<span style="margin-bottom: 10px">Commitment progress:{{usersShowCtrl.user.completionPerc}}%<span>
+		<span style="margin-bottom: 10px">Commitment progress:{{usersShowCtrl.user.completionPerc()}}%<span>
 		<p>
 		<div class="raquel progress" style="width: 50%; height: 10px; margin: auto; padding: auto">
-	    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersShowCtrl.user.completionPerc}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersShowCtrl.user.completionPerc}}%;">
-	      		<span class="sr-only">{{usersShowCtrl.user.completionPerc}}% Complete</span>
+	    	<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersShowCtrl.user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersShowCtrl.user.completionPerc()}}%;">
+	      		<span class="sr-only">{{usersShowCtrl.user.completionPerc()}}% Complete</span>
 	    	</div>
 		</div>
 	</div>
