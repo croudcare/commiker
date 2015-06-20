@@ -1,9 +1,20 @@
+<div id="new_spr" class="new_spr" ng-if="!sprintsIndexCtrl.latestSprint.active">
+  There's no active sprint. <p>Start a new one and set your awesome team to work!<p>
+  <a ui-sref="sprints-new" class="btn btn-default"><b>Start sprint</b></a>
+</div>
+
 <div>
 latest sprint
 {{sprintsIndexCtrl.latestSprint.id}}
 <div>
 
+previous sprints
 <div ng-repeat="sprint in sprintsIndexCtrl.previousSprints">
   {{sprint.id}}
   {{sprint.completion_percentage}}%
 </div>
+
+<button
+  class="btn btn-xs btn-primary"
+  ng-if="sprintsIndexCtrl.moreToLoad"
+  ng-click="sprintsIndexCtrl.loadMoreSprints()">load more</button>
