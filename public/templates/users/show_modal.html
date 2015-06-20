@@ -62,6 +62,7 @@
     <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank" class="label label-info">pivotal</a>
     <button
       type="button"
+      ng-show="usersModalShowCtrl.editableSprint"
       class="btn btn-danger btn-xs"
       ng-really-message="Are you sure?"
       ng-really-click="usersModalShowCtrl.deleteStory(story.id)">

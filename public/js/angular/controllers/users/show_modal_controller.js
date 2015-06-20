@@ -3,20 +3,21 @@
   commikerApp.controller('UsersShowModalController', [
     '$modalInstance',
     'user',
+    'editableSprint',
     '$rootScope',
     'StorySmooth',
-    'SprintFactory',
     UsersShowModalController
   ]);
 
   /****************** PROTECTED ******************/
 
-  function UsersShowModalController($modalInstance, user, $rootScope, StorySmooth, SprintFactory) {
+  function UsersShowModalController($modalInstance, user, editableSprint, $rootScope, StorySmooth) {
     var self = this;
 
     self.user = user;
     self.cancel = cancel;
     self.deleteStory = deleteStory;
+    self.editableSprint = editableSprint;
 
     /****************** PRIVATE  ******************/
 

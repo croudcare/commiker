@@ -25,6 +25,9 @@
         resolve: {
           user: function() {
             return context.user;
+          },
+          editableSprint: function() {
+            return context.sprint.active;
           }
         }
       });

@@ -45,7 +45,7 @@
     }
 
     function showUser(user) {
-      UsersShowUseCase.perform({ user: user })
+      UsersShowUseCase.perform({ user: user, sprint: self.sprint })
     }
   }
 
