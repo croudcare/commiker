@@ -20,11 +20,11 @@
         controllerAs: 'homeCtrl',
         resolve: { authenticate: authenticate }
       })
-      .state('stories-new', {
-        url: '/stories/new',
-        templateUrl: '/templates/stories/new.html',
-        controller: 'StoriesNewController',
-        controllerAs: 'storiesNewCtrl',
+      .state('sprints', {
+        url: '/sprints/:id',
+        templateUrl: '/templates/home.html',
+        controller: 'SprintsShowController',
+        controllerAs: 'sprintsShowCtrl',
         resolve: { authenticate: authenticate }
       })
       .state('sprints-new', {
@@ -32,20 +32,6 @@
         templateUrl: '/templates/sprints/new.html',
         controller: 'SprintsNewController',
         controllerAs: 'sprintsNewCtrl',
-        resolve: { authenticate: authenticate }
-      })
-      .state('sprints-show', {
-        url: '/sprints/:id',
-        templateUrl: '/templates/sprints/show.html',
-        controller: 'SprintsShowController',
-        controllerAs: 'sprintsShowCtrl',
-        resolve: { authenticate: authenticate }
-      })
-      .state('stories-show', {
-        url: '/stories/:name',
-        templateUrl: '/templates/stories/show.html',
-        controller: 'StoriesShowController',
-        controllerAs: 'storiesShowCtrl',
         resolve: { authenticate: authenticate }
       })
       .state('not_found', {

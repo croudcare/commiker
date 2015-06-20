@@ -18,9 +18,9 @@
     function perform(context, cb) {
 
       var modalInstance = $modal.open({
-        templateUrl: '/templates/users/show.html',
-        controller: 'UsersShowController',
-        controllerAs: 'usersShowCtrl',
+        templateUrl: '/templates/users/show_modal.html',
+        controller: 'UsersShowModalController',
+        controllerAs: 'usersModalShowCtrl',
         size: context.size,
         resolve: {
           user: function() {
