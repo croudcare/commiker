@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619200621) do
+ActiveRecord::Schema.define(version: 20150620092849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20150619200621) do
     t.datetime "updated_at"
     t.boolean  "active",     default: false
   end
+
+  add_index "sprints", ["deleted_at"], name: "index_sprints_on_deleted_at", using: :btree
 
   create_table "sprints_users", force: :cascade do |t|
     t.integer  "sprint_id"
@@ -44,6 +46,8 @@ ActiveRecord::Schema.define(version: 20150619200621) do
     t.datetime "updated_at"
   end
 
+  add_index "stories", ["deleted_at"], name: "index_stories_on_deleted_at", using: :btree
+
   create_table "story_interactions", force: :cascade do |t|
     t.integer  "story_id"
     t.text     "obs"
@@ -54,6 +58,8 @@ ActiveRecord::Schema.define(version: 20150619200621) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "story_interactions", ["deleted_at"], name: "index_story_interactions_on_deleted_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "avatar_url"

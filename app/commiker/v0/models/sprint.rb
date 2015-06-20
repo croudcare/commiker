@@ -3,6 +3,8 @@ module Commiker
 
     class Sprint < Base
 
+      acts_as_paranoid
+
       belongs_to :starter, primary_key: 'starter_id'
       has_many :stories
 

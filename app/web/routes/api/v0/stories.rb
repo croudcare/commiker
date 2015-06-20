@@ -26,6 +26,12 @@ module Commiker
       json ctx.success? ? Serializers::Stories::Show.new(ctx.story) : ctx.errors
     end
 
+    delete '/api/v0/stories/:id', auth: :user do
+      ctx = UseCases::Stories::Delete::Base.perform
+
+      status context.status.ok? ? 202 : 422
+    end
+
   end
 
 end

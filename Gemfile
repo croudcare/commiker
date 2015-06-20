@@ -20,6 +20,7 @@ gem 'kaminari', require: 'kaminari/sinatra'
 gem 'padrino-helpers'
 gem 'active_model_serializers'
 gem 'httparty'
+gem 'paranoia'
 
 # auth
 gem 'omniauth'
