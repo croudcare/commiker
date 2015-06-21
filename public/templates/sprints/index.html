@@ -26,32 +26,35 @@
     </p>
   </div>
 
-  <h3>previous sprints</h3>
-  <div
-    ui-sref="sprints-show({id: prevSprint.id })"
-    ng-repeat="prevSprint in sprintsIndexCtrl.previousSprints"
-    class="list-group-item"
-    style="padding: 10px; cursor: pointer; background: #eee; margin-bottom: 10px;">
-    <h4 class="list-group-item-heading">
-      {{ prevSprint.started_at | dateformat: 'D MMM' }}</span> - </span>{{ prevSprint.ended_at | dateformat: 'D MMM' }}
-    </h4>
-    <p class="list-group-item-text">
-      <span>finished</span>
-      <b>{{prevSprint.completionPercentage()}}%</b>
+  <div style="width: 86%; padding: auto; margin: auto">
+    <h3 style="text-align: left; font-weight: bold">Previous sprints</h3>
+    <br />  
+    <div
+      ui-sref="sprints-show({id: prevSprint.id })"
+      ng-repeat="prevSprint in sprintsIndexCtrl.previousSprints"
+      class="list-group-item"
+      style="cursor: pointer; border-bottom: 1px solid #eee; margin-bottom: 10px;">
+      <h4 class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 20px;">
+        {{ prevSprint.started_at | dateformat: 'D MMM' }}</span> - </span>{{ prevSprint.ended_at | dateformat: 'D MMM' }}
+      </h4>
+      <p class="list-group-item-text" style="font-size: 16px">
+        <span>Finished at: </span>
+        <b>{{prevSprint.completionPercentage()}}%</b>
 
-      <div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{prevSprint.completionPercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{prevSprint.completionPercentage()}}%;">
-          <span class="sr-only">
-            {{prevSprint.completionPercentage()}}% Complete
-          </span>
+        <div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
+          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{prevSprint.completionPercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{prevSprint.completionPercentage()}}%;">
+            <span class="sr-only">
+              {{prevSprint.completionPercentage()}}% Complete
+            </span>
+          </div>
         </div>
-      </div>
-    </p>
-  </div>
+      </p>
+    </div>
+  </div>  
 </div>
 
-<button
-  class="btn btn-xs btn-primary"
+<a
+  class="btn loadmore"
   ng-if="sprintsIndexCtrl.moreToLoad"
-  ng-click="sprintsIndexCtrl.loadMoreSprints()">load more</button>
+  ng-click="sprintsIndexCtrl.loadMoreSprints()">Load more</a>
 

@@ -1,56 +1,128 @@
-<div class="container">
-  <div class="row">
+<div class="list-group" style="padding: 10px;">
+	<div style="width: 88%; padding: auto; margin: 5% auto">
+    <h3 style="text-align: left; font-weight: bold; font-size: 20px">
+    Create new sprint
+    </h3>
+    <br />
 
-	<form ng-submit="sprintsNewCtrl.createSprint()" style=" padding-left: 5.5%">
-	  <div class="form-group">
-
-
-		</div>
-
-		<div style="">Duration:</div>
-		<div class="btn-group" dropdown is-open="status.isopen">
-		  <button
-			type="button"
-			class="btn btn-primary dropdown-toggle"
-			dropdown-toggle
-			ng-disabled="disabled">
-			<span>from <b>{{sprintsNewCtrl.sprintAttributes.started_at | dateformat: 'DD-MM-YYYY' }}</b></span> to <span><b>{{sprintsNewCtrl.sprintAttributes.ended_at | dateformat: 'DD-MM-YYYY'}}</b></span> <span class="caret"></span>
-		  </button>
-		  <div
-			class="dropdown-menu"
-			role="menu"
-			ng-click="$event.preventDefault();$event.stopPropagation()">
-			  <div
-				date-range
-				start="sprintsNewCtrl.sprintAttributes.started_at"
-				end="sprintsNewCtrl.sprintAttributes.ended_at"
-				style="position: relative; z-index:0">
-			  </div>
+    <form ng-submit="sprintsNewCtrl.createSprint()">
+    	<!--DATE PICKER-->
+    	<div class="txt_left" style="padding-bottom: 40px">
+    		<div class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 16px; padding-bottom: 10px">
+    			Duration: 
+  			</div>
+				<div class="btn-group" dropdown is-open="status.isopen">
+				  <button
+					type="button"
+					class="btn btn-primary dropdown-toggle drop-date"
+					dropdown-toggle
+					ng-disabled="disabled">
+						<span>
+							from <b>{{sprintsNewCtrl.sprintAttributes.started_at | dateformat: 'DD-MM-YYYY' }}</b></span> to <span><b>{{sprintsNewCtrl.sprintAttributes.ended_at | dateformat: 'DD-MM-YYYY'}}</b></span> 
+							<span class="caret"></span>		
+						</span>
+				  </button>				
+					<div
+					class="dropdown-menu"
+					role="menu"
+					ng-click="$event.preventDefault();$event.stopPropagation()">
+					  <div
+						date-range
+						start="sprintsNewCtrl.sprintAttributes.started_at"
+						end="sprintsNewCtrl.sprintAttributes.ended_at"
+						style="position: relative; z-index:0">
+					  </div>
+				  </div>
+				</div>
 		  </div>
-		</div>
 
-	  <div class="form-group">
-		<label>Participants</label>
-		<div
-		  ng-include="'/templates/users/show/avatar.html'"
-		  ng-repeat="user in sprintsNewCtrl.users">
-		</div>
-	  </div>
+		  <!--PARTICIPANTS-->
+    	<div class="txt_left" style="padding-bottom: 30px;">
+    		<div class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 16px; padding-bottom: 10px">
+    			Participants: 
+  			</div>
+				<div
+					ng-include="'/templates/users/show/avatar.html'"
+				  ng-repeat="user in sprintsNewCtrl.users"
+				  style="border: none;">
+				</div>
+		  </div>
 
-	  <div class="form-group">
-		<label>Observations</label>
-		<textarea type="obs" ng-model="sprintsNewCtrl.sprintAttributes.obs" class="form-control"></textarea>
-	  </div>
+		  <!--OBSERVATIONS-->
+    	<div class="txt_left" style="padding-bottom: 40px">
+    		<div class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 16px; padding-bottom: 10px">
+    			Observations: 
+  			</div>
+				<div>
+					<textarea type="obs" ng-model="sprintsNewCtrl.sprintAttributes.obs" class="form-control" style="width: 60%"></textarea>
+				</div>
+		  </div>
 
-	  <div class="form-group">
-		<label>
-		  <input type="checkbox" ng-model="sprintsNewCtrl.sprintAttributes.start_bot">
-		  Start BOT
-		</label>
-	  </div>
+		  <!--START BOT-->
+    	<div class="txt_left">
+				<label>
+				  <input type="checkbox" ng-model="sprintsNewCtrl.sprintAttributes.start_bot">
+				  Start BOT
+				</label>
+		  </div>
 
-	  <button type="submit" class="btn btn-default">Submit</button>
-	</form>
-  </div>
-
+		  <!--SUBMIT-->
+    	<div style="text-align: right; padding-right: 25px;">
+		  	<button type="submit" class="btn btn-default" style="background-color: #4C91E4; border:none; color: white; font-size: 16px">
+		  		<b>Submit</b>
+		  	</button>
+		  </div>		  
+    </form> 
+  </div> 
 </div>
+<!-- <div class="container">
+  <div class="row">
+		<form ng-submit="sprintsNewCtrl.createSprint()" style=" padding-left: 5.5%">
+		  <div class="form-group">
+				<div style="">Duration:</div>
+				<div class="btn-group" dropdown is-open="status.isopen">
+				  <button
+					type="button"
+					class="btn btn-primary dropdown-toggle"
+					dropdown-toggle
+					ng-disabled="disabled">
+					<span>from <b>{{sprintsNewCtrl.sprintAttributes.started_at | dateformat: 'DD-MM-YYYY' }}</b></span> to <span><b>{{sprintsNewCtrl.sprintAttributes.ended_at | dateformat: 'DD-MM-YYYY'}}</b></span> <span class="caret"></span>
+				  </button>
+				  <div
+					class="dropdown-menu"
+					role="menu"
+					ng-click="$event.preventDefault();$event.stopPropagation()">
+					  <div
+						date-range
+						start="sprintsNewCtrl.sprintAttributes.started_at"
+						end="sprintsNewCtrl.sprintAttributes.ended_at"
+						style="position: relative; z-index:0">
+					  </div>
+				  </div>
+				</div>
+		  </div>
+
+		  <div class="form-group">
+				<label>Participants</label>
+				<div
+				  ng-include="'/templates/users/show/avatar.html'"
+				  ng-repeat="user in sprintsNewCtrl.users">
+				</div>
+		  </div>
+
+		  <div class="form-group">
+				<label>Observations</label>
+				<textarea type="obs" ng-model="sprintsNewCtrl.sprintAttributes.obs" class="form-control"></textarea>
+		  </div>
+
+		  <div class="form-group">
+				<label>
+				  <input type="checkbox" ng-model="sprintsNewCtrl.sprintAttributes.start_bot">
+				  Start BOT
+				</label>
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+  </div>
+</div>
+ -->
