@@ -85,7 +85,7 @@ a{
 }
 
 .card{
-	background-color: #F2F2F2;
+	backgƒnd-color: #F2F2F2;
 	border: 0px grey dashed;
 	margin-bottom: 10px;
 	padding: 1%;
@@ -339,6 +339,3 @@ a:hover {
 	font-size: 16px;
 }
 
-.poke a:hover{
-	color: red;
-}

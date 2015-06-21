@@ -12,9 +12,18 @@
 </div>
 
 <!--BODY-->
-<div class="modal-body" style="margin: auto; padding: auto">
+<div class="modal-body" style="margin: 0; padding: 0">
   <div ng-if="usersModalShowCtrl.user.stories.length == 0">
-    <h1 style="color: red">NO STORIES WERE GIVEN</h1>
+    <img src="http://media.giphy.com/media/haQ2DRRCtIvBu/giphy.gif" width="100%">
+
+    <div style="padding-top: 5%">
+      <h3>Definitely, this guy wants party.</h3>
+      <h3>He has no stories.</h3>
+    </div>
+    
+    <div style="padding: 5%">
+      <button class="btn" style="background-color: #4C91E4; color: white"><b>Set him to work</b></button>
+    </div>
   </div>
 
   <div ng-if="usersModalShowCtrl.user.stories.length > 0">

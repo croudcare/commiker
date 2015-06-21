@@ -1,15 +1,16 @@
 <% if current_session_user %>
   <div ui-view></div>
 <% else %>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<h1>We have a BOTE</h1>
-<img class="img-thumbnail" src="http://www.netanimations.net/fatcat-Q.gif" />
-<h4>But you have to login first</h4>
+<div style="position: relative">
+	<img src="http://www.netanimations.net/fatcat-Q.gif" width="100%" />
+</div>
+<div style="position: absolute; top: 200px; width: 100%; text-align: center; color: white; ">
+	<h1 style="color: white; font-weight: bold; font-size: 50px">We have a BOTE</h1>
+	<br />
+	<h4>...but you have to login first.</h4>
+	<br />
+	<br />
+	<br />
+	<button class="btn" style="font-size: 18px; color: black; background-color: white"><b>Login</b></button>
+</div>
 <% end %>
