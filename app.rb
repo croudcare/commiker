@@ -11,7 +11,7 @@ module Commiker
     register Commiker::Sinatra::ErrorHandling
     register ::Sinatra::ActiveRecordExtension
 
-    set :environments, %w{development staging production}
+    set :environments, %w{development production}
 
     set :root,                    File.dirname(__FILE__)
     set :views,                   Proc.new { File.join(root, 'app/web/views') }
@@ -30,7 +30,7 @@ module Commiker
       use ::BetterErrors::Middleware
     end
 
-    configure :staging, :production do
+    configure :production do
       set :raise_errors, true
       set :show_exceptions, false
       set :dump_errors, false
