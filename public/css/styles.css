@@ -178,10 +178,6 @@ float: right;
 	width: 200px;
 }
 
-.fl_left{
-	float: left;
-	height: 30px;
-}
 .left {
 	float: left;
 }
@@ -301,7 +297,9 @@ a:hover {
 .center {
 	text-align: center;
 }
-
+.txt_left{
+	text-align: left;
+}
 
 .log_in_txt:hover{
 	color: white;
@@ -337,5 +335,29 @@ a:hover {
 }
 .modal-story{
 	font-size: 16px;
+}
+
+.loadmore{
+	border: 1px solid #D8D8D8;
+	background-color: white;
+}
+a.loadmore:hover{
+	background-color: #4C91E4;
+	color: white;
+	border: none;
+}
+
+.drop-date{
+	background-color: white;
+	border: 1px solid #EFEFEF;
+	color: #2F323A;
+}
+
+
+/*DROPDOWN*/
+.drop-date:hover{
+	background-color: white;
+	border: 1px solid #EFEFEF;
+	color: #2F323A;
 }
 

@@ -1,13 +1,12 @@
 <div id="navig" class="side_space" ng-if="sprint">
   <div class="sprint_id">
       <span class="default_text">Sprint</span>
-
       <div class="date_nav">
         <h2>
           <!-- <div class="fl_left">
             <img class="arrow-prev" src="/img/arrow_prev.svg">
           </div> -->
-          <div class="fl_left">jhwuwheeh
+          <div class="left" style="height: 30px;">
             <span>{{ sprint.started_at | dateformat: 'D MMM' }}</span> - <span>{{ sprint.ended_at | dateformat: 'D MMM' }}</span>
           </div>
           <!-- <div class="fl_left">
@@ -24,6 +23,7 @@
             <h2>No Active Sprint.</h2>
           </div>
       </div>
+
       <div ng-if="sprint">
         <div class="default_text">{{ sprint.active ? 'Sprint progress' : 'Finished'}}</div>
         <div style="text-align:right">
