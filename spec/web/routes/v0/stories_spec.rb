@@ -5,7 +5,84 @@ describe '/api/v0/stories' do
   context 'with an authorized user_id #1' do
 
     before(:each) do
-      @user = create :omagad_user
+      @user = create :auth_user
+    end
+
+    context 'posts /api/v0/stories' do
+
+      before(:each) do
+        @sprint = create :sprint
+        @sprint.update_column(:active, true)
+
+        post('/api/v0/stories/bulk_create', {
+          sprint_id: @sprint.id,
+          user_slack_uid: @user.slack_uid,
+          pivotal_ids: ['94839248']
+        }, session_headers)
+
+        @stories = last_response_json['created_stories']
+      end
+
+      def make_the_call(params = {}, headers = {})
+        headers.merge!(session_headers)
+
+        post "/api/v0/stories", params, headers
+      end
+
+      it 'should return missing params 1' do
+        make_the_call
+
+        expect_bad_request_response
+      end
+
+      it 'should return missing params 2' do
+        make_the_call \
+          story: {
+            sprint_id: @sprint.id,
+            user_id: @user.id
+          }
+
+        expect_bad_request_response
+      end
+
+      it 'should return invalid sprint, not active' do
+        make_the_call \
+          story: {
+            sprint_id: 23,
+            pivotal_id: 123,
+            description: "asd"
+          }
+          # user_id: @user.id, goes in auth token
+
+        expect_unprocessable_response
+        expect(last_response_json['errors']['unprocessable_entity'][0]).to \
+          eq('could not find an active sprint with the give sprint_id')
+      end
+
+      it 'should create a story' do
+        make_the_call \
+          story: {
+            sprint_id: @sprint.id,
+            pivotal_id: 123,
+            description: "123description"
+          }
+
+        expect_created_response
+      end
+
+      it 'should create a story' do
+        make_the_call \
+          story: {
+            sprint_id: @sprint.id,
+            pivotal_id: "sasdasdads",
+            description: "123description"
+          }
+
+        expect(last_response_json['errors']['unprocessable_entity'][0]).to \
+          eq('invalid pivotal id, needs to be a number')
+        expect_unprocessable_response
+      end
+
     end
 
     context 'delete /api/v0/stories/:id' do

@@ -1,5 +1,14 @@
 FactoryGirl.define do
 
+  factory :auth_user, class: Commiker::V0::User do
+    avatar_url 'http://avatar.url'
+    email 'auth_user@example.com'
+    name 'auth_user'
+    slack_uid 'auth_user_uid'
+    slack_handler 'auth_user_handler'
+    registration_complete true
+  end
+
   factory :omagad_user, class: Commiker::V0::User do
     avatar_url 'http://avatar.url'
     email 'omagad@example.com'

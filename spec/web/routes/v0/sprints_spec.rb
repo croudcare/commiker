@@ -5,7 +5,7 @@ describe '/api/v0/sprints' do
   context 'with an authorized user_id #1' do
 
     before(:each) do
-      @user = create :omagad_user
+      @user = create :auth_user
     end
 
     context 'get /api/v0/sprints/active' do
