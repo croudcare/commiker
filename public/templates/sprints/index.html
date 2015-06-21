@@ -16,12 +16,9 @@
       <span>in progress</span>
       <b>{{sprintsIndexCtrl.latestSprint.completionPercentage()}}%</b>
 
-      <div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{sprintsIndexCtrl.latestSprint.completionPercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{sprintsIndexCtrl.latestSprint.completionPercentage()}}%;">
-          <span class="sr-only">
-            {{sprintsIndexCtrl.latestSprint.completionPercentage()}}% Complete
-          </span>
-        </div>
+      <div
+        onload="value = sprintsIndexCtrl.latestSprint.completionPercentage()"
+        ng-include="'/templates/shared/progress_bar.html'">
       </div>
     </p>
   </div>
@@ -43,12 +40,9 @@
         <span>Finished at: </span>
         <b>{{prevSprint.completionPercentage()}}%</b>
 
-        <div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
-          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{prevSprint.completionPercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{prevSprint.completionPercentage()}}%;">
-            <span class="sr-only">
-              {{prevSprint.completionPercentage()}}% Complete
-            </span>
-          </div>
+        <div
+          onload="value = prevSprint.completionPercentage()"
+          ng-include="'/templates/shared/progress_bar.html'">
         </div>
       </p>
     </div>

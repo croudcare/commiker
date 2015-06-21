@@ -10,11 +10,11 @@
         <img class="img-circle" ng-src="{{user.avatar_72_url}}" alt="...">
         <div class="caption">
           <h4>{{user.completionPerc()}}%</h4>
-          <div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
-            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{user.completionPerc()}}%;">
-              <span class="sr-only">{{user.completionPerc()}}% Complete
-              </span>
-            </div>
+
+          <div
+            style="background-color: green"
+            onload="value = user.completionPerc()"
+            ng-include="'/templates/shared/progress_bar.html'">
           </div>
         </div>
         <p>{{user.completedStories()}}/{{user.totalStories()}} completed stories</p>
