@@ -6,7 +6,7 @@ module Commiker
   class Web < ::Sinatra::Base
 
     set(:auth) do |*roles|
-      # condition { authorize } if roles.include? :user
+      condition { authorize } if roles.include? :user
     end
 
   end

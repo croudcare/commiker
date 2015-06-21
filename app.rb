@@ -20,7 +20,7 @@ module Commiker
 
     enable :logging, :partial_underscores
 
-    use Rack::Parser, :content_types => {
+    use Rack::Parser, content_types: {
       'application/json' => Proc.new { |body| ::MultiJson.decode body },
       'application/json;charset=UTF-8' => Proc.new { |body| ::MultiJson.decode body }
     }
@@ -34,10 +34,6 @@ module Commiker
       set :raise_errors, true
       set :show_exceptions, false
       set :dump_errors, false
-
-      use Rack::Auth::Basic, 'What\'s the password?' do |username, password|
-        username == Configs['BASIC_USER'] && password == Configs['BASIC_PASS']
-      end
 
       file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
       file.sync = true
