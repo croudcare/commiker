@@ -20,10 +20,10 @@ module Commiker
 
     enable :logging, :partial_underscores
 
-    # use Rack::Parser, :content_types => {
-    #   'application/json' => Proc.new { |body| ::MultiJson.decode body },
-    #   'application/json;charset=UTF-8' => Proc.new { |body| ::MultiJson.decode body }
-    # }
+    use Rack::Parser, :content_types => {
+      'application/json' => Proc.new { |body| ::MultiJson.decode body },
+      'application/json;charset=UTF-8' => Proc.new { |body| ::MultiJson.decode body }
+    }
 
     configure :development do
       enable :dump_errors, :raise_errors
