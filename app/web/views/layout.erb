@@ -2,7 +2,6 @@
 <html ng-app="commikerApp">
   <head>
     <title>Commiker</title>
-
     <meta name="viewport" content="width=device-width">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
     <link href="/css/site.css" rel="stylesheet" type="text/css" >
@@ -13,47 +12,44 @@
   </head>
   <body>
 
-
-
-    <base href="/">
+  <base href="/">
     <!-- <br /> -->
-
     <div id="container">
       <div id="header">
-
         <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-            <div id="navbar" class="navbar-collapse collapse">
-              <div class="navbar-header" style="padding-left: 5.5%">
-                <a class="navbar-brand" ui-sref="home">Commiker</a>
-              </div>
-              <ul class="nav navbar-nav">
-                <li>
-                  <a ui-sref="sprints">Sprints</a>
-                </li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
-                <li>
-                  <% if current_session_user.blank? %>
-                    <a class="log_in_txt" href='/login' target="_self"><span style="padding-right: 10px">Log in with slack</span> <img class="log_in_img" src="/img/slack.png" width="15px;"></a>
-                  <% end %>
+          <div id="navbar" class="navbar-collapse collapse">
+            <div class="navbar-header" style="padding-left: 5.5%">
+              <a class="navbar-brand" ui-sref="home">Commiker</a>
+            </div>
+            <div class="nav navbar-nav navbar-right" style="padding-right: 7%">
+              <% if current_session_user.blank? %>
+                <a
+                class="log_in_txt"
+                href='/login'
+                target="_self">
+                  <span style="padding-right: 10px">
+                    Log in with slack
+                  </span>
+                  <img class="log_in_img" src="/img/slack.png" width="15px;">
+                </a>
+              <% end %>
 
-                  <% if !current_session_user.blank? %>
-
-                    <a lass="log_in_txt" href='/logout' target="_self"><%= current_session_user.slack_handler %>&nbsp;&nbsp;<img class="log_in_img" src="/img/logout.svg" width="13px"></a>
-                  <% end %>
-                </li>
-              </ul>
-            </div><!--navbar-->
-          </div><!--container-->
+              <% if !current_session_user.blank? %>
+                <a lass="log_in_txt" href='/logout' target="_self"><%= current_session_user.slack_handler %>
+                  &nbsp;&nbsp;
+                  <img class="log_in_img" src="/img/logout.svg" width="13px">
+                </a>
+              <% end %>
+            </div>
+          </div>  
         </nav>
+      </div>
 
-        <div id="top"></div>
-
-      </div><!--CONTAINER-->
-
+      <div id="top"></div>
+      
       <%= yield %>
-    </div>
+    
+    </div><!--CONTAINER-->
     <%= partial :'/shared/footer_scripts' %>
   </body>
 </html>

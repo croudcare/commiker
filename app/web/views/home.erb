@@ -1,3 +1,4 @@
+<!--HOMEPAGE WITHOUT LOGIN-->
 <% if current_session_user %>
   <div ui-view></div>
 <% else %>
@@ -11,6 +12,16 @@
 	<br />
 	<br />
 	<br />
-	<button class="btn" style="font-size: 18px; color: black; background-color: white"><b>Login</b></button>
+	<button
+		class="btn"
+		href='/login'
+		target="_self"
+		style="font-size: 16px; color: black; background-color: white">
+		<b><span style="padding-right: 10px">
+			Log in with slack
+			</span>
+			<img class="log_in_img" src="/img/slack.png" width="20px" style="opacity: 1;">
+		</b>
+	</button>
 </div>
 <% end %>

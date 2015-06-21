@@ -207,7 +207,7 @@ DEPENDENCIES
   omniauth-slack
   padrino-helpers
   paranoia
-  pg (~> 0.17.1)
+  pg
   pry
   rack-jwt-auth (= 1.0.3)
   rack-parser
