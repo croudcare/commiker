@@ -27,11 +27,13 @@
               <div class="navbar-header" style="padding-left: 5.5%">
                 <a class="navbar-brand" ui-sref="home">Commiker</a>
               </div>
+              <% if !current_session_user.blank? %>
               <ul class="nav navbar-nav">
                 <li>
                   <a ui-sref="sprints">Sprints</a>
                 </li>
               </ul>
+              <% end %>
               <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
                 <li>
                   <% if current_session_user.blank? %>

@@ -26,9 +26,11 @@
     </p>
   </div>
 
-  <div style="width: 86%; padding: auto; margin: auto">
+  <div
+    ng-if="sprintsIndexCtrl.previousSprints.length > 0"
+    style="width: 86%; padding: auto; margin: auto">
     <h3 style="text-align: left; font-weight: bold">Previous sprints</h3>
-    <br />  
+    <br />
     <div
       ui-sref="sprints-show({id: prevSprint.id })"
       ng-repeat="prevSprint in sprintsIndexCtrl.previousSprints"
@@ -50,7 +52,7 @@
         </div>
       </p>
     </div>
-  </div>  
+  </div>
 </div>
 
 <a

@@ -13,6 +13,8 @@
   function SprintsShowController($scope, $state, SprintSmooth, UsersShowUseCase) {
     var self = this;
 
+    var id = $state.params.id;
+
     self.listView = false;
     self.showUser = showUser;
     self.setListView = setListView;
