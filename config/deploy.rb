@@ -5,7 +5,7 @@ require 'rvm/capistrano'
 set :stages, %w(production staging)
 
 set :deploy_location do
-  deploy_to = Capistrano::CLI.ui.ask 'Deploy to (p)roduction or (s)taging [s]: '
+  deploy_to = Capistrano::CLI.ui.ask 'Deploy to (p)roduction:'
   case deploy_to.split.first
     when 'p' then :production
     else :staging

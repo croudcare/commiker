@@ -25,6 +25,7 @@ module Commiker
       'application/json;charset=UTF-8' => Proc.new { |body| ::MultiJson.decode body }
     }
 
+
     configure :development do
       enable :dump_errors, :raise_errors
       use ::BetterErrors::Middleware
@@ -34,6 +35,10 @@ module Commiker
       set :raise_errors, true
       set :show_exceptions, false
       set :dump_errors, false
+
+      use Rack::Auth::Basic, 'What\'s the password?' do |username, password|
+        username == Configs['BASIC_USER'] && password == Configs['BASIC_PASS']
+      end
 
       file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
       file.sync = true
