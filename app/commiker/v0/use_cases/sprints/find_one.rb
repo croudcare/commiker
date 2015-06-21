@@ -9,7 +9,8 @@ module Commiker
                          :id
 
           def perform
-            context.sprint = Sprint.find (sprint_id || id).to_i
+            context.sprint = \
+              Sprint.find((sprint_id || id).to_i)
           end
 
         end

@@ -5,8 +5,6 @@ module Commiker
 
       self.abstract_class = true
 
-      default_scope { order('created_at DESC') }
-
       def methods_to_hash(*args)
         {}.tap do |h|
           args.each do |key|

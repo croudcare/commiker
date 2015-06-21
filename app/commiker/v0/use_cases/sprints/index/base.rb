@@ -11,7 +11,8 @@ module Commiker
             def perform
               context.sprints = \
                 Sprint
-                  .order('ended_at DESC')
+                  .eager_load(:stories, :users)
+                  .order('sprints.ended_at DESC')
                   .page(ctx.page)
                   .per(ctx.per_page)
             end

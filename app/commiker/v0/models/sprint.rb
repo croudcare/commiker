@@ -5,6 +5,8 @@ module Commiker
 
       acts_as_paranoid
 
+      default_scope { order('sprints.created_at DESC') }
+
       belongs_to :starter, primary_key: 'starter_id'
       has_many :stories
 
