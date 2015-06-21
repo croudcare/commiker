@@ -20,7 +20,7 @@
       <h3>Definitely, this guy wants party.</h3>
       <h3>He has no stories.</h3>
     </div>
-    
+
     <div style="padding: 5%">
       <button class="btn" style="background-color: #4C91E4; color: white"><b>Set him to work</b></button>
     </div>
@@ -68,10 +68,10 @@
     <div class="" style="text-align: center">
       <span style="margin-bottom: 10px">Commitment progress: <h4>{{usersModalShowCtrl.user.completionPerc()}}%</h4><span>
       <p></p>
-      <div class="raquel progress" style="width: 50%; height: 10px; margin: auto; padding: auto">
-          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{usersModalShowCtrl.user.completionPerc()}}" aria-valuemin="0" aria-valuemax="100" style="width:{{usersModalShowCtrl.user.completionPerc()}}%;">
-              <span class="sr-only">{{usersModalShowCtrl.user.completionPerc()}}% Complete</span>
-          </div>
+
+      <div
+        onload="value = usersModalShowCtrl.user.completionPerc()"
+        ng-include="'/templates/shared/progress_bar.html'">
       </div>
     </div>
 

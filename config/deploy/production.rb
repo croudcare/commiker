@@ -2,9 +2,9 @@ puts "\e[0;35m =======================================================\e[0m\n"
 puts "\e[0;35m              DEPLOYING TO PRODUCTION\e[0m\n"
 puts "\e[0;35m =======================================================\e[0m\n"
 
-set :rails_env, "production"
+set :rails_env, 'production'
 set :domain, 'commiker.pearlgems.io'
-set :runner, 'root'
+set :runner, 'rails'
 
 server domain, :app, :web
 

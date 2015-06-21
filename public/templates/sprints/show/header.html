@@ -32,10 +32,10 @@
               <h1>{{sprint.completionPercentage()}}%</h1>
             </div>
           <div class="date_nav prog">
-            <div class="progress team">
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{sprint.completionPercentage()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{sprint.completionPercentage()}}%;">
-                <span class="sr-only">{{sprint.completionPercentage()}}% Complete</span>
-              </div>
+            <div
+              style="background-color: red"
+              onload="value = sprint.completionPercentage()"
+              ng-include="'/templates/shared/progress_bar.html'">
             </div>
           </div>
           </h2>

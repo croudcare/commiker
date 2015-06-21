@@ -2,8 +2,8 @@ module Commiker
 
   class Web < ::Sinatra::Base
 
-    get '/api/ping', auth: :user do
-      authorize
+    get '/ping' do
+      json true
     end
 
     post '/api/v0/stories/bulk_create', auth: :user do
