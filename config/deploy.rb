@@ -13,7 +13,7 @@ set :deploy_location do
 end
 
 set :rvm_type, :system
-set :rvm_ruby_string, '2.1.5' #works
+set :rvm_ruby_string, '2.1.5'
 
 set :default_stage, deploy_location
 set :keep_releases, 4
