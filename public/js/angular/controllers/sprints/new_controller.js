@@ -34,7 +34,9 @@
           return user.less();
       });
 
-      self.sprintAttributes.users = users;
+      self.sprintAttributes.users = _.select(users, function(user) {
+        return user != null;
+      });
 
       SprintSmooth.create('', self.sprintAttributes)
         .success(onSuccess)
