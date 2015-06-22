@@ -152,11 +152,11 @@ a{
 }
 .progress-big .progress{
 	box-shadow: none;
-	background-color: #CCCCCC;
-	width: 50%;
+	background-color: white;
+	width: 70%;
 	height: 10px;
 	margin: 0;
-	padding: 0; 
+	padding: 0;
 }
 
 
