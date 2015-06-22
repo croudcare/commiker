@@ -39,6 +39,113 @@ a{
 	color: #464B57;	
 }
 
+.container{
+	width: 100%;
+	/*text-align: center;*/
+}
+
+.contain{
+	width: 90%;
+	padding: 0 auto;
+	margin: 0 auto;
+}
+
+.red{
+	background-color: red;
+}
+
+.blue{
+	background-color: #4C91E4;
+}
+
+.white{
+	background-color: white;
+}
+
+.tab-active a{
+	background-color: #4C91E4;
+	color: white;
+	font-weight: bold;
+}
+
+.tab-active a :hover{
+	background-color: #4380C9;
+	color: white;
+}
+
+.tab-inactive{
+	color: white;
+}
+#sprint-selected {
+	height: 70px;
+	padding-top: 10px;
+}
+
+.txt_left{
+	text-align: left;
+}
+
+.title-sprint{
+	font-size: 20px;
+	font-weight: bolder;
+	color: white;
+}
+
+.bar-mini{
+	width: 70%;
+	height: 10px;
+	margin: auto;
+	padding: auto;
+}
+.card{
+	background-color: #E2E2E2;
+	border: 0px grey dashed;
+	margin-bottom: 10px;
+	padding: 1%;
+	border-radius: 4px;
+}
+
+
+.thumbnail{
+	background-color: #F2F2F2;
+	height: 240px;
+	border: none;
+}
+.thumbnail:hover{
+	background-color: #EFEFEF;
+	border: 3px solid #4C91E4;
+	cursor: pointer;
+}
+
+.no-stories{
+	border: dashed 1px #E2E2E2;
+	background-color: white;
+}
+
+
+/*LIST*/
+/*USER NO STORIES*/
+.alert-warning{
+	border: dashed 1px #E2E2E2;
+	background-color: white;
+	border-radius: 4px;
+	padding-bottom: 50px;
+}
+
+/*//////////////////*/
+
+.lists-style{
+	list-style: none;
+}
+
+
+
+
+
+
+
+
+
 .username_txt{
 	font-weight: 600;
 	font-size: 24px;
@@ -84,23 +191,14 @@ a{
   	border: 5px solid blue;
 }
 
-.card{
-	backgƒnd-color: #F2F2F2;
-	border: 0px grey dashed;
-	margin-bottom: 10px;
-	padding: 1%;
-	border-radius: 4px;
-}
+
 .row{
 	margin-bottom: 20px;
 }
 
 .member_item{
 }
-.thumbnail{
-	background-color: #F2F2F2;
-	border: none;
-}
+
 .jumbotron {
 	background-color: #F2F2F2;
 	}
@@ -117,26 +215,15 @@ a{
 #other {
 	background-color: cyan;
 }
-/*HEADER STYLES*/
-.container{
-	width: 100%;
-	/*text-align: center;*/
-}
+
 
 .side_space{
 	padding-left: 5%;
 	padding-right: 5%;
 }
 
-#header {
-	width: 100%;
-}
 
-#navig {
-height: 165px;
-width: 100%;
-background-color: #EFEFEF;
-}
+
 
 .sprint_id{
 width: 50%;
@@ -162,12 +249,7 @@ float: right;
 	height: 50px;
 }
 
-.arrow-prev{
-	padding: 0 3% 0 0;
-}
-.arrow-next {
-	margin: 0 0 0 3%;
-}
+
 
 .date_nav{
 	height: 30px;
@@ -210,10 +292,7 @@ float: right;
 
 
 
-.card{
-	box-shadow: none;
-	background-color: #E2E2E2;
-}
+
 
 
 
@@ -276,10 +355,7 @@ a:hover {
 	padding-bottom: 20px;
 }
 
-.thumbnail:hover{
-	background-color: #E2E2E2;
-	cursor: pointer;
-}
+
 
 .close{
 	opacity: 0.5;
@@ -297,9 +373,7 @@ a:hover {
 .center {
 	text-align: center;
 }
-.txt_left{
-	text-align: left;
-}
+
 
 .log_in_txt:hover{
 	color: white;

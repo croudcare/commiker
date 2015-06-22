@@ -17,18 +17,17 @@
     <div id="container">
       <div id="header">
         <nav class="navbar navbar-inverse navbar-fixed-top">
-
-          <div id="navbar" class="navbar-collapse collapse">
-            <div class="navbar-header" style="padding-left: 5.5%">
+          <div id="navbar" class="navbar-collapse collapse contain">
+            <div class="navbar-header">
               <a class="navbar-brand" ui-sref="home">Commiker</a>
             </div>
-            <div class="nav navbar-nav navbar-right" style="padding-right: 7%">
+            <div class="nav navbar-nav navbar-right" style="padding: 13px 40px 0 0">
               <% if current_session_user.blank? %>
                 <a
                 class="log_in_txt"
                 href='/login'
                 target="_self">
-                  <span style="padding-right: 10px">
+                  <span>
                     Log in with slack
                   </span>
                   <img class="log_in_img" src="/img/slack.png" width="15px;">
@@ -36,7 +35,7 @@
               <% end %>
 
               <% if !current_session_user.blank? %>
-                <a lass="log_in_txt" href='/logout' target="_self"><%= current_session_user.slack_handler %>
+                <a class="log_in_txt" href='/logout' target="_self" style="padding-right: 10px"><%= current_session_user.slack_handler %>
                   &nbsp;&nbsp;
                   <img class="log_in_img" src="/img/logout.svg" width="13px">
                 </a>

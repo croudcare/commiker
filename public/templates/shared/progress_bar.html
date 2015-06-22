@@ -1,4 +1,4 @@
-<div class="progress" style="width: 70%; height: 10px; margin: auto; padding: auto">
+<div class="progress bar-mini">
   <div class="progress-bar progress-bar-{{(value <= 35) ? 'danger' : ((value > 35 && value < 75) ? 'warning' : 'success')}}" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="0" aria-valuemax="100" style="width: {{value}}%;">
     <span class="sr-only">
       {{value}}% Complete

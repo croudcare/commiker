@@ -2,7 +2,6 @@
 <div class="container side_space" style="text-align: center">
   <div class="row" style="width: 100%">
     <div ng-click="sprintsShowCtrl.showUser(user)" class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
-
       <div class="thumbnail">
         <div class="caption">
           <h3>{{user.slack_handler}}</h3>
@@ -10,29 +9,25 @@
         <img class="img-circle" ng-src="{{user.avatar_72_url}}" alt="...">
         <div class="caption">
           <h4>{{user.completionPerc()}}%</h4>
-
           <div
-            style="background-color: green"
             onload="value = user.completionPerc()"
             ng-include="'/templates/shared/progress_bar.html'">
           </div>
         </div>
         <p>{{user.completedStories()}}/{{user.totalStories()}} completed stories</p>
       </div>
-</div>
-<div ng-click="sprintsShowCtrl.showUser(user)" class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
-      <!---->
-      <div class="thumbnail">
+    </div>
+
+    <div ng-click="sprintsShowCtrl.showUser(user)" class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
+      <div class="thumbnail no-stories">
         <div class="caption">
-          <h3>césarferreira</h3>
+          <h3>{{user.slack_handler}}</h3>
         </div>
-        <!-- <img class="img-circle" src="{{user.avatar_72_url}}" alt="..."> -->
-        <img src="http://media.giphy.com/media/haQ2DRRCtIvBu/giphy.gif">
-        <div class="caption">
-          It seems someone doesn't want to work. <a class="poke" href="">Set him </a> to work right now.
-        </div>
+        <img class="img-circle" ng-src="{{user.avatar_72_url}}" alt="...">
+        <br /><br />
+        <h4>This user doesn't have stories.</h4>    
       </div>
     </div>
-  </div><!--Items-->
+  </div>
 </div><!--CONTAINER-->
 
