@@ -3,8 +3,11 @@
   <a ui-sref="sprints-new" class="btn btn-default"><b>Start sprint</b></a>
 </div>
 
-<div class="list-group" style="padding: 10px;">
-  <div
+
+
+<div class="contain" style="border-bottom: 1px solid #D8D8D8">
+  <div class="list-group" style="padding:  10px; width:">
+  <!-- <div
     ui-sref="sprints-show({id: sprintsIndexCtrl.latestSprint.id })"
     ng-if="sprintsIndexCtrl.latestSprint"
     class="list-group-item active"
@@ -15,14 +18,53 @@
     <p class="list-group-item-text">
       <span>in progress</span>
       <b>{{sprintsIndexCtrl.latestSprint.completionPercentage()}}%</b>
-
       <div
         onload="value = sprintsIndexCtrl.latestSprint.completionPercentage()"
         ng-include="'/templates/shared/progress_bar.html'">
       </div>
     </p>
-  </div>
+  </div> -->
+  <div
+    ng-if="sprintsIndexCtrl.previousSprints.length > 0"
+    style="width:100%; padding: auto; margin: auto; padding-left:8px">
+    
+    <h3 style="text-align: left; font-weight: bold">
+    Current sprint 
+    ({{ sprintsIndexCtrl.latestSprint.started_at | dateformat: 'D MMM' }}</span> - </span>{{ sprintsIndexCtrl.latestSprint.ended_at | dateformat: 'D MMM' }})
+    </h3>
+    <br />
+    <div
+      ui-sref="sprints-show({id: sprintsIndexCtrl.latestSprint.id })"
+      ng-if="sprintsIndexCtrl.latestSprint"
+      class="list-group-item"
+      style="padding: 10px; cursor: pointer">
+      <!-- <h4 class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 20px;">
+        {{ sprintsIndexCtrl.latestSprint.started_at | dateformat: 'D MMM' }}</span> - </span>{{ sprintsIndexCtrl.latestSprint.ended_at | dateformat: 'D MMM' }}
+      </h4> -->
+      <p class="list-group-item-text" style="font-size: 16px; padding-bottom: 10px">
+        <span>
+          Progress:
+          <b>{{sprintsIndexCtrl.latestSprint.completionPercentage()}}%</b>
+        </span>
+      </p>
 
+      <span class="list-group-item-text" style="font-size: 16px">  
+
+        <div
+        class="progress-big"
+        onload="value = sprintsIndexCtrl.latestSprint.completionPercentage()"
+        ng-include="'/templates/shared/progress_bar.html'">
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+  <!--PREVIOUS OK-->
   <div
     ng-if="sprintsIndexCtrl.previousSprints.length > 0"
     style="width: 86%; padding: auto; margin: auto">

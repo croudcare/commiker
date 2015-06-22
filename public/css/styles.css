@@ -91,12 +91,7 @@ a{
 	color: white;
 }
 
-.bar-mini{
-	width: 70%;
-	height: 10px;
-	margin: auto;
-	padding: auto;
-}
+
 .card{
 	background-color: #E2E2E2;
 	border: 0px grey dashed;
@@ -138,9 +133,31 @@ a{
 	list-style: none;
 }
 
+.progress{
+	box-shadow: none;
+	background-color: white;
+}
 
+.progress-big {
+	width: 30%;
+	padding: 0;
+	margin: 0;
+}
 
-
+.bar-mini{
+	width: 70%;
+	height: 10px;
+	margin: auto;
+	padding: auto; 
+}
+.progress-big .progress{
+	box-shadow: none;
+	background-color: #CCCCCC;
+	width: 50%;
+	height: 10px;
+	margin: 0;
+	padding: 0; 
+}
 
 
 
@@ -285,10 +302,7 @@ float: right;
 	background-color: #E2E2E2;
 }
 
-.progress{
-	box-shadow: none;
-	background-color: white;
-}
+
 
 
 
