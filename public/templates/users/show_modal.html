@@ -43,7 +43,7 @@
             Check story in pivotal
             <img src="/img/pivotal.png" width="15px">
           </a>
-          <span style="cursor: pointer" ng-show="usersModalShowCtrl.editableSprint">
+          <span ng-if="story.user_id == apiClient.user_id" style="cursor: pointer" ng-show="usersModalShowCtrl.editableSprint">
             <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
             <span>Delete story</span>
             </a>

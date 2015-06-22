@@ -6,6 +6,7 @@ module Commiker
         class ShowLess < Base
 
           attributes :id,
+                     :user_id,
                      :pivotal_id,
                      :description,
                      :completion_percentage
