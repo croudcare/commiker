@@ -2,34 +2,17 @@
 <% if current_session_user %>
   <div ui-view></div>
 <% else %>
-<div style="position: relative">
-	<img src="http://www.netanimations.net/fatcat-Q.gif" width="100%" />
-</div>
-<div style="position: absolute; top: 200px; width: 100%; text-align: center; color: white; ">
-	<h1 style="color: white; font-weight: bold; font-size: 50px">We have a BOTE</h1>
-	<br />
-	<h4>...but you have to login first.</h4>
-	<br />
-	<br />
-	<br />
-
-
-		<!-- <b><span style="padding-right: 10px">
-			Log in with slack
-			</span>
-			<img class="log_in_img" src="/img/slack.png" width="20px" style="opacity: 1;">
-		</b> -->
-
-	</span>
-
-
-	<!-- <a
-    href='/login'
-    target="_self"
-	class="btn"
-	style="font-size: 18px; color: black; background-color: white">
-		<b>Login</b>
-	</a> -->
-
+<div style="position: relative; overflow-y: hidden; overflow-x: hidden;">
+  <div style="margin-top: -1px;">
+    <img src="/img/landing.png" width="1440" style="position:fixed; left: -10px; top: 39px; opacity: 0.8; -webkit-filter: blur(5px); -moz-filter: blur(5px); -o-filter: blur(5px); -ms-filter: blur(5px); filter: blur(5px);" />
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <h1>Login for full experience...</h1>
 </div>
 <% end %>
