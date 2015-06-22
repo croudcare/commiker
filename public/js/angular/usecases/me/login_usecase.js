@@ -21,7 +21,7 @@
         templateUrl: '/templates/me/login/modal.html',
         controller: 'MeLoginModalController',
         controllerAs: 'meLoginModalCtrl',
-        size: context.size
+        size: 'small'
       });
 
       /****************** PROTECTED ******************/

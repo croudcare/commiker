@@ -5,7 +5,7 @@
         <a ui-sref="sprints" class="tab-inactive">Previous Sprints</a>
       </li>
       <li class="tab-active">
-        <a href="">Current Sprint</a>
+        <a ui-sref="sprints-show({ id: 'active' })">Current Sprint</a>
       </li>
     </ul>
   </div>
@@ -15,9 +15,9 @@
   <div id="sprint-selected" class="contain" ng-if="sprint">
     <div class="txt_left left" style="width: 40%">
       <div class="txt_left left" style="height: 30px; padding: 3%; color: white">
-        From 
+        From
         <span class="title-sprint">{{ sprint.started_at | dateformat: 'D MMM' }}</span>
-        to 
+        to
         <span class="title-sprint">{{ sprint.ended_at | dateformat: 'D MMM' }} </span>
       </div>
 
@@ -38,7 +38,7 @@
         </div>
  -->        <!--PROGRESS BAR-->
       </div>
-    </div>  
+    </div>
   </div>
 </div>
 

@@ -1,3 +1,13 @@
+<div class="container" style="background-color: #222222;">
+  <div class="contain">
+    <ul class="nav navbar-nav">
+      <li>
+        <a ui-sref="sprints" class="tab-inactive">Previous Sprints</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <div class="list-group" style="padding: 10px;">
 	<div style="width: 88%; padding: auto; margin: 5% auto">
     <h3 style="text-align: left; font-weight: bold; font-size: 20px">
@@ -5,11 +15,11 @@
     </h3>
     <br />
 
-    <form ng-submit="sprintsNewCtrl.createSprint()">
+    <form ng-submrit="sprintsNewCtrl.createSprint()">
     	<!--DATE PICKER-->
     	<div class="txt_left" style="padding-bottom: 40px">
     		<div class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 16px; padding-bottom: 10px">
-    			Duration: 
+    			Duration:
   			</div>
 				<div class="btn-group" dropdown is-open="status.isopen">
 				  <button
@@ -18,10 +28,10 @@
 					dropdown-toggle
 					ng-disabled="disabled">
 						<span>
-							from <b>{{sprintsNewCtrl.sprintAttributes.started_at | dateformat: 'DD-MM-YYYY' }}</b></span> to <span><b>{{sprintsNewCtrl.sprintAttributes.ended_at | dateformat: 'DD-MM-YYYY'}}</b></span> 
-							<span class="caret"></span>		
+							from <b>{{sprintsNewCtrl.sprintAttributes.started_at | dateformat: 'DD-MM-YYYY' }}</b></span> to <span><b>{{sprintsNewCtrl.sprintAttributes.ended_at | dateformat: 'DD-MM-YYYY'}}</b></span>
+							<span class="caret"></span>
 						</span>
-				  </button>				
+				  </button>
 					<div
 					class="dropdown-menu"
 					role="menu"
@@ -39,7 +49,7 @@
 		  <!--PARTICIPANTS-->
     	<div class="txt_left" style="padding-bottom: 30px;">
     		<div class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 16px; padding-bottom: 10px">
-    			Participants: 
+    			Participants:
   			</div>
 				<div
 					ng-include="'/templates/users/show/avatar.html'"
@@ -51,7 +61,7 @@
 		  <!--OBSERVATIONS-->
     	<div class="txt_left" style="padding-bottom: 40px">
     		<div class="list-group-item-heading" style=" color: #4C91E4; font-weight: bold; font-size: 16px; padding-bottom: 10px">
-    			Observations: 
+    			Observations:
   			</div>
 				<div>
 					<textarea type="obs" ng-model="sprintsNewCtrl.sprintAttributes.obs" class="form-control" style="width: 60%"></textarea>
@@ -71,9 +81,9 @@
 		  	<button type="submit" class="btn btn-default" style="background-color: #4C91E4; border:none; color: white; font-size: 16px">
 		  		<b>Submit</b>
 		  	</button>
-		  </div>		  
-    </form> 
-  </div> 
+		  </div>
+    </form>
+  </div>
 </div>
 <!-- <div class="container">
   <div class="row">

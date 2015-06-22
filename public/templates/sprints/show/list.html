@@ -8,7 +8,7 @@
         style="position: relative; padding: 10px 5px 10px 10px;"
         ng-class="{ 'alert-warning': (user.stories.length == 0) }"
         ng-repeat="user in sprint.users">
-        
+
         <div href="#" class="pull-left" style="padding-right: 20px;">
           <img alt="64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="{{user.avatar_72_url}}">
         </div>
@@ -23,7 +23,7 @@
           <span style="text-align: left">
             <p class="small sub_title">
             This user has no stories.
-            
+
           </span>
         </div>
         <!-- <div class="media-body" style="padding-top: 6% ">
@@ -56,7 +56,7 @@
         ng-class="{ 'alert-warning': (user.stories.length == 0) }"
         ng-repeat="user in sprint.users">
         -->
-        
+
         <div href="#" class="pull-left">
           <img alt="64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="{{user.avatar_72_url}}">
         </div>
@@ -64,13 +64,13 @@
           <div class="media-heading" style="text-align: left">
             <h3>
               <span class="username_txt" href="#">
-                {{user.slack_handler}} 
-                <span style="color: #4C91E4">100%</span>
+                {{user.slack_handler}}
+                <span style="color: #4C91E4">{{user.completionPerc()}}%</span>
               </span>
             </h3>
           </div>
           <span style="text-align: left">
-            
+
             <!--LISTA STORIES-->
             <ul class="list-group default_text">
               <li
@@ -79,7 +79,7 @@
                 ng-class="{ 'delivered': delivered, 'not-delivered': delivered }"
                 ng-repeat="story in user.stories"
                 style="padding-bottom: 20px">
-                
+
                 <div style="float:left; width: 90px; padding-left: 5px">
                   <span
                   ng-if="!sprint.active"
@@ -88,11 +88,11 @@
                 </div>
 
                 <div>
-                  <span style="font-size: 16px;">  
+                  <span style="font-size: 16px;">
                     {{story.description}}
                     <span style="font-weight: bold; color: #4C91E4">[{{story.completion_percentage}}%]</span>
                   </span>
-                </div>  
+                </div>
               </li>
 
               <li class="lists-style left">
