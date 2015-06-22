@@ -22,7 +22,7 @@ set :config_files, %w(config.yml database.yml)
 
 set :application, 'commiker'
 set :deploy_via, :remote_cache
-set :repository, 'git@github.com:joaquimadraz/commiker.git'
+set :repository, 'git@github.com:croudcare/commiker.git'
 
 default_run_options[:pty] = true
 set :use_sudo, false
