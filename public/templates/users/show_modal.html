@@ -21,8 +21,8 @@
       <h3>He has no stories.</h3>
     </div>
 
-    <div style="padding: 5%">
-      <button class="btn" style="background-color: #4C91E4; color: white"><b>Set him to work</b></button>
+    <div style="padding: 2%">
+      <!-- <button class="btn" style="background-color: #4C91E4; color: white"><b>Set him to work</b></button> -->
     </div>
   </div>
 
@@ -43,11 +43,11 @@
             Check story in pivotal
             <img src="/img/pivotal.png" width="15px">
           </a>
-          <span ng-show="usersModalShowCtrl.editableSprint">
+          <span style="cursor: pointer" ng-show="usersModalShowCtrl.editableSprint">
             <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
-            <span style="cursor: pointer">Delete story</span>
+            <span>Delete story</span>
             </a>
-            <img src="/img/delete.svg" width="13px">
+            <img src="/img/delete.png" width="13px">
           </span>
         </div>
 
