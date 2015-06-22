@@ -26,28 +26,20 @@
     </div>
   </div>
 
+
+
+  <!--IF USER HAS STORIES-->
   <div ng-if="usersModalShowCtrl.user.stories.length > 0">
-    <ul class="list-group default_text list_center" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%;">
-      <!--
-      IF story completed
-        /img/check_ok.svg
-        class = st_done
-        ELSE
-        /img/check_no.svg
-        class = st_working
-      -->
-      <li class="list-group-item" style="padding-left: 5%; padding-bottom: 15px" ;>
+    <ul class="list-group default_text list_center" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%; padding: 20px 0 20px 0">
+      <li class="list-group-item" style="padding-left: 5%; padding-bottom: 25px; margin-top: 30px">
         <div style="width: 100%;">
-          <div class="left" style="padding: 1%">
-            <img class="check" src="/img/check_ok.svg">
-          </div>
           <div class="modal-story">
             {{story.description}}
           </div>
         </div>
 
         <div class="left" style="padding-top: 2%; font-size: 12px">
-          <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank">
+          <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank" style="padding-right: 10px">
             Check story in pivotal
             <img src="/img/pivotal.png" width="15px">
           </a>
@@ -59,14 +51,18 @@
           </span>
         </div>
 
-        <div class="right">{{story.completion_percentage}}%</div>
+        <div class="right">
+          <h3 style="color: #4C91E4">
+          {{story.completion_percentage}}%
+          </h3>
+        </div>
       </li>
     </ul>
 
   <!--FOOTER-->
   <div class="modal-footer" style="padding-bottom: 20px">
     <div class="" style="text-align: center">
-      <span style="margin-bottom: 10px">Commitment progress: <h4>{{usersModalShowCtrl.user.completionPerc()}}%</h4><span>
+      <span style="margin-bottom: 10px">Commitment progress: <h3 style="color: #4C91E4">{{usersModalShowCtrl.user.completionPerc()}}%</h3><span>
       <p></p>
 
       <div

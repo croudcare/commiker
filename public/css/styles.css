@@ -374,6 +374,9 @@ a:hover {
 	text-align: center;
 }
 
+.log_in_txt{
+	color: #D8D8D8;
+}
 
 .log_in_txt:hover{
 	color: white;
