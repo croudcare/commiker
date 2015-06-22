@@ -23,9 +23,10 @@
           <span style="text-align: left">
             <p class="small sub_title">
             This user has no stories.
-
           </span>
         </div>
+
+
         <!-- <div class="media-body" style="padding-top: 6% ">
             Commitment progress: <b>{{user.completionPerc()}}%</b>
         </div> -->
@@ -58,7 +59,7 @@
         <div href="#" class="pull-left">
           <img alt="64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="{{user.avatar_72_url}}">
         </div>
-        <div class="media-body" style="width: 75%">
+        <div class="media-body" style="width: 75%; padding-left: 10px">
           <div class="media-heading" style="text-align: left">
             <h3>
               <span class="username_txt" href="#">
@@ -100,16 +101,15 @@
                 </a>
               </li>
 
-              <!--NOT WORKING!!!!!-->
-              <li class="lists-style left">
+              <li class="lists-style left" style="padding-left: 10px">
                 <span ng-show="usersModalShowCtrl.editableSprint">
                   <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
-                  Delete story.
+                  Delete story
                   </a>
                   <img src="/img/delete.png" width="13px">
                 </span>
               </li>
-              <!--NOT WORKING!!!!!-->
+              
             </ul>
           </span>
         </div>
