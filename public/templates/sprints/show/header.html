@@ -13,21 +13,26 @@
 
 <div class="blue">
   <div id="sprint-selected" class="contain" ng-if="sprint">
-    <div class="txt_left left" style="width: 40%">
-      <div class="txt_left left" style="height: 30px; padding: 3%; color: white">
+    <div class="txt_left left" style="width: 100%; padding: 1% 2% 2% 2%">
+      <div class="txt_left left" style="height: 30px; color: white">
         From
         <span class="title-sprint">{{ sprint.started_at | dateformat: 'D MMM' }}</span>
         to
         <span class="title-sprint">{{ sprint.ended_at | dateformat: 'D MMM' }} </span>
       </div>
 
-      <div style="width: 50%; padding-top: 30px" class="right">
+      <span class="txt_left" style="height: 30px; padding: 3% 0 0 70%; color: white">
+        Sprint progress: <span class="title-sprint">100%</span>
+      </span>
+
+      <!-- <div style="width: 50%; padding-top: 30px" class="right">
           <div
             style="position: relative; top: 50%; transform: translateY(-50%);"
             onload="value = user.completionPerc()"
             ng-include="'/templates/shared/progress_bar.html'">
           </div>
-      </div>
+      </div> -->
+
         <!--PROGRESS BAR-->
         <!-- <div class="progress" style="width: 20%; height: 10px; margin: auto; padding: auto; position: relative; top: 50%; transform: translateY(-70%);">
           <div class="progress-bar progress-bar-{{(value <= 35) ? 'danger' : ((value > 35 && value < 75) ? 'warning' : 'success')}}" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="0" aria-valuemax="100" style="width: {{value}}%;">
