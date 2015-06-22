@@ -28,7 +28,6 @@ gem 'rvm-capistrano', require: false
 
 # auth
 gem 'omniauth'
-# gem 'omniauth-twitter'
 gem 'omniauth-slack'
 
 gem 'tux'
@@ -37,6 +36,7 @@ group :development do
   gem 'pry', require: 'pry'
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller'
+  gem 'webmock'
 end
 
 group :test do
@@ -44,5 +44,5 @@ group :test do
   gem 'rspec'
   gem 'factory_girl'
   gem 'database_cleaner'
-  # gem 'webmock'
+  gem 'webmock'
 end

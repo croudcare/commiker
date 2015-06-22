@@ -24,7 +24,7 @@ module Commiker
 
             include HTTParty
 
-            base_uri 'https://pearlgems.slack.com'
+            base_uri Configs['SLACK_CHANNEL_URL']
 
             attr_reader :slack_token,
                         :sprint_id

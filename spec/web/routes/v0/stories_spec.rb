@@ -6,6 +6,11 @@ describe '/api/v0/stories' do
 
     before(:each) do
       @user = create :auth_user
+      stub_pivotal_request('90895614')
+      stub_pivotal_request('94839248')
+      stub_pivotal_request('97204220')
+      stub_pivotal_request('93796298')
+      stub_invalid_pivotal_request
     end
 
     context 'posts /api/v0/stories' do
@@ -18,13 +23,13 @@ describe '/api/v0/stories' do
           sprint_id: @sprint.id,
           user_slack_uid: @user.slack_uid,
           pivotal_ids: ['94839248']
-        }, session_headers)
+        }, session_headers(@user.id))
 
         @stories = last_response_json['created_stories']
       end
 
       def make_the_call(params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         post "/api/v0/stories", params, headers
       end
@@ -88,7 +93,7 @@ describe '/api/v0/stories' do
     context 'delete /api/v0/stories/:id' do
 
       def make_the_call(id, params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         delete "/api/v0/stories/#{id}", params, headers
       end
@@ -101,7 +106,7 @@ describe '/api/v0/stories' do
           sprint_id: @sprint.id,
           user_slack_uid: user.slack_uid,
           pivotal_ids: ['94839248']
-        }, session_headers)
+        }, session_headers(@user.id))
 
         @stories = last_response_json['created_stories']
       end
@@ -126,7 +131,7 @@ describe '/api/v0/stories' do
     context 'post /api/v0/stories/:id/add_story_interaction' do
 
       def make_the_call(id, params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         post "/api/v0/stories/#{id}/add_story_interaction", params, headers
       end
@@ -139,7 +144,7 @@ describe '/api/v0/stories' do
           sprint_id: sprint.id,
           user_slack_uid: user.slack_uid,
           pivotal_ids: ['94839248']
-        }, session_headers)
+        }, session_headers(@user.id))
 
         @stories = last_response_json['created_stories']
       end
@@ -248,7 +253,7 @@ describe '/api/v0/stories' do
             sprint_id: sprint.id,
             user_slack_uid: user.slack_uid,
             pivotal_ids: ['94839248', '97204220', '93796298']
-          }, session_headers)
+          }, session_headers(@user.id))
 
           @stories = last_response_json['created_stories']
         end
@@ -275,7 +280,7 @@ describe '/api/v0/stories' do
           get \
             "/api/v0/sprints/#{last_response_json['sprint_id']}",
             {},
-            session_headers
+            session_headers(@user.id)
 
           total = (@stories.count * 100)
           completion_sum = [20, 80, 34].sum
@@ -291,7 +296,7 @@ describe '/api/v0/stories' do
     context 'post /api/v0/stories/bulk_create' do
 
       def make_the_call(params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         post '/api/v0/stories/bulk_create', params, headers
       end

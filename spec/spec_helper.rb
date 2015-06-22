@@ -5,7 +5,8 @@ ENV['RACK_ENV'] = 'test'
 require 'rack/test'
 require 'bundler/setup'
 require 'database_cleaner'
-# require 'webmock/rspec'
+require 'webmock/rspec'
+# WebMock.disable_net_connect!(allow_localhost: true)
 
 Bundler.require :test
 

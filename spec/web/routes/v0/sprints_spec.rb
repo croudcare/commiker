@@ -6,12 +6,13 @@ describe '/api/v0/sprints' do
 
     before(:each) do
       @user = create :auth_user
+      stub_pivotal_request('90895614')
     end
 
     context 'get /api/v0/sprints/active' do
 
       def make_the_call(params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         get "/api/v0/sprints/active", params, headers
       end
@@ -36,7 +37,7 @@ describe '/api/v0/sprints' do
               id: 1
             }]
           },
-        }, session_headers)
+        }, session_headers(@user.id))
 
         expect_created_response
 
@@ -60,7 +61,7 @@ describe '/api/v0/sprints' do
               id: 1
             }]
           },
-        }, session_headers)
+        }, session_headers(@user.id))
 
         expect_created_response
 
@@ -74,13 +75,13 @@ describe '/api/v0/sprints' do
     context 'get /api/v0/sprints/:id' do
 
       def make_the_call(id, params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         get "/api/v0/sprints/#{id}", params, headers
       end
 
       def make_the_bulk_stories_call(params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         post '/api/v0/stories/bulk_create', params, headers
       end
@@ -140,7 +141,7 @@ describe '/api/v0/sprints' do
     context 'post /api/v0/sprints/' do
 
       def make_the_call(params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         post '/api/v0/sprints/', params, headers
       end
@@ -239,7 +240,7 @@ describe '/api/v0/sprints' do
     context 'get /api/v0/sprints' do
 
       def make_the_call(params = {}, headers = {})
-        headers.merge!(session_headers)
+        headers.merge!(session_headers(@user.id))
 
         get '/api/v0/sprints/', params, headers
       end

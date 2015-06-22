@@ -1,5 +1,27 @@
 module RequestHelper
 
+  def stub_pivotal_request(pivotal_id)
+    response = {
+      kind: 'story',
+      id: pivotal_id,
+      name: 'description'
+    }
+
+     stub_request(:get, "https://www.pivotaltracker.com/services/v5/stories/#{pivotal_id}")
+      .with(headers: { 'X-Trackertoken' => 'pivotal_test_token' })
+      .to_return(status: 200, body: response.to_json)
+  end
+
+  def stub_invalid_pivotal_request
+    response = {
+      kind: 'error'
+    }
+
+    stub_request(:get, 'https://www.pivotaltracker.com/services/v5/stories/invalid')
+      .with(headers: { 'X-Trackertoken' => 'pivotal_test_token' })
+      .to_return(status: 200, body: response.to_json)
+  end
+
   def last_response_json
     JSON.parse(last_response.body)
   end
