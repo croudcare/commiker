@@ -1,17 +1,3 @@
-<!--HOMEPAGE WITHOUT LOGIN-->
 <% if current_session_user %>
   <div ui-view></div>
-<% else %>
-<div style="position: relative; overflow-y: hidden; overflow-x: hidden;">
-  <div style="margin-top: -1px;">
-    <img
-    src="/img/landing.png"
-    width="1440"
-    style="position:fixed; left: -10px; top: 39px; opacity: 0.8; -webkit-filter: blur(5px); -moz-filter: blur(5px); -o-filter: blur(5px); -ms-filter: blur(5px); filter: blur(5px); z-index: 0" />
-  </div>
-  
-  <div style="position: absolute: blur(0px); padding-top: 11%; color: #4C91E4">
-    <h1>Login for full experience...</h1>
-  </div>  
-</div>
 <% end %>
