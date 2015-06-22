@@ -36,7 +36,7 @@ module Commiker
 
             def start_sprint
               SlackBOTCli.post \
-                "/services/hooks/slackbot?token=#{slack_token}&channel=%23general",
+                "/services/hooks/slackbot?token=#{slack_token}&channel=%23#{Configs['SLACK_BOTE_CHANNEL']}",
                 { body: 'bote start sprint' }
             end
 
