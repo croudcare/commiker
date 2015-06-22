@@ -10,5 +10,10 @@ before_script:
   - psql -c 'create database "commiker_test";' -U postgres
   - rake db:migrate
 
+after_failure:
+  - python slack_notifier.py --project ${REPO_NAME} --org ${SLACK_ORG} --token ${SLACK_TOKEN}
+after_success:
+  - python slack_notifier.py --project ${REPO_NAME} --org ${SLACK_ORG} --token ${SLACK_TOKEN} -s
+
 script:
   - rspec
