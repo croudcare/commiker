@@ -23,19 +23,19 @@
       </div>
     </p>
   </div> -->
-    
+
   <!-- <div
     ng-if="sprintsIndexCtrl.previousSprints.length > 0"
     style="width:100%; padding: auto; margin: auto; padding-left:8px; padding-top: 20px;"> -->
     <div
     ui-sref="sprints-show({id: sprintsIndexCtrl.latestSprint.id })"
     ng-if="sprintsIndexCtrl.latestSprint"
-    style="width:100%; padding: auto; margin: auto; padding-left:8px; padding-top: 20px;">
-      
+    style="width:100%; padding: auto; margin: auto; padding-left:8px; padding-top: 20px; cursor: pointer;">
+
       <h3 style="text-align: left; font-weight: bold;  color: white">
-      Current sprint: 
+      Current sprint:
         <span class="title-sprint">{{ sprintsIndexCtrl.latestSprint.started_at | dateformat: 'D MMM' }}</span>
-        - 
+        -
         <span class="title-sprint">{{ sprintsIndexCtrl.latestSprint.ended_at | dateformat: 'D MMM' }}</span>
       </h3>
       <br />
@@ -54,7 +54,7 @@
           </span>
         </p>
 
-        <span class="list-group-item-text" style="font-size: 16px">  
+        <span class="list-group-item-text" style="font-size: 16px">
           <div
           class="progress-big"
           onload="value = sprintsIndexCtrl.latestSprint.completionPercentage()"
@@ -101,4 +101,7 @@
   class="btn loadmore"
   ng-if="sprintsIndexCtrl.moreToLoad"
   ng-click="sprintsIndexCtrl.loadMoreSprints()">Load more</a>
+
+  <br />
+  <br />
 
