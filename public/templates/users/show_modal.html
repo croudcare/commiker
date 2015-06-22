@@ -1,7 +1,7 @@
 
 <!--MODAL - click user card-->
 <!--HEADER-->
-<div class="modal-header" style="background-color: #4C91E4;">
+<div class="modal-header" style="background-color: #4C91E4; border-top-right-radius: 5px; border-top-left-radius: 5px;">
   <h3 class="modal-title" style="color: white;">{{usersModalShowCtrl.user.slack_handler}}'s stories
     <button type="button" class="close" ng-click="usersModalShowCtrl.cancel()" aria-label="Close">
       <span aria-hidden="true">
@@ -14,9 +14,9 @@
 <!--BODY-->
 <div class="modal-body" style="margin: 0; padding: 0">
   <div ng-if="usersModalShowCtrl.user.stories.length == 0">
-    <img src="http://media.giphy.com/media/haQ2DRRCtIvBu/giphy.gif" width="100%">
+    <img src="http://media.giphy.com/media/haQ2DRRCtIvBu/giphy.gif" style="margin-top: -1px;" width="100%">
 
-    <div style="padding-top: 5%">
+    <div style="padding-top: 3%">
       <h3>Definitely, this guy wants party.</h3>
       <h3>He has no stories.</h3>
     </div>
@@ -30,8 +30,8 @@
 
   <!--IF USER HAS STORIES-->
   <div ng-if="usersModalShowCtrl.user.stories.length > 0">
-    <ul class="list-group default_text list_center" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%; padding: 20px 0 20px 0">
-      <li class="list-group-item" style="padding-left: 5%; padding-bottom: 25px; margin-top: 30px">
+    <ul class="list-group default_text list_center" ng-repeat="story in usersModalShowCtrl.user.stories" style="width: 95%;">
+      <li class="list-group-item" style="padding-left: 5%; padding-top: 20px; padding-bottom: 20px;">
         <div style="width: 100%;">
           <div class="modal-story">
             {{story.description}}
@@ -58,6 +58,9 @@
         </div>
       </li>
     </ul>
+
+    <br />
+  </div>
 
   <!--FOOTER-->
   <div class="modal-footer" style="padding-bottom: 20px">

@@ -37,11 +37,11 @@
               <% if !current_session_user.blank? %>
                 <a class="log_in_txt" href='/logout' target="_self" style="padding-right: 10px"><%= current_session_user.slack_handler %>
                   &nbsp;&nbsp;
-                  <img class="log_in_img" src="/img/logout.svg" width="13px">
+                  <img class="log_in_img" src="/img/close.png" width="13px">
                 </a>
               <% end %>
             </div>
-          </div>  
+          </div>
 
           <!--
               <% if !current_session_user.blank? %>
@@ -57,9 +57,9 @@
       </div>
 
       <div id="top"></div>
-      
+
       <%= yield %>
-    
+
     </div><!--CONTAINER-->
     <%= partial :'/shared/footer_scripts' %>
   </body>
