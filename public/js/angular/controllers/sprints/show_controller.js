@@ -19,6 +19,8 @@
     self.showUser = showUser;
     self.setListView = setListView;
     self.setDefaultView = setDefaultView;
+    self.editableSprint = (id == 'active');
+    self.deleteStory = deleteStory;
 
     self.sprint = null;
 
@@ -53,6 +55,25 @@
     function showUser(user) {
       UsersShowUseCase.perform({ user: user, sprint: self.sprint })
     }
+
+    function deleteStory(storyId) {
+      var that = self;
+
+      StorySmooth.destroy(storyId)
+        .success(onSuccess)
+        .error(onError)
+
+      function onSuccess() {
+        _.remove(self.user.stories, function(story){
+          return (story.id == storyId);
+        });
+      }
+
+      function onError() {
+        debugger
+      }
+    }
+
   }
 
 })(angular.module('commikerApp'));

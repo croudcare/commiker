@@ -12,7 +12,8 @@
         <div href="#" class="pull-left" style="padding-right: 20px;">
           <img alt="64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="{{user.avatar_72_url}}">
         </div>
-        <div class="media-body" style="width: 75%">
+
+        <div class="media-body" style="width: 75%" ng-if="user.stories.length == 0">
           <div class="media-heading" style="text-align: left">
             <h3>
               <span class="username_txt" href="#">
@@ -55,9 +56,6 @@
         ng-repeat="user in sprint.users">
         -->
 
-        <div href="#" class="pull-left">
-          <img alt="64x64" class="media-object img-circle" style="width: 64px; height: 64px;" src="{{user.avatar_72_url}}">
-        </div>
         <div class="media-body" style="width: 75%">
           <div class="media-heading" style="text-align: left">
             <h3>
@@ -91,25 +89,28 @@
                     <span style="font-weight: bold; color: #4C91E4">[{{story.completion_percentage}}%]</span>
                   </span>
                 </div>
-              </li>
 
-              <li class="lists-style left">
-                <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank">
-                  Check story in pivotal
-                  <img src="/img/pivotal.png" width="20px">
-                </a>
-              </li>
-
-              <!--NOT WORKING!!!!!-->
-              <li class="lists-style left">
-                <span ng-show="usersModalShowCtrl.editableSprint">
-                  <a ng-really-message="Are you sure?" ng-really-click="usersModalShowCtrl.deleteStory(story.id)">
-                  Delete story.
+                <div class="lists-style left">
+                  <a href="https://www.pivotaltracker.com/story/show/{{story.pivotal_id}}" target="_blank">
+                    Check story in pivotal
+                    <img src="/img/pivotal.png" width="20px">
                   </a>
-                  <img src="/img/delete.png" width="13px">
-                </span>
+                </div>
+
+                <!--NOT WORKING!!!!!-->
+                <div class="lists-style left">
+                  <span ng-show="sprintsShowCtrl.editableSprint">
+                    <a ng-really-message="Are you sure?" ng-really-click="sprintsShowCtrl.deleteStory(story.id)">
+                    Delete story.
+                    </a>
+                    <img src="/img/delete.png" width="13px">
+                  </span>
+                </div>
+                <!--NOT WORKING!!!!!-->
+
               </li>
-              <!--NOT WORKING!!!!!-->
+
+
             </ul>
           </span>
         </div>
