@@ -1,6 +1,15 @@
-<div class="modal-header">
-  <h3 class="modal-title">I'm a modal!</h3>
+<div class="modal-header" style="background-color: #4C91E4; border-top-right-radius: 5px; border-top-left-radius: 5px;">
+  <h3 class="modal-title" style="color: white;">Login Required
+    <button type="button" class="close" ng-click="meLoginModalCtrl.cancel()" aria-label="Close">
+      <span aria-hidden="true">
+        <img src="/img/close.png">
+      </span>
+    </button>
+  </h3>
 </div>
 <div class="modal-body">
-  <a href="/login{{meLoginModalCtrl.backUrlStr}}" target="_self">log in with slack</a>
+  <a href="/login" target="_self" style="font-size: 16px; margin: 20px; display: block">
+    Log in with slack
+    <img class="log_in_img" src="/img/slack.png" width="15px;">
+  </a>
 </div>
