@@ -12,7 +12,7 @@
   function SprintsIndexController($state, $location, SprintSmooth) {
     var self = this;
     self.page = 1;
-    self.perPage = 2;
+    self.perPage = 5;
 
     self.latestSprint = null;
     self.previousSprints = [];
