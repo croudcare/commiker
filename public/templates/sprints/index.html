@@ -99,7 +99,7 @@
 
 <a
   class="btn loadmore"
-  ng-if="sprintsIndexCtrl.moreToLoad"
+  ng-if="sprintsIndexCtrl.moreToLoad && self.previousSprints.length > 0"
   ng-click="sprintsIndexCtrl.loadMoreSprints()">Load more</a>
 
   <br />
