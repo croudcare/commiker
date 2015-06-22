@@ -5,6 +5,14 @@ rvm:
 services:
   - postgres
 
+env:
+  global:
+    - RACK_ENV=test
+    - SLACK_ORG=linkedcare
+    #SLACK TOKEN
+    - secure: TqfaJ2MtUvZawb0cmkUy/Z831QmCJi/QGm6B5oK0AYueOGd8Um7L3JJAIOExrGY5NuXdJwv0G0C9+K5zW/Q7kMHe1Yjlklkzd/LDY9HNjudupG2Ug8Jr3NMYqZcl02sJxJl3BduWNOJZPriWug5dg+lvWP3iFoaPcV/J8Ln45pHo0PnF7K3sm/ZZAzg1rrA4qw3X8kxq4eZ36v6spft4Dq6sCY4trBVGgfgaAFYXwbJL9yIwg2rtVeNern7KOnZ7AJLc6iGvhfNROSvdWLP28loQa/3oM6ZKWqoJRjLw+eml1+A1bxl/WEwKmX5QzpcIIeLiKGn1+gxWeA9NQP2A3A==
+    - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+
 before_script:
   - ./shippable.sh
   - psql -c 'create database "commiker_test";' -U postgres
