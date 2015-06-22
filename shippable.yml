@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.1.5
+
+services:
+  - postgres
+
+before_script:
+  - ./shippable.sh
+  - psql -c 'create database "commiker_test";' -U postgres
+  - rake db:migrate
+
+script:
+  - rspec
