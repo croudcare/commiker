@@ -3,7 +3,7 @@ puts "\e[0;35m              DEPLOYING TO PRODUCTION\e[0m\n"
 puts "\e[0;35m =======================================================\e[0m\n"
 
 set :rails_env, 'production'
-set :domain, 'domain'
+set :domain, 'prd_commiker'
 set :runner, 'rails'
 
 server domain, :app, :web
