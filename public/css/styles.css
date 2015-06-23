@@ -3,7 +3,7 @@
 	font-family: 'Titillium Web';
 	font-style: normal;
 	font-weight: 300;
-	src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr1uKlGE8-OjkUKWan_M3D6s.woff) format('woff');
+	src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(https://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr1uKlGE8-OjkUKWan_M3D6s.woff) format('woff');
 }
 
 
@@ -36,7 +36,7 @@ h3 {
 }
 
 a{
-	color: #464B57;	
+	color: #464B57;
 }
 
 .container{
@@ -148,7 +148,7 @@ a{
 	width: 70%;
 	height: 10px;
 	margin: auto;
-	padding: auto; 
+	padding: auto;
 }
 .progress-big .progress{
 	box-shadow: none;
@@ -321,7 +321,7 @@ float: right;
 
 /*LIST LITS LIST*/
 .user-item img, .user-item h3 {
-    display:inline-block;    
+    display:inline-block;
 }
 
 /*list stories of user*/
