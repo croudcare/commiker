@@ -10,8 +10,8 @@ module Commiker
 
             def perform
               if Configs['USE_PUSHER'] == true
-                if sprint
-                  Pusher['commiker_dev']
+                if ctx.sprint
+                  Pusher["commiker_#{ENV['RACK_ENV']}"]
                     .trigger('sprints.show', Serializers::Sprints::Show.new(ctx.sprint))
                 else
                   puts '!!!No sprint given to communicate, somethings wrong?!!!'

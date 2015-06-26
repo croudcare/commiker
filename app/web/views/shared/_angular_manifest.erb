@@ -10,12 +10,19 @@
 <script type="text/javascript">
   $.api_client = {
     user_id: <%= current_session_user.try(:id) || 'null' %>,
+    env: '<%= ENV['RACK_ENV'] %>',
     authenticated: <%= !current_session_user.try(:id).blank? %>,
     endpoint: '<%= Configs["API_ENDPOINT"] %>',
     authToken: '<%= "Bearer #{Rack::Jwt::Auth::AuthToken.issue_token({ user_id: current_session_user.try(:id) }, Configs["AUTHENTICATION_SECRET"])}" %>'
   }
 
-  window.pusherClient = new Pusher('<%= Configs['PUSHER_KEY'] %>');
+  window.pusherClient = new Pusher('<%= Configs["PUSHER_KEY"] %>');
+
+  Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
 </script>
 
 <script type="text/javascript" src="/js/angular/app.js"></script>

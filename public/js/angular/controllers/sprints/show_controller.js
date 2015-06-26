@@ -28,8 +28,8 @@
 
     findCurrentSprint($state.params.id);
 
-    $pusher(pusherClient)
-      .subscribe('commiker_dev')
+    $pusher(window.pusherClient)
+      .subscribe('commiker_' + $.api_client.env, { encrypted: false })
       .bind('sprints.show', function(data) {
         self.sprint = SprintModel.new(data);
       });
