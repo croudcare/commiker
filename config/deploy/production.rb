@@ -14,4 +14,4 @@ ssh_options[:forward_agent] = true
 ssh_options[:user] = runner
 
 set :branch, "master"
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/var/www/rails/#{application}"

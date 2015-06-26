@@ -18,4 +18,3 @@ config/database.yml
 .ruby-gemset
 .ruby-version
 ngrok
-Gemfile.lock
