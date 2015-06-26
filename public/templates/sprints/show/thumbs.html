@@ -1,7 +1,7 @@
 <!--LIST THUMBS-->
 <div class="container side_space" style="text-align: center">
   <div class="row" style="width: 100%">
-    <div ng-click="sprintsShowCtrl.showUser(user)" class="col-sm-5 col-md-3" ng-repeat="user in sprint.users">
+    <div ng-click="sprintsShowCtrl.showUser(user)" class="col-sm-5 col-md-3" ng-repeat="user in sprintsShowCtrl.sprint.users">
       <div class="thumbnail" ng-if="user.stories.length > 0">
         <div class="caption">
           <h3>{{user.slack_handler}}</h3>

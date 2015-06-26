@@ -3,14 +3,16 @@
   commikerApp.controller('SprintsShowController', [
     '$scope',
     '$state',
+    '$pusher',
     'SprintSmooth',
+    'SprintModel',
     'UsersShowUseCase',
     SprintsShowController
   ]);
 
   /****************** PROTECTED ******************/
 
-  function SprintsShowController($scope, $state, SprintSmooth, UsersShowUseCase) {
+  function SprintsShowController($scope, $state, $pusher, SprintSmooth, SprintModel, UsersShowUseCase) {
     var self = this;
 
     var id = $state.params.id;
@@ -25,6 +27,12 @@
     self.sprint = null;
 
     findCurrentSprint($state.params.id);
+
+    $pusher(pusherClient)
+      .subscribe('commiker_dev')
+      .bind('sprints.show', function(data) {
+        self.sprint = SprintModel.new(data);
+      });
 
     function findCurrentSprint(id) {
       SprintSmooth.find(id)

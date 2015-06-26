@@ -1,8 +1,8 @@
 (function(commikerApp) {
 
-  commikerApp.factory('SprintModel', ['UserModel', SprintModel]);
+  commikerApp.factory('SprintModel', [SprintModel]);
 
-  function SprintModel(UserModel) {
+  function SprintModel() {
 
     return {
       new: function(object) {

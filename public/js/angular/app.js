@@ -3,7 +3,8 @@
   angular.module('commikerApp', [
     'ui.router',
     'datePicker',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'pusher-angular'
   ]);
 
 })(angular);
