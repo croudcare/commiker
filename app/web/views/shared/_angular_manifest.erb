@@ -5,6 +5,7 @@
 <script type="text/javascript" src="/js/angular_lib/angular-datepicker.js"></script>
 <script type="text/javascript" src="/js/angular_lib/angular-ui-router.min.js"></script>
 <script type="text/javascript" src="/js/angular_lib/ui-bootstrap-custom-0.12.0.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/angular.pusher/latest/pusher-angular.min.js"></script>
 
 <script type="text/javascript">
   $.api_client = {
@@ -13,6 +14,8 @@
     endpoint: '<%= Configs["API_ENDPOINT"] %>',
     authToken: '<%= "Bearer #{Rack::Jwt::Auth::AuthToken.issue_token({ user_id: current_session_user.try(:id) }, Configs["AUTHENTICATION_SECRET"])}" %>'
   }
+
+  window.pusherClient = new Pusher('<%= Configs['PUSHER_KEY'] %>');
 </script>
 
 <script type="text/javascript" src="/js/angular/app.js"></script>

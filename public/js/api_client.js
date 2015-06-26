@@ -1,2 +1,2 @@
 // populated on angular manifest
-$.api_client = {}
+$.api_client = {};

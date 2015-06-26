@@ -1,17 +1,14 @@
 <div
   ng-if="sprintsShowCtrl.sprint"
-  onload="sprint = sprintsShowCtrl.sprint"
   ng-include="'/templates/sprints/show/header.html'">
 </div>
 
 <div
   ng-if="!sprintsShowCtrl.listView && sprintsShowCtrl.sprint"
-  onload="sprint = sprintsShowCtrl.sprint"
   ng-include="'/templates/sprints/show/thumbs.html'">
 </div>
 
 <div
   ng-if="sprintsShowCtrl.listView && sprintsShowCtrl.sprint"
-  onload="sprint = sprintsShowCtrl.sprint"
   ng-include="'/templates/sprints/show/list.html'">
 </div>

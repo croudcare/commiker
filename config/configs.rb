@@ -6,7 +6,13 @@ module Configs
   end
 
   def self.[](key)
-    @config[key] || "Key '#{key}' is not defined in config.yml"
+    return "Key '#{key}' is not defined in config.yml" unless @config.has_key?(key)
+
+    @config[key]
+  end
+
+  def self.to_h
+    @config || {}
   end
 
 end

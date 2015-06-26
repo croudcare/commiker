@@ -12,17 +12,17 @@
 </div>
 
 <div class="blue">
-  <div id="sprint-selected" class="contain" ng-if="sprint">
+  <div id="sprint-selected" class="contain" ng-if="sprintsShowCtrl.sprint">
     <div class="txt_left left" style="width: 100%; padding: 1% 2% 2% 2%">
       <div class="txt_left left" style="height: 30px; color: white">
         From
-        <span class="title-sprint">{{ sprint.started_at | dateformat: 'D MMM' }}</span>
+        <span class="title-sprint">{{ sprintsShowCtrl.sprint.started_at | dateformat: 'D MMM' }}</span>
         to
-        <span class="title-sprint">{{ sprint.ended_at | dateformat: 'D MMM' }} </span>
+        <span class="title-sprint">{{ sprintsShowCtrl.sprint.ended_at | dateformat: 'D MMM' }} </span>
       </div>
 
       <span class="txt_left" style="height: 30px; padding: 3% 0 0 70%; color: white">
-        Sprint progress: <span class="title-sprint">{{sprint.completionPercentage()}}%</span>
+        Sprint progress: <span class="title-sprint">{{sprintsShowCtrl.sprint.completionPercentage()}}%</span>
       </span>
 
       <!-- <div style="width: 50%; padding-top: 30px" class="right">
