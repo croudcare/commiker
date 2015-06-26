@@ -18,5 +18,9 @@ test:
   AUTHENTICATION_SECRET: 'auth_test_secret'
   SESSION_SECRET: 'session_test_secret'
   PIVOTAL_TOKEN: 'pivotal_test_token'
+  PUSHER_KEY: ''
+  PUSHER_SECRET: ''
+  PUSHER_APP_ID: ''
+  USE_PUSHER: false
 EOF
 
