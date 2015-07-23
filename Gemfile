@@ -31,6 +31,8 @@ gem 'omniauth-slack', '~> 2.0.0'
 
 gem 'tux', '~> 0.3.0'
 
+gem 'puma', '~> 2.12.2'
+
 group :development do
   gem 'pry', '~> 0.10.1', require: 'pry'
   gem 'better_errors', '~> 2.1.1'

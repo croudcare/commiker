@@ -6,4 +6,5 @@ RUN mv config/$RACK_ENV.config.yml config/config.yml \
 
 # change to non-priv user, inhereted from ms-ruby image
 USER app
+CMD ["puma", "-C", "config/puma.rb"]
 
